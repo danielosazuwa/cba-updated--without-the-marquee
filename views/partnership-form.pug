@@ -1,0 +1,40 @@
+extend layout 
+
+block styleBlock 
+    style. 
+        .banner-area {
+            background: rgba(0, 0, 0, 0) url(/img/banner/partnership.jpg) no-repeat scroll center center / cover;
+        }
+
+block content 
+    
+    .container
+        #partnership-form
+            .row 
+                .col-md-6.col-sm-12.col-xs-12.mt-4.mb-5.px-5.py-5(style="background:#2c2b5e;width: 100%")
+                    form(method="post" action="/send-email").mt-2
+                        .mb-3
+                            label.form-label.long-text Name of business/government/
+                                br 
+                                |organisation/training school
+                            input.form-control(type="text" name="fname" required)
+                        .mb-3
+                            label.form-label Email
+                            input.form-control(type="email" name="email" required)
+                        .row.mb-3
+                            label.form-label Phone number
+                            br/
+                            input.form-control#phone(type="text" name="phone")
+                        .mb-3
+                            label.form-label What Partnership do you want?
+                            select.form-control(name="partnership" required)
+                            input(type="hidden" name="category" value="partnership")
+                        .mb-3
+                            label.form-label Describe what you want in few words
+                            textarea.form-control(name="message" placeholder="Write here..." required)
+                            .small.text-muted Not more than 500 words
+                        .mb-5
+                            .partnership-form-btn 
+                                button.btn.btn-danger(type="submit" style="display:block; margin: 0px auto 0px auto") Send
+    .container 
+        h2(style="color: #2c2b5e; text-align: center; font-style: italic; font-size: 16px; margin-bottom: 40px") You will be contacted within the next 24 hours

@@ -1,0 +1,65 @@
+extend layout
+
+block styleBlock 
+    style. 
+        .banner-area {
+            background: rgba(0, 0, 0, 0) url(/img/banner/partnership.jpg) no-repeat scroll center center / cover;
+        }
+
+block content 
+    img(src="img/services/partnership-header.png", alt="partnership")
+    .container-sm
+        #partnership-header
+            h1 PARTNERSHIPS 
+            p We are committed to advancing the tech industry by forging strategic partnerships with businesses, other tech academies and governments. Through these partnerships, we offer tailored training solutions that upskill workforces, students and people in general. Our collaborative approach ensures that industry-specific skills are honed, addressing the evolving demands of the tech sector. Let us join hands in shaping the future of tech through innovative partnerships.
+
+    .offer-area.pt-80.pb-80.mb-3
+        .container
+            .row
+                .col-md-6 
+                    img(src='/img/training-school.png').px-4
+
+                .col-md-6(style="color:black")
+                    h3 Training Schools
+                    ul.bullet
+                        li Industry-Relevant Curriculum: Collaborating with us will enable your training school to offer courses and programs that align with current industry demands, ensuring your students are job-ready.
+                        li Access to Practical Learning: We can provide hands-on training, workshops, and access to our cutting-edge labs, giving your students real-world experience in a simulated environment.
+                        li Certification Programs: Our partnership can include certification opportunities for your students, enhancing their employability and standing out in a competitive job market.
+
+    .offer-area.pt-80.pb-80.mb-3.bg-light
+        .container
+            .row
+                .col-md-6 
+                    img(src='/img/government.png').px-4
+
+                .col-md-6(style="color:black")
+                    h3 Government
+                    ul.bullet
+                        li Technological Advancement: By partnering with us, your government agency can access state-of-the-art technologies that can enhance public services, boost efficiency, and improve citizen experiences.
+                        li Digital Transformation: We can provide consultation and implementation support for digital transformation initiatives, helping your agency modernize its processes and systems.
+                        li Cybersecurity Solutions: Our expertise in cybersecurity can help safeguard sensitive government data and protect critical infrastructure from cyber threats.
+
+
+    .offer-area.pt-80.pb-100.mb-3
+        .container
+            .row
+                .col-md-6 
+                    img(src='/img/business.png').px-4
+
+                .col-md-6(style="color:black")
+                    h3 Business
+                    ul.bullet
+                        li Access to Advanced Technologies: Our tech expertise will empower your business to leverage the latest innovations, streamline operations, and gain a competitive edge in the market.
+                        li Customized Solutions: We will work closely with your team to develop tailored tech solutions that address your unique challenges and requirements.
+                        li Industry Insights: Our knowledge of industry trends and best practices will assist your organization in making informed decisions and staying ahead in a rapidly evolving digital landscape.
+
+            .row 
+                .col        
+                    p.mt-5(style="font-weight: bold; font-style: italic") Our partnership offers opportunities for co-branding, joint marketing campaigns, networking events, and knowledge-sharing sessions, further strengthening our ties and creating a cohesive tech ecosystem.
+                        | We are eager to discuss the details of this proposal with you and explore how our collaboration can bring mutual success and make a positive impact on the tech industry. Please feel free to contact me at connect@decareerbuilders.com or [Your Phone Number] to schedule a meeting at your convenience.
+
+            .row 
+                .col 
+                    #partner-btn 
+                        button 
+                            a(href='/become-a-partner').mt-4 Become a Partner Today

@@ -1,0 +1,55 @@
+extend layout 
+
+block content
+    .container
+        img(src="img/faq.png", alt="" height="20px" width="700px" style="display:block; margin-left: auto; margin-right: auto; margin-bottom: 40px  ")
+
+    .container
+        .row.justify-content-md-center
+            .col-md-9.col-sm-12.col-xs-12.mt-4.mb-5.bg(style="background: #D9D9D9; width: 500px; height: 440px; border-radius: 10px").px-5.py-5
+                form(method="post" action="/send-contact-email").mt-2
+                    .question-area
+                        h4 Can't find answers?
+                        h4 Send Us Your Query
+                    .mb-3.row
+                        .col
+                            label(style="color: #2c2b5e").form-label Name <sup>*</sup>
+                            input.form-control(type="text" name="name" required)
+                        .col
+                            label(style="color: #2c2b5e").form-label Email <sup>*</sup>
+                            input.form-control(type="email" name="email" required)
+                    
+                    .mb-3 
+                        textarea.form-control(name="message" rows="6" required)
+                    .mb-5
+                        button.float-center(type="submit" style="display:block; margin-left: auto; margin-right: auto; background: #2c2b5e; color: white; border-radius: 5px; padding: 10px ") Send
+
+    
+    //- .container
+
+    //-     ul(style="list-style-type: disc; line-height: 30px; margin: 20px")
+    //-         li What career support services does Career Builders’ Academy offer?
+    //-         li How is Career Builders’ Academy courses structured?
+    //-         li Do i need to have a degree before i can take a course with CBA?
+    //-         li Is there a payment plan? How does it work?
+    //-         li How will classes be taught?
+    //-         li Do I have to have taken a course with CBA before i can join the Work Experience cohort?
+    //-         li Will i get free access to tools during training?                    
+
+    //- .container-sm
+    //-     .question-area 
+ 
+    //-         .question-form 
+    //-             form(action="#")
+    //-                 .formpt1
+    //-                     label(for="name" style="color: #2c2b5e") Name:
+    //-                     input(type="text") 
+                    
+    //-                     label(for="email" style="color: #2c2b5e") E-mail: 
+    //-                     input(type="text")
+                    
+    //-                 .formpt2
+    //-                     input(type="text") 
+                    
+                        
+    //-                 button Send                    

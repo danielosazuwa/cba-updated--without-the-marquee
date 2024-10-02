@@ -1,0 +1,44 @@
+extend layout 
+
+block content
+    #payment-header
+        img(src="img/payment-header.png", alt="")
+
+    .container-sm.pay-main-div
+    
+        .payment-area
+            .payment-single
+                h1 Make Payment 
+                p(style="font-style:italic") All transactions are secured and encrypted
+                p Powered by 
+                img(src="img/flutter-logo.png", alt="")
+        
+            .payment-single
+                h1 Select Currency: 
+                    options 
+                        select(name="") 
+                            option(name="") NGN - Nigeria Naira
+            
+        .payment-main-area
+            h1 YOUR ORDER 
+
+            .payment-main-single 
+                img(src="img/payment-icon1.png", alt="")
+                h2 Business Analysis 
+            
+            .payment-main-single 
+                img(src="img/payment-icon2.png", alt="")
+                h2 8 weekends (Saturdays & Sundays Only)
+            
+            .payment-main-single 
+                img(src="img/payment-icon3.png", alt="")
+                h2 N300,000.00
+            hr
+            
+            .payment-total-area
+                h2 Total:
+                p N300,000.00
+        
+        #payment-area-btn
+            button 
+                a(href="#") Pay Now

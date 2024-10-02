@@ -1,0 +1,94 @@
+.business-analysis-cover {
+  margin-top: 50px;
+  display: flex;
+  color: black;
+}
+.business-analysis-cover p {
+  color: black;
+}
+.business-analysis-cover h2 {
+  color: #000;
+}
+
+.why-choose h2 {
+  color: #000;
+}
+.why-choose h6 {
+  line-height: 25px;
+}
+.business-analysis-div1 {
+  width: 60%;
+}
+.business-analysis-div1 img {
+  width: 95%;
+}
+
+.business-analysis-div2 {
+  width: 50%;
+  /* color: black; */
+}
+
+.business-analysis-div2 button {
+  background: #f7c838;
+  padding: 10px;
+  color: #1a2930;
+  margin-left: 380px;
+  font-weight: bold;
+}
+.why-choose {
+  text-align: center;
+  margin-top: 50px;
+  line-height: 30px;
+}
+
+.why-choose li:before {
+  content: "- ";
+}
+
+.business-last-div {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.business-last-div p {
+  color: black;
+  margin-top: 10px;
+}
+
+.business-last-div img {
+  width: 60%;
+  height: 50%;
+}
+
+.single-analysis-div {
+  text-align: center;
+  margin-right: 30px;
+}
+#enrol-btn.single-analysis-div {
+  text-align: center;
+}
+
+#alternate.single-analysis-div {
+  text-align: left;
+  background: #1a2930;
+  color: white;
+  padding: 30px 10px 5px 30px;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.single-analysis-div button {
+  background-color: #f7c838;
+  border-radius: 5px;
+  color: #1a2930;
+  border: none;
+  padding: 10px;
+  margin-top: 80px;
+  font-weight: bold;
+}
+
+.phone-business-last-div {
+  display: none;
+}

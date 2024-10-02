@@ -1,0 +1,104 @@
+extends layout
+
+block styleBlock 
+    style.
+        .contact { padding: 12px; margin: auto; border-radius: 50%; height: 90px; width: 90px; margin-bottom: 15px }
+
+        .contact .zmdi { font-size: 50px }
+
+        .socials h4 { font-size: 23px; }
+
+        .socials .footer-social .zmdi { font-size: 25px }
+
+        .footer-social ul li a { height: 50px; width: 50px; padding-top: 11px }
+
+block content 
+
+    .banner-area-wrapper
+        .banner-area.text-center(style="background:url('/img/contact.png')")
+            .container
+                .row
+                    .col-12
+                        .banner-content-wrapper
+                            .banner-content
+                                h3 Contact us
+
+    .about-area.pb-50.pt-50
+        .container
+            .row 
+                .col-md-6 
+                    .socials.text-center 
+                        h4.notice-pri.mb-3 Connect With Us On Social Media
+                        .footer-social
+                            ul
+                                li
+                                    a(href='#https://www.facebook.com/devitems/?ref=bookmarks')
+                                        i.zmdi.zmdi-facebook
+                                li
+                                    a(href='#https://www.pinterest.com/devitemsllc/')
+                                        i.zmdi.zmdi-youtube
+                                li
+                                    a(href='#https://www.pinterest.com/devitemsllc/')
+                                        i.zmdi.zmdi-instagram
+                                li
+                                    a(href='#https://www.pinterest.com//')
+                                        i.zmdi.zmdi-twitter
+
+                .col-md-6 
+                    .socials.text-center 
+                        h4.notice-pri.mb-3 You Can Also Chat With Us
+                        .footer-social
+                            ul
+                                li
+                                    a(href='https://api.whatsapp.com/send?phone=447306461984')
+                                        i.zmdi.zmdi-whatsapp
+
+            .row.text-center.justify-content-md-center.pt-40
+                .col-md-9 
+                    .row
+                        .col
+                            .contact
+                                i.zmdi.zmdi-phone
+                            p 
+                                a(href="tel:+44-7306-461-984")  +44 7306 461 984
+                                br
+                                a(href="tel:+234-7032-375-495")| +234 7032 375 495
+                        .col 
+                            .contact
+                                i.zmdi.zmdi-email.align-middle
+                            p 
+                                a(href="connect@decareerbuilders.com") connect@decareerbuilders.com
+                            
+                                a(href="/")  www.decareerbuilders.com
+                        .col 
+                            .contact
+                                i.zmdi.zmdi-home
+                            p 16, Rockford Place, Ettingshall. Wolverhampton. United Kingdom
+
+    .container
+        .row.justify-content-md-center
+            .col-md-9.col-sm-12.col-xs-12.mt-4.mb-5.bg-light.px-5.py-5
+                form(method="post" action="/send-contact-email").mt-2
+                    .mb-3.row 
+                        .col
+                            label.form-label Name <sup>*</sup>
+                            input.form-control(type="text" name="name" required)
+                        .col
+                            label.form-label Email <sup>*</sup>
+                            input.form-control(type="email" name="email" required)
+                    .mb-3.row 
+                        .col 
+                            label.form-label Subject <sup>*</sup>
+                            input.form-control(type="text" name="subject" required)
+                        .col
+                            label.form-label Phone <sup>*</sup>
+                            input.form-control(type="text" name="phone" required)
+                    .mb-3 
+                        label.form-label Message <sup>*</sup>
+                        textarea.form-control(name="message" rows="8" required)
+                    .mb-5
+                        button.btn.btn-danger.float-end(type="submit") Send Message
+
+
+
+

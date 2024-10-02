@@ -1,0 +1,53 @@
+extend layout 
+
+block content 
+    .container 
+        .row 
+            .col
+                a.btn.btn-secondary.float-end(href="/admin/new-case") Add Case 
+        .row.mt-1
+            .col 
+                h3 Cases
+                table.table.table-striped 
+                    thead 
+                        tr 
+                            th Date Added 
+                            th Title 
+                            th Location 
+                            th Gender/Age
+                            th Trackers 
+                            th Status 
+                            th Added By 
+                            th Action 
+                    tbody 
+                        each _case in cases
+                            tr 
+                                td= view.formatDate(_case.createdAt)
+                                td= _case.title 
+                                td= _case.location
+                                td.text-center #{_case.gender} / #{_case.age}
+                                td 0
+                                td= _case.status
+                                td= _case.Admin && _case.Admin.fullname 
+                                td.text-center 
+                                    a(href=`/admin/edit-case/${_case.id}` title="Edit Case" style="margin-right: 9px")
+                                        i.fa.fa-pencil.fa-lg
+
+                                    a.delete(href="#" onClick=`deleteCase(${_case.id}, this)` title="Delete Case")
+                                        i.fa.fa-trash.fa-lg
+
+block scriptBlock 
+    script.  
+        function deleteCase(id, el) {
+            if (confirm("Are you sure you want to delete this case")) {
+                fetch('/admin/delete-case/' + id, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === true) {
+                        el.closest('tr').remove();
+                    }
+                });
+            }
+        }                            

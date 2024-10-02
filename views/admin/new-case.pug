@@ -1,0 +1,79 @@
+extend layout 
+
+block content 
+    .container
+        .row 
+            .col-md-12
+                a.btn.btn-secondary.btn.lg.float-end(href="/admin/cases")
+                    .fa.fa-caret-left 
+                    |  Go Back 
+        .row.justify-content-md-center 
+            .col-md-6.mb-5
+                h3 New Case
+                br/
+                form(method="post" action="/admin/cases" encType="multipart/form-data")
+                    .mb-3
+                        .row 
+                            .col-md-12     
+                                label Title  
+                                input.form-control.input-lg(type="text" name="title" required)
+                    .mb-3
+                        .row 
+                            .col-md-6     
+                                label Agency Involved 
+                                select.form-control.input-lg(name="AgencyId" required) 
+                                    option(value="")| -- Select Agency --
+                                    each agency in agencies 
+                                        option(value=`${agency.id}`)= agency.name
+                            .col-md-6     
+                                label Category 
+                                select.form-control.input-lg(name="CaseCategoryId" required) 
+                                    option(value="")| -- Select Case Category --
+                                    each category in categories 
+                                        option(value=`${category.id}`)= category.name
+                    .mb-3 
+                        .row 
+                            .col-md-6
+                                label Victim's Gender
+                                select.form-control.input-lg(name="gender")   
+                                    option(value="") -- Select Gender --
+                                    option(value="Female") Female 
+                                    option(value="Male") Male
+                            .col-md-6 
+                                label Victim's Age 
+                                input.form-control(type="text" name="age")
+
+                    .mb-3 
+                        .row 
+                            .col-md-12 
+                                label Details
+                                textarea.form-control(name="description" rows="10")             
+                    .mb-3 
+                        .row 
+                            .col-md-6
+                                label Date of Event
+                                input.form-control(type="date" name="event_date" required)  
+                            .col-md-6 
+                                label Case Status 
+                                select.form-control.input-lg(name="status" required)
+                                    option(value="") -- Select Status --
+                                    each status in case_statuses 
+                                        option(value=`${status}`)= status
+                    .mb-3 
+                        .row 
+                            .col-md-12      
+                                label Event Location 
+                                input.form-control(type="text" name="location" placeholder="Eg. Lagos, Festac town" required)
+                    .mb-3 
+                        .row 
+                            .col-md-12 
+                                label Media/news link
+                                input.form-control.input-lg(type="text" name="news_link")
+                    .mb-3 
+                        .row 
+                            .col-md-12 
+                                label Evidences (Photos, videos, etc.) 
+                                input.form-control.input.lg(type="file" name="evidences" multiple)
+                    .mb-3.text-center 
+                        br/
+                        input.btn.btn-success.btn-lg(type="submit" value="Publish Case")

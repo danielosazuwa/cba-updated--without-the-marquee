@@ -1,0 +1,74 @@
+extend layout 
+
+block styleBlock 
+    style. 
+        .banner-area {
+            background: url(/img/banner/tech-training.jpg) no-repeat scroll center center / cover;
+        }
+
+        .enroll { font-size: 30px }
+
+        h4 { font-size: 20px }
+
+block content 
+    .banner-area-wrapper
+        .banner-area.text-center
+            .container
+                .row
+                    .col-12
+                        .banner-content-wrapper
+                            .banner-content
+                                h2 Work Experience
+    .container
+        .row 
+            .col
+                .py-5.px-5
+                    h4.mb-4 About Work Experience 
+                    p Our Work Experience (Wx) platform is a digital  solution that facilitates and enhances various aspects of our candidates work-related experiences. Our platform is designed to provide our candidate with a more engaging, productive, and efficient work environment. 
+                        br.mb-4
+                        |Before you sign up for Work Experience, you will be required to take a personality test. Please input your details in the fields below.
+        .row.justify-content-md-center
+            .col-md-7.col-sm-12.col-xs-12.mt-4.mb-5.bg-light.px-5.py-5
+                form(method="post" action="/send-email").mt-2
+                    .mb-3.row 
+                        .col
+                            label.form-label First Name <sup>*</sup>
+                            input.form-control(type="text" name="fname" required)
+                        .col
+                            label.form-label Last Name <sup>*</sup>
+                            input.form-control(type="text" name="lname" required)
+                    .mb-3
+                        label.form-label Email <sup>*</sup>
+                        input.form-control(type="email" name="email" required)
+                    .mb-3.row 
+                        .col
+                            label.form-label Password <sup>*</sup>
+                            input.form-control(type="password" id="password" name="fname" required)
+                        .col
+                            label.form-label Confirm Password <sup>*</sup>
+                            input.form-control(type="password" id="confirm-password" required)
+                    .mb-3
+                        label.form-label Phone number <sup>*</sup>
+                        br/
+                        input.form-control#phone(type="text" name="phone")
+                    .mb-3
+                        label.form-label Select a role you want to get hands-on <sup>*</sup>
+                        input.form-control(type="text" name="course")
+                        input(type="hidden" name="category" value="enroll")
+                    .mb-3
+                        label.form-label Do have a prior knowledge in this role? <sup>*</sup>
+                        input.form-control(type="text" name="course")
+                        input(type="hidden" name="category" value="enroll")
+                    .mb-3
+                        .small.text-muted Please click this link to do a quick personality test
+                    .mb-5
+                        .partnership-form-btn 
+                                    button.btn.btn-danger(type="submit" style="display:block; margin: 30px auto 0px auto") Take the test
+
+        .row.justify-content-md-center.mb-5
+            .col-md-3
+                blockquote.blockquote HELP YOURSELF TO A CAREER WITH MEANING
+            .col-md-3 
+                blockquote.blockquote COUNT DOWN TO YOUR NEW CAREER
+
+

@@ -1,0 +1,89 @@
+extend layout 
+
+block styleBlock 
+  style. 
+    .banner-area {
+      background: url(/img/banner/tech-training.jpg) no-repeat scroll center center / cover;
+    }
+
+    .enroll { font-size: 30px }
+
+block content 
+  #enrol-now-header 
+    img(src="img/enrol-now-header.png", alt="")
+  
+  .container
+    #enrol-now-text   
+      p Congratulations on taking the first step toward your tech journey with us! We are thrilled that you have chosen to enrol in one of our courses. Your commitment to learning and personal growth is commendable, and we are here to support you every step of the way. Get ready to unlock new horizons of knowledge, skill, and opportunity. Your future is brighter than ever, and we're excited to be a part of your success story. Welcome aboard!
+  .container
+    #enrol-now-farea
+      .row
+        .col-md-6.col-sm-12.col-xs-12.mt-4.mb-5.px-5.py-5(style="background: #D9D9D9")
+          form(method="post" action="/send-email").mt-2
+            .mb-3
+              label.form-label First Name 
+                sup *
+              input.form-control(type="text" name="fname" required)
+            .mb-3
+              label.form-label Last Name
+                sup *
+              input.form-control(type="text" name="lname" required)
+            .mb-3
+              label.form-label Email
+                sup *
+              input.form-control(type="email" name="email" required)
+            .mb-3
+              label.form-label Phone number
+                sup *
+              br/
+              input.form-control#phone(type="text" name="phone")
+            .mb-3
+              label.form-label Select your course of interest
+                sup *
+              
+              #enrol-select
+                select(name="" style="border-radius: 5px;") 
+                  option(name="") Business Analyst
+              //- input.form-control(type="text" name="course")
+              //- input(type="hidden" name="category" value="enroll")
+            .mb-3
+              .small.text-muted Please tick this box if you are happy to contacted by a student advisor and would like to receive special course offers by phone, email and SMS
+              .form-check.mt-3
+                input.form-check-input(type="checkbox")
+                label.form-check-label.small Consent
+            .mb-5
+              #popup-link
+                button.btn.btn-danger(type="submit") Enrol Now
+
+            #popup-window
+                h1(style="color: #2c2b5e; font-size: 1rem") SUMMARY
+                
+                #enrol-single
+                  h2 Course of Interest 
+                  p Business Analysis
+                
+                #enrol-single
+                  h2 Course Description
+                  p Business analysis refers to the process of examining an organisation's structure, processes, and systems in order to identify problems, improve efficiency, and drive positive changes. It involves a set of techniques, methodologies, and tools that are employed to understand the current state of a business, define its future goals and objectives, and recommend strategies for achieving those goals.
+
+                #enrol-single
+                  h2 Course Duration 
+                  p 8 weeks
+                
+                #enrol-single
+                  h2 Course Fee 
+                  p &euro;350.00
+                
+                #enrol-single
+                  h2 Certification 
+                  p Upon successfully completing the course, students will receive a certificate of completion. This certificate serves as official recognition of their dedication and accomplishment in the program, signifying their acquisition of valuable knowledge and skills, which can be a valuable asset in their academic or professional pursuits.
+                button 
+                    a(href="#") Make Payment
+                
+                button#close-button Close
+        .col-md-1
+        .col-md-5
+          h4.enroll(style="text-align: center; color: #2c2b5e") Enrol now and get access to the next cohort of candidates
+
+          p.mt-5 
+            .alert.alert-info.lead(style="color:red; font-weight: bold; font-size: 20px") 77% of our graduates say our trainings improved their ability to get a new job or promotion.
