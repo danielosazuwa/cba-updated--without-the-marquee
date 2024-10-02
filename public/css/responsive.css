@@ -1168,7 +1168,7 @@
     margin-top: 3px;
     padding: 5px;
     width: 90%;
-    font-size: 13px;
+    font-size: 9px;
   }
   h3.special-h3 {
     margin-top: 68px;
@@ -1177,6 +1177,9 @@
   .name-tag {
     left: 8rem;
     width: 11rem;
+  }
+  .success-story {
+    display: none;
   }
 }
 /* Large Mobile :480px. */
