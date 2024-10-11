@@ -2,7 +2,11 @@ extend layout
 
 block content
     img(src="img/courses/data-analysis-cover.png", alt="")
-
+    .course-nav
+        h6 
+            a(href="/") Home >
+            a(href="/our-academy")  Course >
+            a(href=`${url}`)  #{title}
     .container 
         .full-business-analysis-page
             .business-analysis-cover

@@ -1,0 +1,93 @@
+.mockup-nav img {
+  width: 150px;
+}
+.mockup-nav ul {
+  list-style: none;
+  /* background: red; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  transition: height 0.5s;
+}
+.mockup-nav ul:hover {
+  height: 120px;
+}
+.mockup-nav ul li {
+  display: inline-block;
+  position: relative;
+}
+.mockup-nav ul li a {
+  display: block;
+  padding: 20px 25px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.5s ease-in-out;
+  margin-right: 0.2rem;
+}
+.mockup-nav ul li ul.dropdown li {
+  display: block;
+  background: white;
+  /* margin: 2px 0px; */
+}
+.mockup-nav ul li ul.dropdown {
+  width: 15rem;
+  /* background: #00ff8c; */
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
+
+.mockup-nav ul li ul.dropdown a {
+  padding: 10px 10px;
+  transition: width 1s;
+}
+
+.mockup-nav ul li ul.dropdown a:hover {
+  width: 280px;
+  border-radius: 10px;
+}
+
+.mockup-nav ul li a:hover {
+  background: #1a2930;
+  color: white;
+  border-radius: 10px;
+}
+.mockup-nav ul li:hover ul.dropdown {
+  display: block;
+}
+
+@media (max-width: 1170px) {
+  .mockup-nav {
+    font-size: 13px;
+  }
+
+  .mockup-nav ul li a {
+    padding: 20px 25px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 950px) {
+  .mockup-nav ul li a {
+    padding: 20px 25px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 876px) {
+  .mockup-nav ul li a {
+    padding: 20px 25px;
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 836px) {
+  .mockup-nav ul li a {
+    padding: 20px 25px;
+    font-size: 5px;
+  }
+}

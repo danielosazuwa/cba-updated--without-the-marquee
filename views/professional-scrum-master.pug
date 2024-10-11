@@ -1,14 +1,18 @@
 extend layout 
 
 block content
-    img(src="img/courses/scrum-master-header.png", alt="")
-
+    img(src="img/courses/scrum-master-header.png" alt="")
+    .course-nav
+        h6 
+            a(href="/") Home >
+            a(href="/our-academy")  Course >
+            a(href=`${url}`)  #{title}
     .container 
         .full-business-analysis-page
             .business-analysis-cover
                 .business-analysis-div1
-                    img(src="img/courses/scrum-master-banner.png", alt="-banner")
-                    
+                    img(src="img/courses/scrum-master-banner.png" alt="-banner")
+
                 .business-analysis-div2
                     h2(style="text-align: center; font-size: 20px; margin-bottom: 10px") PROFESSIONAL SCRUM MASTER 
                     p As Agile continues to gain traction across many Industries, so does the role of the Scrum Master. Like the name implies, the Scrum Master is the ‘’MASTER’’ of the scrum process, an expert in scrum values, principles, and practices. Our comprehensive Scrum Master course is designed to equip you with the skills and knowledge required to excel in this role.                    
@@ -16,7 +20,7 @@ block content
                         | 
                         button Enrol Now
                     p(style=".d-inline-flex.gap-1; color: #000; font-weight: bold") Course Modules 
-                        a(data-bs-toggle='collapse', href='#collapseExample', role='button', aria-expanded='false', aria-controls='collapseExample')
+                        a(data-bs-toggle='collapse' href='#collapseExample' role='button' aria-expanded='false' aria-controls='collapseExample')
                             i.fa.fa-caret-down(aria-hidden='true')
                         #collapseExample.collapse
                             .card.card-body(style="")
@@ -33,7 +37,7 @@ block content
                                     li Handling Challenges and Impediments
                                     li Scaling Agile
                                     li Real-world Case Studies and Exercises
-        
+
         .container 
             .business-analysis-cover(style="color:black")
                 .business-analysis-div1(style="margin-right: 60px")
@@ -41,7 +45,7 @@ block content
                     p(style="margin-top: 15px") The Scrum Master is the coach, facilitator, and organiser of an agile team; responsible for motivating the team, removing obstacles to the team’s progress and improving interactions between the Scrum Master and organization in order to maximise the productivity of the team. This course provides in-depth insights and practical techniques to become an effective Scrum Master.
 
 
-                    
+
                 .business-analysis-div2
                     h2 Who is this course for?
                     p 
@@ -59,9 +63,9 @@ block content
                     li Networking: Connect with industry professionals and peers.
                     li Career Support: Access resources for job placement and career progression.
                     li Instructor-Led Live classes: Experience personalised learning and receive immediate feedback from Instructors.                        
-                
+
                 h6 Join our Scrum Master course and embark on a journey to become a skilled and efficient Scrum Master!
-                
+
                 h6(style="padding-top: 20px") The course duration: 6 weeks
                     br
                     |Start Date: To be communicated
@@ -71,21 +75,21 @@ block content
                     |Course Level: Beginner
                     br
                     |Certificate of Completion: YES
-    
+
     .container 
         .business-last-div
             #people.single-analysis-div
-                img(src="img/courses/people.png", alt="people")
+                img(src="img/courses/people.png" alt="people")
                 p Live Weekend Classes
                 p Access to Class Recording
             //- .single-analysis-div
-            //-     img(src="img/courses/rec.png", alt="people")
+            //-     img(src="img/courses/rec.png" alt="people")
             //-     p Access to Class Recording
-            
+
             #enrol-btn.single-analysis-div
                 a(href="/enrol") 
                     button Enrol Now
-            
+
             #alternate.single-analysis-div
                 p(style="color:white") Alternative Job Titles for a Scrum Master
                     ul(style="list-style-type:disc")
@@ -93,13 +97,13 @@ block content
                         li Technical Program Manager
                         li Agile Team Lead
                         li Scrum facilitator
-            
-            
+
+
     .container 
         .phone-business-last-div 
             a(href="/enrol")             
                 button Enrol Now
-            
+
             .analyst-oppt
                 p(style="color:white") Alternative Job Titles for a Scrum Master
                     ul(style="list-style-type:disc")
@@ -107,12 +111,12 @@ block content
                     li Technical Program Manager
                     li Agile Team Lead
                     li Scrum facilitator
-            
+
             .phone-analyst-flex
                 .phone-single-analysis-div
-                    img(src="img/courses/people.png", alt="people")
+                    img(src="img/courses/people.png" alt="people")
                     p Live Weekend Classes
-                
+
                 .phone-single-analysis-div
-                    img(src="img/courses/rec.png", alt="people")
+                    img(src="img/courses/rec.png" alt="people")
                     p Access to Class Recording

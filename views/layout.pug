@@ -28,7 +28,7 @@ head
     link(rel="stylesheet", href="css/courses-responsiveness.css")
     link(rel='stylesheet' href='css/responsive.css')
     link(rel='stylesheet' href='css/course-nav-drop.css')
-    
+    link(rel="stylesheet", href="css/nav-area.css")
     link(rel='stylesheet' href='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css')
     link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
     // Font Awesome icons (free version)
@@ -84,6 +84,53 @@ header.top
                 button 
                     i.fas.fa-search
 
+.mockup-nav
+  ul
+    img(src='img/logo/clear_logo.svg' alt='DCBA logo')
+    li
+      a(href='/') HOME
+    li
+      a(href='/about') ABOUT US
+    li
+      a(href='/our-academy') COURSES &dtrif;
+      ul.dropdown
+        li
+          a(href='/business-analysis') Business Analysis
+        li
+          a(href='/data-analysis') Data Analysis
+        li 
+          a(href='/ui-ux-design') UI/UX Design
+        li
+          a(href='/digital-marketing') Digital Marketing
+        li
+          a(href='/professional-product-owner') Professional Product Owner
+        li
+          a(href='/professional-scrum-master') Professional Scrum Master
+        li
+          a(href='/business-process-modeling') Business Process Modeling
+        li
+          a(href='/product-development') Product Development
+    li
+      a(href='/services') SERVICES &dtrif;
+      ul.dropdown
+        li
+          a(href='/partnership') Partnerships
+        li
+          a(href='/consultancy') Consultancy
+        li 
+          a(href='/work-experience') Work Experience (Wx)
+        li
+          a(href='/linkedin-optimization') Linkedin Optimization
+        li
+          a(href='/cv-revamp') CV Revamp
+    li
+      a(href='/resources') RESOURCES
+    li
+      a(href='/testimonials') TESTIMONIALS
+    li
+      a(href='/faq') FAQs
+    li
+      a(href='/contact') CONTACT
 
 
 
@@ -102,45 +149,44 @@ header.top
     //-                     ul.d-none
     //-                         li
     //-                             a(href='#/login') login
-    .header-area.two.header-sticky
-        .container
-            .row
-                .col-md-3.col-sm-5.col-6
-                    .logo
-                        a(href='/')
-                            img(src='img/logo/clear_logo.svg' alt='DeCareer Builders Academy logo')
+.header-area.two.header-sticky
+    .container
+        .row
+            .col-md-3.col-sm-5.col-6
+                .logo
+                    a(href='/')
+                        img(src='img/logo/clear_logo.svg' alt='DeCareer Builders Academy logo')
                         //- #searchi.fas.fa-search
                     //This is the logo area
                             
-                .col-md-9.col-sm-7.col-6
-                    .content-wrapper.text-end
+            .col-md-9.col-sm-7.col-6
+                .content-wrapper.text-end
                         // Main Menu Start
 
-                        .main-menu
-                            nav
-                                ul
+                .main-menu
+                    nav
+                        ul
 
-                                    li
-                                        a(href='/') HOME
-                                    li
-                                        a(href='/about') ABOUT US
-                                    li
-                                        a(href='/our-academy') COURSES
+                            li
+                                a(href='/') HOME
+                            li
+                                a(href='/about') ABOUT US
+                            li
+                                a(href='/our-academy') COURSES
                                         
-                                    li
-                                        a(href='/services') SERVICES
-                                    li
-                                        a(href='/resources') RESOURCES
-                                    li
-                                        a(href='/testimonials') TESTIMONIALS
-                                    li
-                                        a(href='/faq') FAQs
-                                    li
-                                        a(href='/contact') CONTACT
+                            li
+                                a(href='/services') SERVICES
+                            li
+                                a(href='/resources') RESOURCES
+                            li
+                                a(href='/testimonials') TESTIMONIALS
+                            li
+                                a(href='/faq') FAQs
+                            li
+                                a(href='/contact') CONTACT
 
-                        // Main Menu End
-                .col-12
-                    .mobile-menu.hidden-sm
+            .col-12
+                .mobile-menu.hidden-sm
 // Header Area End
 // Background Area Start
 
@@ -195,16 +241,16 @@ footer.footer-area
                         .footer-social
                             ul
                                 li
-                                    a(href='#https://www.facebook.com/devitems/?ref=bookmarks')
+                                    a(href='#')
                                         i.zmdi.zmdi-facebook
                                 li
-                                    a(href='#https://www.pinterest.com/devitemsllc/')
+                                    a(href='#')
                                         i.zmdi.zmdi-youtube
                                 li
-                                    a(href='#https://www.pinterest.com/devitemsllc/')
+                                    a(href='#')
                                         i.zmdi.zmdi-instagram
                                 li
-                                    a(href='#https://www.pinterest.com//')
+                                    a(href='#')
                                         i.zmdi.zmdi-twitter
 
 
@@ -285,10 +331,11 @@ script.
     event.preventDefault();
     popupWindow.style.display = "block";
     });
-      // Hide the pop-up window when the close button is clicked
     closeButton.addEventListener("click", function() {
     popupWindow.style.display = "none";
     });
+    
+
 script. 
     var input = document.querySelector("#phone");
     window.intlTelInput(input, {

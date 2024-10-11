@@ -7,19 +7,23 @@ block content
     section#slider-container.slider-area.three
         .slider-owl.owl-theme.owl-carousel
 
-            .single-slide.item(style='background-image: url(img/unlock_potentials.png)' alt="unlock your potentials")
+            .single-slide.item.dcba-val-img(style='background-image: url(img/unlock_potentials.png)' alt="unlock your potentials")
                 .slider-content-area
                     .container
                         .row
                             .col-lg-7.col-md-offset-left-5
                                 .slide-content-wrapper
                                     .slide-content
-                                        .special-p 
-                                            p At DeCareer Builders' Academy, we empower tech enthusiasts with cutting-edge skills for today’s dynamic industry. As a leading tech training academy, we provide top-tier education based on global standards, shaping the future of tech talent. Your success starts here!
-                                        h3.special-h3 Unlock Your Tech Potential Today With Us!
-                                        a.default-btn(href='/our-academy').special-btn Learn more
+                                        h3.dcba-value Unlock Your Tech Potential Today With Us! 
+                                        p
+                                            | At DeCareer Builders' Academy, we empower tech enthusiasts with cutting-edge skills for today’s dynamic industry. As a leading tech training academy, we provide top-tier education based on global standards, shaping the future of tech talent. Your success starts here!
+                                        a.default-btn.dcba-val-btn(href='/our-academy') Learn more
+                                        //- .special-p 
+                                        //-     p At DeCareer Builders' Academy, we empower tech enthusiasts with cutting-edge skills for today’s dynamic industry. As a leading tech training academy, we provide top-tier education based on global standards, shaping the future of tech talent. Your success starts here!
+                                        //- h3.special-h3 Unlock Your Tech Potential Today With Us!
+                                        //- a.default-btn(href='/our-academy').special-btn Learn more
 
-            .single-slide.item(style='background-image: url(img/tech.jpeg)')
+            .single-slide.item(style='background-image: url(img/tech.jpeg) ')
                 .slider-content-area
                     .container
                         .row
@@ -66,42 +70,101 @@ block content
                                         p CONSULTING FOR TOMORROW
                                         a.default-btn(href='/consultancy') Learn more
 
-    //Product Area
-    .product-mockup
-        h4 What we offer
+    // Courses Area Start
+    .courses-area.pt-100.pb-100.text-center.mb-3(style="margin-top: -30px")
+        .container
+            .row
+                .col-12
+                    .section-title
+                        //- img(src='img/icon/section.png' alt='section-title')
+                        h2 What we Offer
+            .row
+                .col-lg-3.col-md-6
+                    .single-course
+                        .course-img
+                            a(href='/tech-training')
+                                img(src='img/products/p1.png' alt='course')
+                                .course-hover
+                                    i.fa.fa-link
+                        .course-content
+                            h3
+                                a(href='/tech-training') Courses
+                            p At DeCareer Builders’ Academy, our mission is to empower individuals and businesses...
 
-        .product-collection
-            .product-mockup-content
-                #singleproduct  
-                    img(src="img/products/booknpen.jpg", alt="courses")
-                    p Courses
-                    a(href="/courses")
-                        button#product_learn Learn more
+                            a.default-btn(href='/tech-training') read more
+                .col-lg-3.col-md-6
+                    .single-course
+                        .course-img
+                            a(href='/consultancy')
+                                img(src='img/products/p2.png' alt='course')
+                                .course-hover
+                                    i.fa.fa-link
+                        .course-content
+                            h3
+                                a(href='/consultancy') Consultancy
+                            p We bridge the gap between technology and businesses, enabling our clients to... 
+                            a.default-btn(href='/consultancy') read more
+                .col-lg-3.col-md-6
+                    .single-course.mb-0
+                        .course-img
+                            a(href='/partnership')
+                                img(src='img/products/p3.png' alt='course')
+                                .course-hover
+                                    i.fa.fa-link
+                        .course-content
+                            h3
+                                a(href='/partnership') Partnership
+                            p Our partnership offers opportunities for co-branding, joint marketing campaigns...
+                            a.default-btn(href='/partnership') read more
+                .col-lg-3.col-md-6
+                    .single-course.mb-0
+                        .course-img
+                            a(href='/work-experience')
+                                img(src='img/products/p4.png' alt='course')
+                                .course-hover
+                                    i.fa.fa-link
+                        .course-content
+                            h3
+                                a(href='/work-experience') Work Experience
+                            p Our partnership offers opportunities for co-branding, joint marketing campaigns...
+                            a.default-btn(href='/work-experience') read more
 
-            .product-mockup-content.border-lr
-                #singleproduct  
-                    img(src="img/products/briefcase.jpg", alt="Work Experience")
-                    p Work Experience
-                    a(href="/work-experience")
-                        button#product_learn Learn more
+    //- //Product Area
+    //- .product-mockup.container-fluid
+    //-     h4 What we offer
 
-            .product-mockup-content.border-r
-                #singleproduct
-                    img(src="img/products/consultant.jpg", alt="consultancy")
-                    p Consultancy
-                    a(href="/consultancy")
-                        button#product_learn Learn more        
+    //-     .product-collection
+    //-         .product-mockup-content
+    //-             #singleproduct  
+    //-                 img(src="img/products/.jpg" alt="courses")
+    //-                 p Courses
+    //-                 a(href="/courses")
+    //-                     button#product_learn Learn more
 
-            .product-mockup-content
-                #singleproduct  
-                    img(src="img/products/partnership.jpg", alt="Partnerships")
-                    p Partnerships
-                    a(href="/partnership")
-                        button#product_learn Learn more
+    //-         .product-mockup-content.border-lr
+    //-             #singleproduct  
+    //-                 img(src="img/products/briefcase.jpg" alt="Work Experience")
+    //-                 p Work Experience
+    //-                 a(href="/work-experience")
+    //-                     button#product_learn Learn more
+
+    //-         .product-mockup-content.border-r
+    //-             #singleproduct
+    //-                 img(src="img/products/consultant.jpg" alt="consultancy")
+    //-                 p Consultancy
+    //-                 a(href="/consultancy")
+    //-                     button#product_learn Learn more        
+
+    //-         .product-mockup-content
+    //-             #singleproduct  
+    //-                 img(src="img/products/partnership.jpg" alt="Partnerships")
+    //-                 p Partnerships
+    //-                 a(href="/partnership")
+    //-                     button#product_learn Learn more
 
     //Decision Area
     .image-container-decision 
-        img(src='img/decision-img.jpg', alt='what-we-deliver')
+        img(src='img/decision-img.jpg' alt='what-we-deliver')
         .overlay-decision 
             .decision-collection 
                 #decision-area
@@ -111,7 +174,7 @@ block content
                         | choose 
                         br 
                         | DCBA?
-            
+
                 #decision-area 
                     ul 
                         li Expert-led courses taught by experienced professionals
@@ -128,22 +191,42 @@ block content
                 br
                 .story-content
                     h2 From Uncertainty to Leadership
-                    p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. Read more...
+                    p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles.
+                        a(href="#")  Read more... 
+                    //-     #pop-link 
+                    //-         button Read more...
+                    //- #pop-window.popup-story
+                    //-     h2 From Uncertainty to Leadership
+                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+                    //-     button#close-button Close
 
             .story-container
                 .story-pic 
                 br
                 .story-content 
                     h2 Overcoming the Odds and Thriving in a New Industry 
-                    p "As a single parent, I thought transitioning to a new career was out of my reach, I had no formal eduction in tech, and the fear of strating from. Read more...
+                    p "As a single parent, I thought transitioning to a new career was out of my reach, I had no formal eduction in tech, and the fear of strating from.
+                        a(href="#")  Read more...
+                    //-     #pop-link 
+                    //-         button Read more...
+                    //- #pop-window.popup-story
+                    //-     h2 From Uncertainty to Leadership
+                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+                    //-     button#close-button Close
 
-                
             .story-container
                 .story-pic 
                 br
                 .story-content 
                     h2 From Underemployment to Entrepreneurial Success
-                    p "I have been underemployed for years, doing freelance work that barely paid the bills and I was feeling stuck. That's when i decided to take a leap. Read more...    
+                    p "I have been underemployed for years, doing freelance work that barely paid the bills and I was feeling stuck. That's when i decided to take a leap.
+                        a(href="#")  Read more...    
+                    //-     #pop-link 
+                    //-         button Read more...
+                    //- #pop-window.popup-story
+                    //-     h2 From Uncertainty to Leadership
+                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+                    //-     button#close-button Close
     //Testimonials area
     .mockup-testimonials
         h4 Testimonials
@@ -151,7 +234,7 @@ block content
         .testimonial-collection
             .testimonial-card
                 .tag-flex-area 
-                    img(src="img/testimonial/folashade.jpg", alt="folashade's-testomonial")
+                    img(src="img/testimonial/folashade.jpg" alt="folashade's-testomonial")
                 .name-tag 
                     h6 Folashade Dagunduro
                     p Scrum Master
@@ -164,21 +247,21 @@ block content
 
             .testimonial-card
                 .tag-flex-area 
-                    img(src="img/testimonial/winifred.jpg", alt="winifred's-testomonial")
+                    img(src="img/testimonial/winifred.jpg" alt="winifred's-testomonial")
                 .name-tag 
                     h6 Winifred Eze
                     p Business Analyst
-                
+
                 .quote-mockup
                     p 
                         span.quote-bold “
                         |This website has been invaluable for staying on top of industry trends. The in-depth articles and expert insights have helped me make informed decisions for my team. I especially love the case studies—they offer practical applications of new technologies that I can implement right away. It’s my go-to resource! 
                         span.quote-bold ”
-                    
+
 
             .testimonial-card
                 .tag-flex-area 
-                    img(src="img/testimonial/raheemat.jpg", alt="raheemat's-testomonial")
+                    img(src="img/testimonial/raheemat.jpg" alt="raheemat's-testomonial")
                 .name-tag 
                     h6 Raheemat
                     p Product Owner

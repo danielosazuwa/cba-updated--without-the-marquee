@@ -21,39 +21,56 @@ router.get("/our-academy", (req, res) => {
 });
 
 router.get("/business-analysis", (req, res) => {
-  res.render("business-analysis", { title: "Business Analysis" });
+  res.render("business-analysis", {
+    title: "Business Analysis",
+    url: "/business-analysis",
+  });
 });
 
 router.get("/data-analysis", (req, res) => {
-  res.render("data-analysis", { title: "Data Analysis" });
+  res.render("data-analysis", {
+    title: "Data Analysis",
+    url: "/data-analysis",
+  });
 });
 
-router.get("/ui-ux-designer", (req, res) => {
-  res.render("ui-ux-designer", { title: "UI/UX Design" });
+router.get("/ui-ux-design", (req, res) => {
+  res.render("ui-ux-designer", { title: "UI/UX Design", url: "/ui-ux-design" });
 });
 
 router.get("/digital-marketing", (req, res) => {
-  res.render("digital-marketing", { title: "Digital Marketing" });
+  res.render("digital-marketing", {
+    title: "Digital Marketing",
+    url: "/digital-marketing",
+  });
 });
 
 router.get("/professional-product-owner", (req, res) => {
   res.render("professional-product-owner", {
     title: "Professional Product Owner",
+    url: "/professional-product-owner",
   });
 });
 
 router.get("/professional-scrum-master", (req, res) => {
   res.render("professional-scrum-master", {
     title: "Professional Scrum Master",
+    url: "/professional-scrum-master",
   });
 });
 
 router.get("/business-process-modeling", (req, res) => {
-  res.render("business-process-model", { title: "Business Process Model" });
+  res.render("business-process-model", {
+    title: "Business Process Model",
+    url: "/business-process-modeling",
+  });
 });
 
 router.get("/product-development", (req, res) => {
-  res.render("product-development", { title: "Product Development" });
+  res.render("product-development", {
+    title: "Product Development",
+    url: "/product-development",
+  });
 });
 
 router.get("/services", (req, res) => {

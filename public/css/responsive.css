@@ -7,6 +7,9 @@
   .row:not([class*="g-0"]) {
     --bs-gutter-x: 30px;
   }
+  .header-area.two {
+    display: none;
+  }
 }
 
 /* Large desktop :1920px. */
@@ -42,10 +45,17 @@
   .header-top-right::after {
     left: -19%;
   }
+  .header-area.two {
+    display: none;
+  }
 }
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1200px) {
+  .header-area.two {
+    display: none;
+  }
+
   .header-area.two .main-menu nav > ul > li > a {
     font-size: 14px;
   }
@@ -208,18 +218,25 @@
     margin-top: 8px;
   }
 }
-/* @media (max-width: 1024px) {
-  .header-area.two .main-menu nav {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+/* @media (max-width: 1000px) {
+  h3.dcba-value {
+    background: red;
+    font-size: 18px !important;
+    text-align: center;
+  }
+  .single-slide.item.dcba-val-img {
+    height: 10px;
   }
 } */
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
   .container {
     max-width: 750px;
+  }
+
+  .header-area.two {
+    display: none;
   }
   .main-menu nav > ul > li > a {
     font-size: 12px;
@@ -496,6 +513,9 @@
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
+  .mockup-nav {
+    display: none;
+  }
   .one.mobile-menu a.meanmenu-reveal {
     margin-top: -55px;
   }
@@ -553,6 +573,16 @@
   .default-btn {
     padding: 10px;
     font-size: 10px;
+  }
+  h3.dcba-value {
+    font-size: 18px;
+    text-align: center;
+  }
+  .single-slide.item.dcba-val-img {
+    height: 260px;
+  }
+  a.default-btn.dcba-val-btn {
+    margin-top: -50px;
   }
   .notice-area,
   .courses-area,
@@ -869,6 +899,16 @@
   .header-area.two.sticky .search {
     top: 41px;
   }
+  .section-title h2 {
+    margin-top: 30px;
+  }
+  .story-collection {
+    flex-direction: column;
+  }
+  .story-container {
+    width: 100%;
+  }
+
   .one .event-date {
     float: none;
     margin-right: 0px;
@@ -1178,9 +1218,6 @@
     left: 8rem;
     width: 11rem;
   }
-  .success-story {
-    display: none;
-  }
 }
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -1334,10 +1371,6 @@
 @media (max-width: 854px) {
   .header-area.two .main-menu nav > ul {
     margin-left: -20px;
-  }
-
-  .success-story {
-    display: none;
   }
 }
 

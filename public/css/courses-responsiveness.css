@@ -2,7 +2,7 @@
   .business-analysis-cover {
     flex-direction: column;
     justify-content: center;
-    text-align: justify;
+    /* text-align: justify; */
   }
 
   .business-analysis-div1,
@@ -19,11 +19,11 @@
     padding: 10px;
   }
 
-  .business-analysis-div2 button {
+  /* .business-analysis-div2 button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+  } */
 
   .business-last-div {
     display: none;

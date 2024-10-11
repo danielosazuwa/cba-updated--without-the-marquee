@@ -1,10 +1,15 @@
+.course-nav {
+  padding: 2rem 0 0 1rem;
+  color: black;
+}
 .business-analysis-cover {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   color: black;
 }
 .business-analysis-cover p {
   color: black;
+  text-align: justify;
 }
 .business-analysis-cover h2 {
   color: #000;
@@ -32,9 +37,12 @@
   background: #f7c838;
   padding: 10px;
   color: #1a2930;
-  margin-left: 380px;
+  display: block;
+  margin-left: auto;
+  width: 100px;
   font-weight: bold;
 }
+
 .why-choose {
   text-align: center;
   margin-top: 50px;
@@ -76,7 +84,7 @@
   color: white;
   padding: 30px 10px 5px 30px;
   border-radius: 10px;
-  height: 200px;
+  height: 220px;
 }
 
 .single-analysis-div button {
@@ -91,4 +99,10 @@
 
 .phone-business-last-div {
   display: none;
+}
+
+.single-analysis-div button:hover,
+.business-analysis-div2 button:hover {
+  background: #1a2930;
+  color: white;
 }
