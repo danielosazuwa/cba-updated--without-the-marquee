@@ -31,11 +31,9 @@
 .mockup-nav ul li ul.dropdown li {
   display: block;
   background: white;
-  /* margin: 2px 0px; */
 }
 .mockup-nav ul li ul.dropdown {
   width: 15rem;
-  /* background: #00ff8c; */
   position: absolute;
   z-index: 999;
   display: none;
