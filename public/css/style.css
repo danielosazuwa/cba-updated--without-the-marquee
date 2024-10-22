@@ -2352,7 +2352,11 @@ h3.dcba-value{
     transform: translate(-50%, -50%);
     height: 500px;
     width: 100%;
-    background-color: rgba(216, 171, 37, 0.76); 
+    /* background-color: rgba(216, 171, 37, 0.76);  */
+    /* background-color: rgba(154, 131, 60, 0.76);  */
+    background: linear-gradient( rgba(122, 107, 63, 0.76), rgba(216, 171, 37, 0.76));
+    /* background: linear-gradient( rgba(255, 191, 0, 0.76), rgba(115, 98, 45, 0.76)); */
+
     filter: brightness(85%);
 }
 #decision-area h4, #decision-area ul{
