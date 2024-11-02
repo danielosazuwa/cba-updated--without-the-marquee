@@ -55,6 +55,9 @@ li#faq-li button {
   background: white;
   width: 35px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .faq-contact-area {
