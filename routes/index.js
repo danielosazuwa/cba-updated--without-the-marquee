@@ -3,8 +3,8 @@ const router = express.Router();
 const emailService = require("../services/emailService");
 // const authenticate = require('../middlewares/authenticate');
 // const userService = require('../services/userService');
-const faq = require("../array/faq-questions");
-const testimonials = require("../array/testimonials");
+const faq = require("../public/array/faq-questions");
+const testimonials = require("../public/array/testimonials");
 
 router.get("/", async (req, res, next) => {
   try {
