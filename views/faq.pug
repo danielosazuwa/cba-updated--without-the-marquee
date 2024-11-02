@@ -4,25 +4,61 @@ block content
     .container
         img(src="img/faq.png", alt="" height="20px" width="700px" style="display:block; margin-left: auto; margin-right: auto; margin-bottom: 40px  ")
 
-    .container
-        .row.justify-content-md-center
-            .col-md-9.col-sm-12.col-xs-12.mt-4.mb-5.bg(style="background: #D9D9D9; width: 500px; height: 440px; border-radius: 10px").px-5.py-5
+        
+
+    .faq-mockup
+        h3 
+            | FREQUENTLY ASKED 
+            br
+            | 
+            span(style="color:#F7C838") QUESTIONS
+            br
+        .faq-collection 
+            .faq-questions-area
+                ul
+                each data in faqData
+                    li(id="faq-li") #{data.question}
+                        button(class="dropdownButton") +
+                    |
+                    .dropdownContent.dropdown-content
+                        p #{data.content}
+                
+            .faq-contact-area
                 form(method="post" action="/send-contact-email").mt-2
-                    .question-area
-                        h4 Can't find answers?
-                        h4 Send Us Your Query
-                    .mb-3.row
-                        .col
-                            label(style="color: #2c2b5e").form-label Name <sup>*</sup>
-                            input.form-control(type="text" name="name" required)
-                        .col
-                            label(style="color: #2c2b5e").form-label Email <sup>*</sup>
-                            input.form-control(type="email" name="email" required)
+                    h4 Can't find answers?
+                    h4.mb-3 Send Us Your Query
+                
+                    .form-group.mb-3
+                        label.form-label Name <sup>*</sup>
+                        input.form-control(type="text" name="name" required)
+                    .form-group.mb-3
+                        label.form-label Email <sup>*</sup>
+                        input.form-control(type="email" name="email" required)
                     
                     .mb-3 
+                        label.form-label Message <sup>*</sup>
                         textarea.form-control(name="message" rows="6" required)
                     .mb-5
-                        button.float-center(type="submit" style="display:block; margin-left: auto; margin-right: auto; background: #2c2b5e; color: white; border-radius: 5px; padding: 10px ") Send
+                        button.float-center(type="submit" style="display:block; margin-left: auto; margin-right: auto; background: #1a2930; color: white; border-radius: 5px; padding: 10px ") Send
+    //- .container
+    //-     .row.justify-content-md-center
+    //-         .col-md-9.col-sm-12.col-xs-12.mt-4.mb-5.bg(style="background: #D9D9D9; width: 500px; height: 440px; border-radius: 10px").px-5.py-5
+    //-             form(method="post" action="/send-contact-email").mt-2
+    //-                 .question-area
+    //-                     h4 Can't find answers?
+    //-                     h4 Send Us Your Query
+    //-                 .mb-3.row
+    //-                     .col
+    //-                         label(style="color: #2c2b5e").form-label Name <sup>*</sup>
+    //-                         input.form-control(type="text" name="name" required)
+    //-                     .col
+    //-                         label(style="color: #2c2b5e").form-label Email <sup>*</sup>
+    //-                         input.form-control(type="email" name="email" required)
+                    
+    //-                 .mb-3 
+    //-                     textarea.form-control(name="message" rows="6" required)
+    //-                 .mb-5
+    //-                     button.float-center(type="submit" style="display:block; margin-left: auto; margin-right: auto; background: #2c2b5e; color: white; border-radius: 5px; padding: 10px ") Send
 
     
     //- .container

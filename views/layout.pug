@@ -6,11 +6,11 @@ head
     meta(name='description' content='')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     // Favicon
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN', crossorigin='anonymous')
-    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
-    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
-    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
-    
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+
     link(rel='shortcut icon' type='image/x-icon' href='img/logo/clear_logo.svg')
     link(rel='stylesheet' href='css/bootstrap.min.css')
     link(rel='stylesheet' href='css/animate.min.css')
@@ -23,19 +23,21 @@ head
     link(rel='stylesheet' href='css/ionicons.min.css')
     link(rel='stylesheet' href='css/material-design-iconic-font.min.css')
     link(rel='stylesheet' href='css/style.css?v=1')
-    link(rel="stylesheet", href="css/courses.css")
+    link(rel="stylesheet" href="css/courses.css")
     link(rel='stylesheet' href='css/testimonials.css')
-    link(rel="stylesheet", href="css/courses-responsiveness.css")
+    link(rel="stylesheet" href="css/courses-responsiveness.css")
     link(rel='stylesheet' href='css/responsive.css')
     link(rel='stylesheet' href='css/course-nav-drop.css')
-    link(rel="stylesheet", href="css/nav-area.css")
+    link(rel="stylesheet" href="css/nav-area.css")
+    link(rel="stylesheet" href="css/slider.css")
+    link(rel="stylesheet" href="css/faq.css")
     link(rel='stylesheet' href='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css')
-    link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
+
+    link(rel='icon' type='image/x-icon' href='assets/favicon.ico')
     // Font Awesome icons (free version)
-    script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js', crossorigin='anonymous')
+    script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js' crossorigin='anonymous')
     script(src='js/vendor/modernizr-3.11.2.min.js')
     script(src='js/testimonials.js')
-    
     block styleBlock
     style. 
         .partners h4 {
@@ -57,13 +59,13 @@ head
         .form-label { font-weight: bold }
 
         sup { color: red }
-    
+
         .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
         width: 70%;
         margin: auto;
         }
-      
+
 //if lt IE 8
     p.browserupgrade
         | You are using an 
@@ -85,71 +87,71 @@ header.top
                     i.fas.fa-search
 
 .mockup-nav
-  ul
-    a(href="/") 
-        img(src='img/logo/clear_logo.svg' alt='DCBA logo')
-    li
-      a(href='/') HOME
-    li
-      a(href='/about') ABOUT US
-    li
-      a(href='/our-academy') COURSES &dtrif;
-      ul.dropdown
+    ul
+        a(href="/") 
+            img(src='img/logo/clear_logo.svg' alt='DCBA logo')
         li
-          a(href='/business-analysis') Business Analysis
+            a(href='/') HOME
         li
-          a(href='/data-analysis') Data Analysis
-        li 
-          a(href='/ui-ux-design') UI/UX Design
+            a(href='/about') ABOUT US
         li
-          a(href='/digital-marketing') Digital Marketing
+            a(href='/our-academy') COURSES &dtrif;
+            ul.dropdown
+                li
+                    a(href='/business-analysis') Business Analysis
+                li
+                    a(href='/data-analysis') Data Analysis
+                li 
+                    a(href='/ui-ux-design') UI/UX Design
+                li
+                    a(href='/digital-marketing') Digital Marketing
+                li
+                    a(href='/professional-product-owner') Professional Product Owner
+                li
+                    a(href='/professional-scrum-master') Professional Scrum Master
+                li
+                    a(href='/business-process-modeling') Business Process Modeling
+                li
+                    a(href='/product-development') Product Development
         li
-          a(href='/professional-product-owner') Professional Product Owner
+            a(href='/services') SERVICES &dtrif;
+            ul.dropdown
+                li
+                    a(href='/partnership') Partnerships
+                li
+                    a(href='/consultancy') Consultancy
+                li 
+                    a(href='/work-experience') Work Experience (WX)
+                li
+                    a(href='/linkedin-optimization') Linkedin Optimization
+                li
+                    a(href='/cv-revamp') CV Revamp
         li
-          a(href='/professional-scrum-master') Professional Scrum Master
+            a(href='/resources') RESOURCES
         li
-          a(href='/business-process-modeling') Business Process Modeling
+            a(href='/testimonials') TESTIMONIALS
         li
-          a(href='/product-development') Product Development
-    li
-      a(href='/services') SERVICES &dtrif;
-      ul.dropdown
+            a(href='/faq') FAQs
         li
-          a(href='/partnership') Partnerships
-        li
-          a(href='/consultancy') Consultancy
-        li 
-          a(href='/work-experience') Work Experience (WX)
-        li
-          a(href='/linkedin-optimization') Linkedin Optimization
-        li
-          a(href='/cv-revamp') CV Revamp
-    li
-      a(href='/resources') RESOURCES
-    li
-      a(href='/testimonials') TESTIMONIALS
-    li
-      a(href='/faq') FAQs
-    li
-      a(href='/contact') CONTACT
+            a(href='/contact') CONTACT
 
 
 
-    //- .header-top
-    //-     .container
-    //-         .row
-    //-             .col-md-8.col-sm-8
-    //-                 .header-top-left
-    //-                     p HAVE ANY QUESTION ?  +44 7306 461 984
-    //-                     form(action="" class="header-search" style="")
-    //-                         input(type="text" placeholder="")
-    //-                         button 
-    //-                             i.fas.fa-search
-    //-             .col-md-4.col-sm-4
-    //-                 .header-top-right.text-md-end.text-center
-    //-                     ul.d-none
-    //-                         li
-    //-                             a(href='#/login') login
+        //- .header-top
+        //-     .container
+        //-         .row
+        //-             .col-md-8.col-sm-8
+        //-                 .header-top-left
+        //-                     p HAVE ANY QUESTION ?  +44 7306 461 984
+        //-                     form(action="" class="header-search" style="")
+        //-                         input(type="text" placeholder="")
+        //-                         button 
+        //-                             i.fas.fa-search
+        //-             .col-md-4.col-sm-4
+        //-                 .header-top-right.text-md-end.text-center
+        //-                     ul.d-none
+        //-                         li
+        //-                             a(href='#/login') login
 .header-area.two.header-sticky
     .container
         .row
@@ -158,11 +160,11 @@ header.top
                     a(href='/')
                         img(src='img/logo/clear_logo.svg' alt='DeCareer Builders Academy logo')
                         //- #searchi.fas.fa-search
-                    //This is the logo area
-                            
+                        //This is the logo area
+
             .col-md-9.col-sm-7.col-6
                 .content-wrapper.text-end
-                        // Main Menu Start
+                    // Main Menu Start
 
                 .main-menu
                     nav
@@ -173,10 +175,25 @@ header.top
                             li
                                 a(href='/about') ABOUT US
                             li
-                                a(href='/our-academy') COURSES
-                                        
+                                a COURSES
+                                    button(class="dropdownButton") +
+                                    |
+                                .dropdownContent.dropdown-content
+                                    a(href='/business-analysis') Business Analysis
+                                    a(href='/data-analysis') Data Analysis
+                                    a(href="ui-ux-design") UI/UX Design
+                                    a(href='/business-analysis') Digital Marketing 
+                                    a(href="/our-academy") All 
+
                             li
-                                a(href='/services') SERVICES
+                                a SERVICES
+                                    button(class="dropdownButton") +
+                                    |
+                                .dropdownContent.dropdown-content
+                                    a(href='/partnership') Partnerships
+                                    a(href='/consultancy') Consultancy
+                                    a(href="/work-experience") Work Experience (WX)
+                                    a(href='/linkedin-optimization') Linkedin Optimization                                     
                             li
                                 a(href='/resources') RESOURCES
                             li
@@ -321,13 +338,12 @@ script(src='js/jquery.nicescroll.min.js')
 script(src='js/plugins.js')
 script(src='js/main.js?v=1')
 script(src='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js')
-
 script.
-      // Get the elements by their ID
+    // Get the elements by their ID
     var popupLink = document.getElementById("popup-link");
     var popupWindow = document.getElementById("popup-window");
     var closeButton = document.getElementById("close-button");
-      // Show the pop-up window when the link is clicked
+        // Show the pop-up window when the link is clicked
     popupLink.addEventListener("click", function(event) {
     event.preventDefault();
     popupWindow.style.display = "block";
@@ -335,7 +351,37 @@ script.
     closeButton.addEventListener("click", function() {
     popupWindow.style.display = "none";
     });
-    
+
+script.
+    const buttons = document.querySelectorAll(".dropdownButton");
+    const contents = document.querySelectorAll(".dropdownContent");
+
+    buttons.forEach((button, index) => {
+    button.onclick = function() {
+        const content = contents[index];
+        
+        // Check if the clicked dropdown is already open
+        const isOpen = content.style.display === "block";
+
+        // Close all dropdowns
+        contents.forEach(content => {
+            content.style.display = "none";
+        });
+
+        // If the clicked dropdown was not open, open it
+        if (!isOpen) {
+            content.style.display = "block";
+        }
+    };
+
+    window.onclick = function(event) {
+    if (!event.target.matches('.dropdownButton')) {
+        contents.forEach(content => {
+            content.style.display = "none";
+        });
+    }
+    }
+    });
 
 script. 
     var input = document.querySelector("#phone");

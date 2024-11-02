@@ -183,53 +183,78 @@ block content
                         li Hands-on learning through real-world projects 
                         li Flexible learning options, including online courses 
 
-    .success-story
-        h4 Success Story
-        .story-collection 
-            .story-container
-                .story-pic
-                br
-                .story-content
-                    h2 From Uncertainty to Leadership
-                    p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles.
-                        a(href="#")  Read more... 
-                    //-     #pop-link 
-                    //-         button Read more...
-                    //- #pop-window.popup-story
-                    //-     h2 From Uncertainty to Leadership
-                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-                    //-     button#close-button Close
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+        h1 TESTIMONIALS
+        ol.carousel-indicators
+            li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+            li(data-target='#carouselExampleIndicators' data-slide-to='1')
+            li(data-target='#carouselExampleIndicators' data-slide-to='2') 
+        .carousel-inner
+            .carousel-item.active
+                p= testimonialsContent[0].testimony
+                p= testimonialsContent[0].name
 
-            .story-container
-                .story-pic 
-                br
-                .story-content 
-                    h2 Overcoming the Odds and Thriving in a New Industry 
-                    p "As a single parent, I thought transitioning to a new career was out of my reach, I had no formal eduction in tech, and the fear of strating from.
-                        a(href="#")  Read more...
-                    //-     #pop-link 
-                    //-         button Read more...
-                    //- #pop-window.popup-story
-                    //-     h2 From Uncertainty to Leadership
-                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-                    //-     button#close-button Close
+            .carousel-item
+                p= testimonialsContent[1].testimony
+                p= testimonialsContent[1].name
+                
+            .carousel-item
+                p= testimonialsContent[2].testimony
+                p= testimonialsContent[2].name
+        a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+        a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+    //- .success-story
+    //-     h4 Testimonials
+    //-     .story-collection 
+    //-         .story-container
+    //-             .story-pic
+    //-             br
+    //-             .story-content
+    //-                 h2 From Uncertainty to Leadership
+    //-                 p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles.
+    //-                     a(href="#")  Read more... 
+    //-                 //-     #pop-link 
+    //-                 //-         button Read more...
+    //-                 //- #pop-window.popup-story
+    //-                 //-     h2 From Uncertainty to Leadership
+    //-                 //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+    //-                 //-     button#close-button Close
 
-            .story-container
-                .story-pic 
-                br
-                .story-content 
-                    h2 From Underemployment to Entrepreneurial Success
-                    p "I have been underemployed for years, doing freelance work that barely paid the bills and I was feeling stuck. That's when i decided to take a leap.
-                        a(href="#")  Read more...    
-                    //-     #pop-link 
-                    //-         button Read more...
-                    //- #pop-window.popup-story
-                    //-     h2 From Uncertainty to Leadership
-                    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-                    //-     button#close-button Close
+    //-         .story-container
+    //-             .story-pic 
+    //-             br
+    //-             .story-content 
+    //-                 h2 Overcoming the Odds and Thriving in a New Industry 
+    //-                 p "As a single parent, I thought transitioning to a new career was out of my reach, I had no formal eduction in tech, and the fear of strating from.
+    //-                     a(href="#")  Read more...
+    //-                 //-     #pop-link 
+    //-                 //-         button Read more...
+    //-                 //- #pop-window.popup-story
+    //-                 //-     h2 From Uncertainty to Leadership
+    //-                 //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+    //-                 //-     button#close-button Close
+
+
+    //-         .story-container
+    //-             .story-pic 
+    //-             br
+    //-             .story-content 
+    //-                 h2 From Underemployment to Entrepreneurial Success
+    //-                 p "I have been underemployed for years, doing freelance work that barely paid the bills and I was feeling stuck. That's when i decided to take a leap.
+    //-                     a(href="#")  Read more...    
+    //-                 //-     #pop-link 
+    //-         button Read more...
+    //- #pop-window.popup-story
+    //-     h2 From Uncertainty to Leadership
+    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
+    //-     button#close-button Close
     //Testimonials area
     .mockup-testimonials
-        h4 Testimonials
+        h4 Success Stories 
 
         .testimonial-collection
             .testimonial-card

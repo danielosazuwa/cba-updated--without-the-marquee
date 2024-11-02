@@ -1,0 +1,46 @@
+#carouselExampleIndicators.carousel.slide{
+    height: 340px;
+    margin-top: 50px;
+    text-align: center;
+    color: black;
+}
+
+.carousel-inner{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+a.carousel-control-prev, a.carousel-control-next{
+    background: #F7C838;
+    height: fit-content;
+    width: fit-content;
+    display: block;
+    margin: auto 0 auto 0;
+}
+
+.carousel-item p{
+    font-size: 20px;
+}
+
+.carousel-item button{
+    margin-bottom: 1rem;
+}
+
+.carousel-indicators {
+    bottom: 10px; 
+}
+
+.carousel-indicators li {
+    background-color: #1a2930; 
+    /* border-radius: 50%;  */
+    width: 20px; 
+    height: 10px; 
+    margin: 0 5px; 
+}
+
+.carousel-indicators .active {
+    background-color: #F7C838; 
+}

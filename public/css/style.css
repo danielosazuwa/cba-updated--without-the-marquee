@@ -2408,6 +2408,7 @@ h3.dcba-value{
 }
 
 .story-collection{
+    /* background: red; */
     display: flex;
     column-gap: 16px;
     align-items: center;
@@ -2416,19 +2417,18 @@ h3.dcba-value{
     border-bottom: 2px solid black;
     padding: 20px;
     flex-wrap: wrap;
-
-    /* overflow-x: hidden; */
+    height: 20rem;
+    overflow-x: hidden;
     
 }
 .story-container{
     /* background: red; */
     width: 30%;
     padding-inline: 8px;
-    height: 15rem;
-    /* animation: marquee 10s linear infinite; */
+    animation: marquee 10s linear infinite;
 }
 
-/* .story-collection:hover .story-container {
+ .story-collection:hover .story-container {
     animation-play-state: paused;
   }
   
@@ -2441,10 +2441,7 @@ h3.dcba-value{
       }
     } 
 
-    #popup-window.popup-story{
-        text-wrap: wrap;
-        background: red;
-    }
+
 /*----------------------------------------*/
 /*  MOCKUP TESTIMONIALS AREA
 /*----------------------------------------*/

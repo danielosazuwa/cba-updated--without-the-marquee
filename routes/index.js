@@ -3,10 +3,12 @@ const router = express.Router();
 const emailService = require("../services/emailService");
 // const authenticate = require('../middlewares/authenticate');
 // const userService = require('../services/userService');
+const faq = require("../array/faq-questions");
+const testimonials = require("../array/testimonials");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.render("index", { title: "Home" });
+    res.render("index", { title: "Home", testimonialsContent: testimonials });
   } catch (err) {
     next(err);
   }
@@ -150,7 +152,11 @@ router.get("/contact", (req, res) => {
 });
 
 router.get("/faq", (req, res) => {
-  res.render("faq", { title: "Frequently Asked Questions" });
+  const faqQuestions = faq;
+  res.render("faq", {
+    title: "Frequently Asked Questions",
+    faqData: faqQuestions,
+  });
 });
 
 router.get("/login", (req, res) => {

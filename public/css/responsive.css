@@ -517,9 +517,11 @@
     display: none;
   }
   .one.mobile-menu a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -55px;
   }
   .mean-container a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -62px;
   }
   .search-btn {
@@ -744,6 +746,7 @@
   .sticky .mean-container a.meanmenu-reveal {
     margin-top: -49px;
     transform: all 0.6s ease 0s;
+    overflow: auto;
   }
   .notice-area.two .notice-left {
     padding: 35px 35px 30px;
@@ -768,11 +771,13 @@
   .sticky .mean-container a.meanmenu-reveal {
     margin-top: -44px;
     transform: all 0.6s ease 0s;
+    overflow: auto;
   }
   .single-widget a.gap {
     margin-right: 15px;
   }
   .header-area.two .mean-container a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -68px;
   }
   .single-tag a:nth-child(3) {
@@ -891,6 +896,7 @@
     width: 90%;
   }
   .header-area.two.sticky .mean-container a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -41px;
   }
   .sticky .search-btn {
@@ -1254,11 +1260,13 @@
   }
   .header-area.two .mean-container a.meanmenu-reveal {
     margin-top: -53.5px;
+    overflow: auto;
   }
   .header-sticky.sticky.two {
     height: 4rem;
   }
   .one.mobile-menu a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -65px;
   }
   .banner-content h2 {
@@ -1266,11 +1274,14 @@
   }
   .one.mobile-menu a.meanmenu-reveal {
     margin-top: -64px;
+    overflow: auto;
   }
   .sticky .one.mobile-menu a.meanmenu-reveal {
     margin-top: -50px;
+    overflow: auto;
   }
   .header-area.two.sticky .mean-container a.meanmenu-reveal {
+    overflow: auto;
     margin-top: -70px;
   }
   .header-area.two.sticky .search {
@@ -1408,6 +1419,7 @@
   }
   .header-area.two .mean-container a.meanmenu-reveal {
     margin-top: -45px;
+    overflow: auto;
   }
   .header-area.two .logo {
     margin-top: -20px;
@@ -1417,5 +1429,6 @@
   }
   .meanmenu-reveal > nav {
     /* background: purple; */
+    overflow: auto;
   }
 }
