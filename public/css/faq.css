@@ -16,6 +16,7 @@
   width: 100%;
   overflow-x: hidden;
   padding: 1rem;
+  border-radius: 10px;
 }
 
 .faq-mockup > h3 {
@@ -27,7 +28,7 @@
   /* background: red; */
   /* background: linear-gradient(#4fa9e2, #fff, #4fa9e2); */
   /* background: linear-gradient(#f7c838); */
-  background: #f7c838;
+  background: #e9e8dc;
   border-radius: 5px;
   width: 100%;
   display: flex;
@@ -42,7 +43,7 @@
 
 li#faq-li {
   /* background-color: red; */
-  border: 2px solid #1a2930;
+  border: 2px solid #45a29e;
   border-radius: 5px;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -52,7 +53,8 @@ li#faq-li {
 }
 
 li#faq-li button {
-  background: white;
+  background: #45a29e;
+  color: black;
   width: 35px;
   height: 40px;
   display: flex;
@@ -64,7 +66,11 @@ li#faq-li button {
   padding: 1rem;
   width: 30%;
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 40px auto 0 auto;
+  background: linear-gradient(#fff, #4fa9e2);
+  /* background: #4fa9e2; */
+  height: fit-content;
+  border-radius: 10px;
 }
 
 .faq-contact-area label {
@@ -94,5 +100,9 @@ li#faq-li button {
 
   .faq-contact-area {
     width: 100%;
+  }
+
+  li#faq-li {
+    grid-template-columns: 8fr 1.5fr;
   }
 }

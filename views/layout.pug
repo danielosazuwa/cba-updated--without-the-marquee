@@ -338,6 +338,22 @@ script(src='js/jquery.nicescroll.min.js')
 script(src='js/plugins.js')
 script(src='js/main.js?v=1')
 script(src='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js')
+
+script. 
+    document.getElementById('toggleButton').addEventListener('click', function() {
+    const fullContent = document.getElementById('fullContent');
+    const summary = document.getElementById('summary');
+
+    if (fullContent.style.display === 'none') {
+        fullContent.style.display = 'block';
+        summary.style.display = 'none';
+        this.textContent = 'Read Less';
+    } else {
+        fullContent.style.display = 'none';
+        summary.style.display = 'block';
+        this.textContent = 'Read More';
+    }
+    }); 
 script.
     // Get the elements by their ID
     var popupLink = document.getElementById("popup-link");

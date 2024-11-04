@@ -2445,6 +2445,16 @@ h3.dcba-value{
 /*----------------------------------------*/
 /*  MOCKUP TESTIMONIALS AREA
 /*----------------------------------------*/
+
+.content {
+    margin: 0px;
+}
+
+button.readMore {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 .mockup-testimonials{
     /* background: grey; */
     color: black;
