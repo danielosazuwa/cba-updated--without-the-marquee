@@ -1,4 +1,45 @@
-#carouselExampleIndicators.carousel.slide{
+#marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+}
+
+/* Make sure the items will start off-screen to the right */
+.marquee-item {
+  display: inline-block;
+  margin-right: 30px; /* Space between items */
+  padding: 10px 5px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  font-size: 18px;
+  text-wrap: wrap;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25),
+    -8px -8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Start marquee animation immediately from right */
+#marquee {
+  /* background: green; */
+  margin-top: 3rem;
+  width: 1500px;
+  animation: slideLeft infinite linear;
+}
+
+#marquee:hover {
+  animation-play-state: paused;
+}
+/* Define keyframes for sliding from right to left */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%); /* Start the items off-screen to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* End at the left of the container */
+  }
+}
+/* #carouselExampleIndicators.carousel.slide{
     height: 340px;
     margin-top: 50px;
     text-align: center;
@@ -35,12 +76,12 @@ a.carousel-control-prev, a.carousel-control-next{
 
 .carousel-indicators li {
     background-color: #1a2930; 
-    /* border-radius: 50%;  */
+    border-radius: 50%; 
     width: 20px; 
     height: 10px; 
     margin: 0 5px; 
 }
 
-.carousel-indicators .active {
+/* .carousel-indicators .active {
     background-color: #F7C838; 
-}
+} */

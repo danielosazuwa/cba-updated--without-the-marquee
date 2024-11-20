@@ -1,7 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
-@import url("https://fonts.googleapis.com/css2?family=Inika&family=Inter&family=Open+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inika&family=Inter&family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Silkscreen&family=Sixtyfour+Convergence&display=swap');
 
 
 
@@ -12,8 +10,8 @@ body {
     font-weight: 400;
     line-height: normal;  
 }
-p{font-family: Inter;}
-h1, h2, h3, h4, h5, h6{font-family: "Inika", serif;}
+p{font-family: "Roboto", sans-serif;}
+h1, h2, h3, h4, h5, h6{font-family: "Arial", sans-serif;}
 
 h2{
     font-size: 1rem !important;
@@ -183,7 +181,7 @@ ul {
 }
 
 .default-btn {
-    color: #1A2930;
+    color: black;
     display: inline-block;
     font-size: 16px;
     font-weight: 700;
@@ -192,6 +190,7 @@ ul {
     position: relative;
     text-transform: uppercase;
     z-index: 9;
+    /* background: #45a29e; */
     background: #F7C838;
 }
 
@@ -1938,7 +1937,9 @@ svg#searchi {display: none;}
 }
 
 .slant-header{
-    background: #1A2930;
+    
+    /* background: #1A2930; */
+    background: #1F2537;
     width: 90%;
     height: 70px;
     position: relative;
@@ -1946,7 +1947,8 @@ svg#searchi {display: none;}
 }
 
 .unslant-header{
-    background:#F7C838;
+    /* background: #45A29E; */
+    background: #F7C838;
     width: 50%;
     height: 70px;
     position: relative;
@@ -2279,255 +2281,132 @@ h3.dcba-value{
     width: 70%;
 }
 
-/*----------------------------------------*/
-/*  Product Area
-/*-s---------------------------------------*/
-/* .product-mockup{
-    color: black;
-    padding: 2rem 0.5rem 2rem 0.5rem;
-}
-.product-mockup h4{
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-.product-mockup img{
-    width: 5rem;
-    height: 4rem;
-}
-.product-collection {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    margin: 3rem 0 2rem 0;
-}
-.product-mockup-content p{
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.product-mockup-content{
-    width: 20rem;
-}
-
-.product-mockup-content.border-lr{
-    border-left: 2px solid silver;
-    border-right: 2px solid silver;
-}
-
-.product-mockup-content.border-r{
-    border-right: 2px solid silver;
-}
-
-.product-mockup-content button{
-    background: #F7C838;
-    border-radius: 3rem;
-    padding: 0.5rem;
-    color: black;
-}
-.product-mockup-content button:hover{
-    background: black;
-    color: white;
-    animation-delay: 3s;
-} */
 
 /*----------------------------------------*/
 /*  WHY CHOOSE DCBA 
 /*----------------------------------------*/
-.image-container-decision{
-    position: relative;
-    overflow: hidden;
-    font-weight: bold;
-}
-.image-container-decision img{
-    height: 500px; 
-    width: 100%;   
-}
-.overlay-decision{
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 500px;
-    width: 100%;
-    /* background-color: rgba(216, 171, 37, 0.76);  */
-    /* background-color: rgba(154, 131, 60, 0.76);  */
-    background: linear-gradient( rgba(122, 107, 63, 0.76), rgba(216, 171, 37, 0.76));
-    /* background: linear-gradient( rgba(255, 191, 0, 0.76), rgba(115, 98, 45, 0.76)); */
-
-    filter: brightness(85%);
-}
-#decision-area h4, #decision-area ul{
-    opacity: 1;
-}
-
-.overlay-decision h4{
-    font-size: 3rem;
-    text-shadow: 3px 5px 4px rgba(255, 255, 255, 0.5);
-}
-
-.overlay-decision ul{
-    list-style-type: disc;
-    line-height: 3rem;
-    font-size: 1.25rem ;
-}
-
-.decision-collection{
-    height: 500px; 
-    width: 100%;
+.decision-area{
     display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items:  center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
 }
 
-#decision-area{
-    padding: 4rem;
+.decision-banner{
+    width: 40%;
+    margin-right: 1rem;
 }
+
+.decision-banner img{
+    width: 100%;
+    min-height: 250px;
+    margin-right: 1rem;
+}
+
+.decision-text{
+    width: 40%;
+    color: black;
+    line-height: normal;
+    /* background: pink; */
+}
+
+.decision-text ul li{
+    list-style-type: disc;
+    font-size: 18px;
+    line-height: 40px;   
+}
+
+
+
 
 /*----------------------------------------*/
 /*  SUCCESS STORY AREA
 /*----------------------------------------*/
-.success-story{
-    color: black;
-    /* height: 1rem; */
-    /* display: flex; */
-    
+.success-story-area{
+    width: 100%;
+    background: #080C3A;
+    color: white;
+    padding: 2rem;
+
 }
-.success-story h4{
+
+.success-story-area h1{
     text-align: center;
-    padding: 3rem 3rem;
 }
 
-.story-pic{
-    width: 3rem;
-    height: 2.5rem;
-    background: grey;
-    border-radius: 100%;
+.success-story-area hr{
+    width: 10%;
+    display: block;
+    margin: 0 auto 0 auto;
+    border: 5px solid #0F33EE;
 }
 
-.story-collection{
-    /* background: red; */
-    display: flex;
-    column-gap: 16px;
-    align-items: center;
-    justify-content: center;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    padding: 20px;
-    flex-wrap: wrap;
-    height: 20rem;
-    overflow-x: hidden;
-    
+.success-story-area::before{
+    content: "";
+    height: 5rem;
+    background: orange;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
 }
-.story-container{
-    /* background: red; */
-    width: 30%;
-    padding-inline: 8px;
-    animation: marquee 10s linear infinite;
+.success-story-collection{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px; 
+    max-width: 1200px; 
+    margin: 2rem auto; 
+}
+.success-story-item{
+    /* width:100%; */
+    border-radius: 10px;
+    height: fit-content;
+    padding: 1rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), #080C3A);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
- .story-collection:hover .story-container {
-    animation-play-state: paused;
-  }
-  
-@keyframes marquee {
-    from {
-        transform: translateX(50%);
-      }
-      to {
-        transform: translateX(-100%);
-      }
-    } 
+.success-story-item > p{
+    color: white;
+}
 
+.success-story-item > p:nth-child(3), .success-story-item > p:nth-child(4){
+    line-height: 5px;
+}
 
+.success-story-item img:last-child{
+    display: block;
+    margin-left: auto;
+}
+
+.success-story-btn  button{
+    display: block;
+    margin: 0 auto 0 auto;
+    padding: 10px;
+    background: #0F33EE;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
 /*----------------------------------------*/
 /*  MOCKUP TESTIMONIALS AREA
 /*----------------------------------------*/
 
-.content {
-    margin: 0px;
-}
-
-button.readMore {
-    margin-top: 10px;
-    cursor: pointer;
-}
-
 .mockup-testimonials{
-    /* background: grey; */
+    /* background-color: green; */
+    overflow: hidden;
     color: black;
-    padding: 3rem 2rem 3rem 2rem;
+    margin: 2rem 0 5rem 0;
 }
 
-.mockup-testimonials h4{
+.mockup-testimonials h1{
     text-align: center;
-    padding-bottom: 3rem;
 }
 
-.testimonial-collection{
-    /* background: antiquewhite; */
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
-.testimonial-card img{
-    width: 10rem;
-    height: 12rem;
-}
-
-.testimonial-card{
-    border: 1px solid #ccc;
-    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
-    width: 20rem;
-    height: 34rem;
-    margin-bottom: 5rem;
-    transition: width 0.5s ease-in;
-}
-
-.testimonial-card:hover{
-    width: 25rem;
-}
-
-.name-tag{
-    position: relative;
-    top: -12rem;
-    left: 9rem;
-}
-
-.name-tag{
-    background: #F7C838;
-    width: 13rem;
-    text-align: center;
-    height: 3.5rem;
-    border-radius: 50%;
-    padding-top: 0.5rem;
-}
-
-.name-tag h6{
-    font-size: 0.8rem;
-}
-
-.quote-mockup{
-    /* background: green; */
-    padding: 0 1rem 1rem 1rem;
-}
-
-.quote-mockup span{
-    font-size: 3rem;
-    font-family: "Inika", serif;
-    position: absolute;
-    /* top: 0.5rem; */
-}
-
-.quote-mockup p{
-    line-height: 2rem;
-    /* padding: 1rem; */
-    /* background-color: red; */
-}
 
 
 /*----------------------------------------*/
@@ -4282,7 +4161,7 @@ p{
 }
 
 .courses-area.two .course-content {
-    background: #fff
+    background: #fff;
 }
 
 .course-title h3 {
