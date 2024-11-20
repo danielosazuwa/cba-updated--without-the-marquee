@@ -5,10 +5,15 @@ const emailService = require("../services/emailService");
 // const userService = require('../services/userService');
 const faq = require("../public/array/faq-questions");
 const testimonials = require("../public/array/testimonials");
+const successStories = require("../public/array/success-stories");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.render("index", { title: "Home", testimonialsContent: testimonials });
+    res.render("index", {
+      title: "Home",
+      testimonialsContent: testimonials,
+      successStories,
+    });
   } catch (err) {
     next(err);
   }

@@ -129,164 +129,47 @@ block content
                             p Our partnership offers opportunities for co-branding, joint marketing campaigns...
                             a.default-btn(href='/work-experience') read more
 
-    //- //Product Area
-    //- .product-mockup.container-fluid
-    //-     h4 What we offer
-
-    //-     .product-collection
-    //-         .product-mockup-content
-    //-             #singleproduct  
-    //-                 img(src="img/products/.jpg" alt="courses")
-    //-                 p Courses
-    //-                 a(href="/courses")
-    //-                     button#product_learn Learn more
-
-    //-         .product-mockup-content.border-lr
-    //-             #singleproduct  
-    //-                 img(src="img/products/briefcase.jpg" alt="Work Experience")
-    //-                 p Work Experience
-    //-                 a(href="/work-experience")
-    //-                     button#product_learn Learn more
-
-    //-         .product-mockup-content.border-r
-    //-             #singleproduct
-    //-                 img(src="img/products/consultant.jpg" alt="consultancy")
-    //-                 p Consultancy
-    //-                 a(href="/consultancy")
-    //-                     button#product_learn Learn more        
-
-    //-         .product-mockup-content
-    //-             #singleproduct  
-    //-                 img(src="img/products/partnership.jpg" alt="Partnerships")
-    //-                 p Partnerships
-    //-                 a(href="/partnership")
-    //-                     button#product_learn Learn more
-
-    //Decision Area
-    .image-container-decision 
-        img(src='img/decision-img.jpg' alt='what-we-deliver')
-        .overlay-decision 
-            .decision-collection 
-                #decision-area
-                    h4 
-                        | Why 
-                        br 
-                        | choose 
-                        br 
-                        | DCBA?
-
-                #decision-area 
-                    ul 
-                        li Expert-led courses taught by experienced professionals
-                        li Personalized study plans tailored to individual needs 
-                        li Practical, industry-relevant skills for immediate impact 
-                        li Hands-on learning through real-world projects 
-                        li Flexible learning options, including online courses 
-
-    #carouselExampleIndicators.carousel.slide.carousel-fade(data-ride='carousel')
-        h1 TESTIMONIALS
-        ol.carousel-indicators
-            li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
-            li(data-target='#carouselExampleIndicators' data-slide-to='1')
-            li(data-target='#carouselExampleIndicators' data-slide-to='2') 
-        .carousel-inner
-            .carousel-item.active
-                p= testimonialsContent[0].testimony
-                p= testimonialsContent[0].name
-
-            .carousel-item
-                p= testimonialsContent[1].testimony
-                p= testimonialsContent[1].name
+    .decision-area 
+        .decision-banner 
+            img(src="img/decision/why_choose.png" alt="Why Choose DCBA")
+        
+        .decision-text 
+            h1 Why choose DCBA?
+            ul 
+                li Expert-led courses taught by experienced professionals
+                li Personalized study plans tailored to individual needs
+                li Practical, industry-relevant skills for immediate impact
+                li Hands-on learning through real-world projects
+                li Flexible learning options, including online courses
                 
-            .carousel-item
-                p= testimonialsContent[2].testimony
-                p= testimonialsContent[2].name
-        a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
-            span.carousel-control-prev-icon(aria-hidden='true')
-            span.sr-only Previous
-        a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
-            span.carousel-control-next-icon(aria-hidden='true')
-            span.sr-only Next
-    //- .success-story
-    //-     h4 Testimonials
-    //-     .story-collection 
-    //-         .story-container
-    //-             .story-pic
-    //-             br
-    //-             .story-content
-    //-                 h2 From Uncertainty to Leadership
-    //-                 p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles.
-    //-                     a(href="#")  Read more... 
-    //-                 //-     #pop-link 
-    //-                 //-         button Read more...
-    //-                 //- #pop-window.popup-story
-    //-                 //-     h2 From Uncertainty to Leadership
-    //-                 //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-    //-                 //-     button#close-button Close
 
-    //-         .story-container
-    //-             .story-pic 
-    //-             br
-    //-             .story-content 
-    //-                 h2 Overcoming the Odds and Thriving in a New Industry 
-    //-                 p "As a single parent, I thought transitioning to a new career was out of my reach, I had no formal eduction in tech, and the fear of strating from.
-    //-                     a(href="#")  Read more...
-    //-                 //-     #pop-link 
-    //-                 //-         button Read more...
-    //-                 //- #pop-window.popup-story
-    //-                 //-     h2 From Uncertainty to Leadership
-    //-                 //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-    //-                 //-     button#close-button Close
-
-
-    //-         .story-container
-    //-             .story-pic 
-    //-             br
-    //-             .story-content 
-    //-                 h2 From Underemployment to Entrepreneurial Success
-    //-                 p "I have been underemployed for years, doing freelance work that barely paid the bills and I was feeling stuck. That's when i decided to take a leap.
-    //-                     a(href="#")  Read more...    
-    //-                 //-     #pop-link 
-    //-         button Read more...
-    //- #pop-window.popup-story
-    //-     h2 From Uncertainty to Leadership
-    //-     p "Before enrolling at DeCareer Builders Academy, I was lost in a sea of career choices and unsure of my next step. I had tried different roles. 
-    //-     button#close-button Close
-
-    //- .content
-    //-     p#summary This is the summary of the content. It gives an overview of the topic.
-    //-     p#fullContent(style='display: none;')
-    //-         | This is the full content that provides more details about the topic. It includes all the necessary information that the user might be interested in.
-    //-     button.readMore#toggleButton Read More
-    
+        
     //Testimonials area
     .mockup-testimonials
-        h4 Success Stories 
-
-        .testimonial-collection
-            .testimonial-card
-                .tag-flex-area 
-                    img(src="img/testimonial/winifred.jpg" alt="winifred's-testomonial")
-                .name-tag 
-                    h6 Winifred Eze
-                    p Business Analyst
-
-                .quote-mockup
-                    p 
-                        span.quote-bold “
-                        |This website has been invaluable for staying on top of industry trends. The in-depth articles and expert insights have helped me make informed decisions for my team. I especially love the case studies—they offer practical applications of new technologies that I can implement right away. It’s my go-to resource! 
-                        span.quote-bold ”
+        h1 TESTIMONIALS 
 
 
-            .testimonial-card
-                .tag-flex-area 
-                    img(src="img/testimonial/raheemat.jpg" alt="raheemat's-testomonial")
-                .name-tag 
-                    h6 Raheemat
-                    p Product Owner
+            .marquee(id="marquee")
+                each item in testimonialsContent
+                    .marquee-item 
+                        p= item.testimony 
+                        p= item.name
 
-                .quote-mockup
-                    p
-                        span    “
-                        | The classes were very informative and interesting. Oluyemi did everything to make sure no one was left behind. I look forward to joining the next Data Analytics class.
-                        span    ”
+    //Success-Stories area
+    .success-story-area
+        h1 Our success stories
+        hr
+
+        .success-story-collection
+            each story in successStories
+                .success-story-item 
+                    img( id="ratings" src="img/quote.png" alt="Quote")
+                    p= story.story 
+                    p= story.writer 
+                        p= story.role
+
+        a(href="#")
+            .success-story-btn
+                button Read more
+
+

@@ -31,6 +31,7 @@ head
     link(rel="stylesheet" href="css/nav-area.css")
     link(rel="stylesheet" href="css/slider.css")
     link(rel="stylesheet" href="css/faq.css")
+    link(rel="stylesheet" href="css/loader.css")
     link(rel='stylesheet' href='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css')
 
     link(rel='icon' type='image/x-icon' href='assets/favicon.ico')
@@ -74,6 +75,8 @@ head
         a(href='http://browsehappy.com/') upgrade your browser
         |  to improve your experience.
 // Header Area Start
+.loader
+
 header.top
     .slant-section 
         .slant-header
@@ -85,7 +88,6 @@ header.top
                 input(type="text" placeholder="")
                 button 
                     i.fas.fa-search
-
 .mockup-nav
     ul
         a(href="/") 
@@ -207,7 +209,7 @@ header.top
                 .mobile-menu.hidden-sm
 // Header Area End
 // Background Area Start
-
+    
 block content
 
 
@@ -339,21 +341,8 @@ script(src='js/plugins.js')
 script(src='js/main.js?v=1')
 script(src='https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js')
 
-script. 
-    document.getElementById('toggleButton').addEventListener('click', function() {
-    const fullContent = document.getElementById('fullContent');
-    const summary = document.getElementById('summary');
 
-    if (fullContent.style.display === 'none') {
-        fullContent.style.display = 'block';
-        summary.style.display = 'none';
-        this.textContent = 'Read Less';
-    } else {
-        fullContent.style.display = 'none';
-        summary.style.display = 'block';
-        this.textContent = 'Read More';
-    }
-    }); 
+    
 script.
     // Get the elements by their ID
     var popupLink = document.getElementById("popup-link");
@@ -368,6 +357,7 @@ script.
     popupWindow.style.display = "none";
     });
 
+    //FAQ SCRIPT
 script.
     const buttons = document.querySelectorAll(".dropdownButton");
     const contents = document.querySelectorAll(".dropdownContent");
@@ -398,6 +388,28 @@ script.
     }
     }
     });
+
+script.
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitionend", () => {
+    document.body.removeChild("loader");
+    });
+    });
+
+script.
+    const marquee = document.getElementById('marquee');
+    const items = document.querySelectorAll('.marquee-item');
+    const totalWidth = Array.from(items).reduce((acc, item) => acc + item.offsetWidth + 20, 0); // total width of all items
+
+    for (let i = 0; i < items.length; i++) {
+    const clone = items[i].cloneNode(true);
+    marquee.appendChild(clone); // Duplicate the items
+    }
+
+    marquee.style.animationDuration = `${(totalWidth / 70)}s`; // 50px per second speed
 
 script. 
     var input = document.querySelector("#phone");
