@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
     res.render("index", {
       title: "Home",
       testimonialsContent: testimonials,
-      successStories,
+      stories: successStories,
     });
   } catch (err) {
     next(err);
