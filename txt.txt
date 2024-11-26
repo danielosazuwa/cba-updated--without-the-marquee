@@ -1,0 +1,3 @@
+kill linus server
+    kill -9 122556
+   lsof -i :5000 (replace port number)
