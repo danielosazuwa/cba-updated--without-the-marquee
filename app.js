@@ -13,7 +13,8 @@ const { http } = require('winston');
 const MemoryStore = require('memorystore')(session);
 
 // const usersRouter = require('./routes/users');
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin');
+const courseRouter = require('./routes/course');
 
 // Handling uncaught exceptions
 process.on('uncaughtException',err=>{
@@ -25,7 +26,7 @@ process.on('uncaughtException',err=>{
 
 process.on('SIGINT', async () => {
     logger.warn('Shutting down gracefully...');
-    await prisma.$disconnect(); // Disconnect from Prisma if necessary
+    await prisma.$disconnect(); 
     process.exit(0);
 });
 
@@ -41,7 +42,7 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({
-    limits: { fileSize: 50 * 1024 * 1024 },
+    limits: { fileSize: 10 * 1024 * 1024 },
 }));
 
 
@@ -49,10 +50,6 @@ app.use(session({
     secret: config.session_secret, 
     resave: false,
     saveUninitialized: true,
-    // store: new PrismaSessionStore(prisma, {
-    //     checkPeriod: 2 * 60 * 1000,
-    //     dbRecordIdIsSessionId: true, 
-    // }),
     store: new MemoryStore({
         checkPeriod: 86400000 
     }),
@@ -67,15 +64,10 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cors)
 app.use(formatView);
-app.get('/test-session', (req, res) => {
-    req.session.test = 'Hello World';
-    console.log(req.session.test)
-    // res.send('Session value set!');
-});
 app.use('/', indexRouter);
 // app.use('/users', authenticate, usersRouter);
+app.use('/course', courseRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler

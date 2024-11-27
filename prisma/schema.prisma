@@ -18,7 +18,7 @@ model Admin{
   lastName  String
   email     String     @unique
   password  String
-  role      Role       @default(ADMIN)
+  role      Role?       @default(ADMIN)
   image     String?
   isActive  Boolean    @default(true)
   Course    Course[]
@@ -45,6 +45,7 @@ model User{
   city      String?
   state     String?
   country   String?
+  isDeleted Boolean   @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime  @updatedAt
@@ -55,11 +56,15 @@ model Course{
   title       String
   slug        String?
   description String
+  why_list    String[]
+  who_list    String[]
   image       String?
   price       BigInt
+  duration    String?
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
   Module      Module[]
+  isDeleted   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime  @updatedAt
@@ -74,6 +79,7 @@ model Module{
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
   lesson      lesson[]
+  isDeleted   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime  @updatedAt
@@ -90,6 +96,7 @@ model lesson{
   module      Module   @relation(fields: [moduleId], references: [id])
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
+  isDeleted   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime  @updatedAt
@@ -110,5 +117,6 @@ model Session{
 
 enum Role {
   ADMIN
+  EDITOR
   SUPER_ADMIN
 }
