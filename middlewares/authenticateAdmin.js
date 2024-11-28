@@ -1,8 +1,25 @@
-module.exports = (req, res, next) => {
-    if (req.session.admin && req.session.admin.id) {
-        res.locals.admin = req.session.admin;
-        return next();
-    }
+const {LoggerService}  =  require('../customLogger')
 
-    next(new Error('You don\'t have permission to view this page'));
-}
+
+
+
+module.exports = (allowedRoles) => {
+
+    const logger = new LoggerService()
+    return (req, res, next) => {
+
+        if (req.session && req.session.adminId) { 
+            res.locals.user = req.session; 
+
+            if (allowedRoles.includes(res.locals.user.role)) {
+                return next(); 
+            } else {
+                logger.warn('User does not have admin permissions:', res.locals.user.role);
+                return next(new Error('You don\'t have permission to perform this operation')); 
+            }
+        }
+
+        logger.log('No adminId found in session:', req.session.adminId ? req.session.adminId : 'undefined');
+        return next(new Error('You don\'t have permission to perform this operation')); 
+    };
+};

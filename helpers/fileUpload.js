@@ -1,20 +1,40 @@
-const { ErrorHandler } = require('./errorHandler');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
-const uploadFile = (files) => {
-    if (!files || Object.keys(files).length === 0) {
-        throw new ErrorHandler(400, 'No files were uploaded.');
-    }
-    const uploadedFiles = Array.isArray(files.evidences) ? [...files.evidences] : [files.evidences];
-    return uploadedFiles.map(file => {
-        // check file type
-        const ext = file.name.split('.').pop();
-        const photoName = `case_files/${process.hrtime()[1]}.${ext}`;
-        const uploadPath = require('path').resolve(__dirname, '../public/', photoName);
-        file.mv(uploadPath);
-        return photoName;
-    });
+
+const uploadDir = 'courseAvatar/';
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-module.exports = {
-    uploadFile
-}
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); 
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname)); // Unique filename
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = /jpeg|jpg|png/;
+  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = allowedTypes.test(file.mimetype);
+
+  if (extname && mimetype) {
+    return cb(null, true);
+  } else {
+    cb(new Error('Only .jpg, .png and .jpeg format allowed!'), false);
+  }
+};
+
+// Create the upload middleware
+const CourseUpload = multer({ 
+  storage: storage,
+  fileFilter: fileFilter,
+});
+
+module.exports = CourseUpload;
