@@ -28,11 +28,14 @@ router.get('/:id/trash', authenticateAdmin(['SUPER_ADMIN']),
    // res.render('admin/users', { users });
 });
 
-router.post('/create', authenticateAdmin(['SUPER_ADMIN']), async (req, res, next) => {
-    try {
-        const newAdmin = await adminService.create(req.body)
-        console.log(newAdmin)
+router.post('/create', 
+    authenticateAdmin(['SUPER_ADMIN']), 
+    async (req, res, next) => {
+        // console.log(req.body)
 
+    try {
+
+        const newAdmin = await adminService.create(req.body)
         // return res.render('create', newAdmin)
         // res.redirect('/admin/login');
 
@@ -52,18 +55,8 @@ router.post('/login', async (req, res, next) => {
         req.session.email = admin.email;
         req.session.role = admin.role;
 
-        // console.log('Session after login:', req.session);
-
-        // return req.session.id
-        // res.render('dashboard', {admin})
-        // const user = req.session.user = admin;
-        // if(req.session.authorize){
-        //     res.render('admin', {username: user.firstName})
-        // }else{
-        //     res.render('login')
-        // }
-        // res.redirect('/admin/cases');
-
+  
+        //     res.render('admin', {status: user.firstName})
         res.json({
             status: 'Logged in successfully',
             session: req.session // Send back the session data for verification

@@ -18,7 +18,7 @@ model Admin{
   lastName  String
   email     String     @unique
   password  String
-  role      Role?       @default(ADMIN)
+  role      Role?      @default(ADMIN)
   image     String?
   isActive  Boolean    @default(true)
   Course    Course[]
@@ -54,16 +54,16 @@ model User{
 model Course{
   id          String    @id @default(uuid())
   title       String
-  slug        String?
+  slug        String    @unique
   description String
   why_list    String[]
   who_list    String[]
   image       String?
-  price       BigInt
+  amount      BigInt?   @default(0)
   duration    String?
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
-  Module      Module[]
+  Modules     Module[]
   isDeleted   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -73,12 +73,13 @@ model Course{
 model Module{
   id          String    @id @default(uuid())
   title       String
+  slug        String?
   description String
   courseId    String
   course      Course   @relation(fields: [courseId], references: [id])
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
-  lesson      lesson[]
+  lessons     lesson[]
   isDeleted   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

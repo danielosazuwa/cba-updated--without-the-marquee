@@ -2,3 +2,5 @@ node_modules
 package-lock.json
 .env
 public/case_files/*
+sshh
+sshh.pub

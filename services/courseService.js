@@ -6,39 +6,100 @@ const prisma = new PrismaClient();
 const {LoggerService}  =  require('../customLogger')
 const logger = new LoggerService();
 const slugify = require('slugify')
+const fs = require('fs');
+const path = require('path');
 
-
-const getAll = async()=>{
+const getAll = async(criteria = {})=>{
     const courses = await prisma.course.findMany({
-        where:{},
+        where:{
+            ...criteria,
+            isDeleted: false
+        },
         include:{
-            Module:true
+            Modules:true
         }
     });
 
-    console.log(`list if courses: ${courses}`)
+    console.log(`list if courses: courses`)
     return courses
 }
 
+
 const getOne = async(criteria)=>{
-    return await prisma.course.findFirst({
+    return await prisma.course.findUnique({
         where:{
          ...criteria
+        },
+        include: {
+            admin:{
+                select:{
+                    firstName:true,
+                    lastName:true,
+                    email:true,
+                    isActive:true,
+                    role: true
+                }
+            }
         }
+
     });
 }
 
-const viewOne = async(slug)=>{
-    const course = await getOne({slug:slug, isDeleted: false});
-    if(!course)console.log('Admin account already exist');
-    if(!course) throw new ErrorHandler(400, 'Admin account already exist');
+const viewOne = async(criteria)=>{
 
-    console.log(course);
+    const course = await prisma.course.findUnique({
+        where:{slug:criteria},
+        include:{
+            admin:{
+                select:{
+                    id: true,
+                    firstName:true,
+                    lastName:true,
+                    email:true
+                }
+            },
+            Modules:{
+                where:{isDeleted: false},
+                include:{
+                    lessons: true
+                }
+                
+            }
+            
+        }
+    //    include:{
+    //     admin:{
+    //         select:{
+    //             id: true,
+    //             firstName:true,
+    //             lastName:true,
+    //             email:true
+    //         },
+    //         modules:{
+    //             orderBy:{order:'asc'},
+    //             where:{isDeleted: false},
+    //             // include:{
+    //             //     lessons:{
+    //             //         orderBy:{order: 'asc'},
+    //             //         where:{
+    //             //             isDeleted:false
+    //             //         }
+    //             //     }
+    //             // }
+    //         }
+    //     }
+    //    }
+    });
+
+    if(!course)console.log('Course Not found!');
+    if(!course) throw new ErrorHandler(404, 'Course Not found');
     return course;
 }
 
+
 const create = async(adminId, payload) =>{
-    const slug = slugify(`${payload.title}`);
+    console.log(payload)
+    const slug = slugify(`${payload.title}`, {lower: true, replacement: '_'});
 
     const newCourse = await prisma.course.create({
         data: {
@@ -47,14 +108,153 @@ const create = async(adminId, payload) =>{
             description: payload.description,
             why_list:payload.why_list,
             who_list: payload.who_list,
-            price: payload.price,
+            amount: payload.amount,
+            duration:payload.duration,
+            adminId: adminId
+        }
+    });
+
+    console.log(newCourse)
+    return newCourse;
+
+}
+
+const uploadImage = async(courseId, imagePath) =>{
+    const course = await getOne({id: courseId});
+            console.log(imagePath)
+
+    if(!course) throw new ErrorHandler(404, 'Course Not found'); 
+    // const imagePath = `courseAvatar/${imagePath}`;
+
+    const updatedCourse = await prisma.course.update({
+        where:{
+            id: courseId
+        },
+        data: {
+            image:imagePath
+        }
+    });
+
+    console.log(updatedCourse)
+    return updatedCourse;
+
+}
+
+const updateCourse = async(courseId, payload) =>{
+    const course = await getOne({id: courseId});
+        console.log(course)
+
+    if(!course) throw new ErrorHandler(404, 'Course Not found'); 
+    // const imagePath = `courseAvatar/${imagePath}`;
+
+    const slug = slugify(`${payload.title}`, {lower: true, replacement: '_'});
+    const updatedCourse = await prisma.course.update({
+        where:{
+            id: courseId
+        },
+        data: {
+            title: payload.title,
+            slug: slug,
+            description: payload.description,
+            why_list:payload.why_list,
+            who_list: payload.who_list,
+            amount: payload.amount,
             duration:payload.duration
         }
-    })
+    });
+
+    console.log(updatedCourse)
+    return updatedCourse;
+
 }
+
+const trash = async()=>{
+    const deletedCourses = await prisma.course.findMany({
+        where:{
+            isDeleted: true
+        }
+    });
+
+    // console.log(deletedCourses);
+
+    return deletedCourses;
+}
+
+const softDeleteCourse = async(courseId)=>{
+    const deletedCourse = await getOne({id: courseId, isDeleted: false})
+    if(!deletedCourse) throw new ErrorHandler(404, 'Course not found')
+
+    const removeCourse = await prisma.course.update({
+        where:{
+            id:courseId
+        },
+        data:{
+            isDeleted: true
+        }
+    });
+
+    console.log(removeCourse)
+
+    return removeCourse;
+}
+
+const restoreCourse = async(courseId)=>{
+    const deletedCourse = await getOne({id: courseId, isDeleted: true})
+    if(!deletedCourse) throw new ErrorHandler(404, 'Course not found')
+
+    const removeCourse = await prisma.course.update({
+        where:{
+            id:courseId
+        },
+        data:{
+            isDeleted: false
+        }
+    });
+
+    console.log(removeCourse)
+
+    return removeCourse;
+}
+
+
+const permanentDeleteCourse = async (courseId) => {
+
+    const deletedCourse = await getOne({ id: courseId, isDeleted: true });
+    console.log(deletedCourse)
+    if (!deletedCourse) throw new ErrorHandler(404, 'Course not found');
+    
+
+    if (deletedCourse.image) {
+        const imagePath =  deletedCourse.image;
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                logger.log(`Failed to delete image: ${err.message}`);
+                
+            } else {
+                logger.log(`Successfully deleted image: ${deletedCourse.image}`);
+            }
+        });
+    }
+
+    const removeCourse = await prisma.course.delete({
+        where: {
+            id: courseId,
+        },
+    });
+
+    console.log(removeCourse);
+    return removeCourse;
+};
 
 module.exports = {
     getAll,
     getOne,
-    viewOne
+    viewOne,
+    create,
+    uploadImage,
+    updateCourse,
+    trash,
+    softDeleteCourse,
+    restoreCourse,
+    permanentDeleteCourse
 }

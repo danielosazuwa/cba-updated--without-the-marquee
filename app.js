@@ -41,9 +41,9 @@ app.set('view engine', 'pug');
 // Middleware setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(fileUpload({
-    limits: { fileSize: 10 * 1024 * 1024 },
-}));
+// app.use(fileUpload({
+//     limits: { fileSize: 10 * 1024 * 1024 },
+// }));
 
 
 app.use(session({
@@ -67,8 +67,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(formatView);
 app.use('/', indexRouter);
 // app.use('/users', authenticate, usersRouter);
-app.use('/course', courseRouter);
 app.use('/admin', adminRouter);
+app.use('/courses', courseRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
