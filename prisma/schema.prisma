@@ -92,6 +92,7 @@ model Module{
 model lesson{
   id          String    @id @default(uuid())
   title       String
+  slug        String
   description String
   moduleId    String
   module      Module   @relation(fields: [moduleId], references: [id])

@@ -5,6 +5,7 @@ const authenticate = require('../middlewares/authenticate')
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const CourseUpload = require('../helpers/fileUpload')
 const { default: slugify } = require('slugify');
+const { xss } = require('express-xss-sanitizer');
 
 router.get('/',
     async (req, res, next) => {
@@ -42,7 +43,7 @@ router.get('/trash', authenticateAdmin(['SUPER_ADMIN']),
    // res.render('admin/users', { users });
 });
 
-router.get('/:slug', //authenticateAdmin,
+router.get('/:slug',xss(), //authenticateAdmin,
      async (req, res, next) => {
         const {slug} = req.params;
         const normalizedSlug = slugify(`${slug}`, {lower: true, replacement:'_'});
@@ -74,7 +75,7 @@ router.post('/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), async (req, r
     }
 });
 
-router.patch('/:courseId/img-upload',
+router.patch('/:courseId/img-upload',xss(),
     authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']), 
     CourseUpload.single('image'),
     async (req, res, next) => {
@@ -97,7 +98,7 @@ router.patch('/:courseId/img-upload',
     }
 );
 
-router.put('/:courseId/update-course', authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
+router.put('/:courseId/update-course', xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
      async (req, res, next) => {
     try {
         const {courseId} = req.params
@@ -116,7 +117,7 @@ router.put('/:courseId/update-course', authenticateAdmin(['SUPER_ADMIN', 'ADMIN'
     }
 });
 
-router.patch('/:courseId/soft-delete',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
+router.patch('/:courseId/soft-delete',  xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
        const {courseId} = req.params
@@ -129,7 +130,7 @@ router.patch('/:courseId/soft-delete',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN
    }
 });
 
-router.patch('/:courseId/restore-course',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
+router.patch('/:courseId/restore-course',  xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
        const {courseId} = req.params
@@ -143,7 +144,7 @@ router.patch('/:courseId/restore-course',  authenticateAdmin(['SUPER_ADMIN', 'AD
 });
 
 
-router.delete('/:courseId/permanent-delete',  authenticateAdmin(['SUPER_ADMIN']),
+router.delete('/:courseId/permanent-delete',  xss(), authenticateAdmin(['SUPER_ADMIN']),
     async (req, res, next) => {
    try {
        const {courseId} = req.params
