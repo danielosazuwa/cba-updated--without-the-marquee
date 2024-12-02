@@ -1,18 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const moduleService = require('../services/moduleservice');
-const authenticate = require('../middlewares/authenticate')
+const moduleService = require('../services/moduleService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
-const CourseUpload = require('../helpers/fileUpload')
-const { default: slugify } = require('slugify');
-const { logger } = require('sequelize/lib/utils/logger');
+const { xss } = require('express-xss-sanitizer');
 
-router.get('/course/:courseId',
+router.get('/course/:courseId',xss(),
     async (req, res, next) => {
         const {courseId} = req.params;
         try {
-            const modules = await moduleService.getAll(courseId);
-            console.log(modules);
+            const module = await moduleService.getAll(courseId);
+            // console.log(module);
         } catch (err) {
             next(err);
         }
@@ -30,7 +27,7 @@ router.get('/trash', authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
    // res.render('admin/users', { users });
 });
 
-router.get('/:moduleId', //authenticateAdmin,
+router.get('/:moduleId',xss(), //authenticateAdmin,
      async (req, res, next) => {
         const {moduleId} = req.params;
 
@@ -47,7 +44,7 @@ router.get('/:moduleId', //authenticateAdmin,
 
 
 
-router.post('/course/:courseId/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), async (req, res, next) => {
+router.post('/course/:courseId/create', xss(),authenticateAdmin(['SUPER_ADMIN','ADMIN']), async (req, res, next) => {
     try {
         const {courseId} = req.params
         const adminId = req.session.adminId;
@@ -63,7 +60,7 @@ router.post('/course/:courseId/create', authenticateAdmin(['SUPER_ADMIN','ADMIN'
     }
 });
 
-router.put('/:moduleId/update', authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
+router.put('/:moduleId/update',xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
      async (req, res, next) => {
     try {
         const {moduleId} = req.params
@@ -83,7 +80,7 @@ router.put('/:moduleId/update', authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDIT
     }
 });
 
-router.patch('/:moduleId/soft-delete',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
+router.patch('/:moduleId/soft-delete', xss(),  authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
        const {moduleId} = req.params
@@ -97,7 +94,7 @@ router.patch('/:moduleId/soft-delete',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN
    }
 });
 
-router.patch('/:moduleId/restore-module',  authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
+router.patch('/:moduleId/restore-module', xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
        const {moduleId} = req.params
@@ -112,7 +109,7 @@ router.patch('/:moduleId/restore-module',  authenticateAdmin(['SUPER_ADMIN', 'AD
 });
 
 
-router.delete('/:moduleId/permanent-delete-module',  authenticateAdmin(['SUPER_ADMIN']),
+router.delete('/:moduleId/permanent-delete-module', xss(),  authenticateAdmin(['SUPER_ADMIN']),
     async (req, res, next) => {
    try {
        const {moduleId} = req.params

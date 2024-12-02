@@ -162,11 +162,12 @@ const permanentDelete = async (moduleId) => {
     }
 
     // Delete the module itself
-    await prisma.module.delete({
+    const deletedModule = await prisma.module.delete({
         where: { id: moduleId }
     });
 
     console.log(`Module with ID ${moduleId} has been permanently deleted.`);
+    return deletedModule
 };
 
 module.exports = {

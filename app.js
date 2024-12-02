@@ -6,16 +6,23 @@ const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const formatView = require('./middlewares/formatView');
 const { connect } = require('./prismaService');
-const {LoggerService}  =  require('./customLogger')
+const {LoggerService}  =  require('./customLogger');
 const indexRouter = require('./routes/index');
-const config = require('./config/config')
+const config = require('./config/config');
 const { http } = require('winston');
 const MemoryStore = require('memorystore')(session);
+const { xss } = require('express-xss-sanitizer');
+const hpp = require('hpp');
+const helmet = require('helmet');
+const {prisma} = require('./prismaService');
+
 
 // const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const courseRouter = require('./routes/course');
-const moduleRouter = require('./routes/module')
+const moduleRouter = require('./routes/module');
+const lessonRouter = require('./routes/lesson');
+
 
 // Handling uncaught exceptions
 process.on('uncaughtException',err=>{
@@ -34,6 +41,7 @@ process.on('SIGINT', async () => {
 var app = express();
 const logger = new LoggerService('app');
 const port = process.env.PORT || 8000;
+app.use(helmet())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +53,11 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(fileUpload({
 //     limits: { fileSize: 10 * 1024 * 1024 },
 // }));
-
+app.use(xss());
+// Prevent parameter pollution
+app.use(hpp({
+    whitelist: ['position']
+}));
 
 app.use(session({
     secret: config.session_secret, 
@@ -63,7 +75,8 @@ app.use(session({
 
     }
 }));
-
+app.use(xss());
+app.use(hpp()); 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(formatView);
 app.use('/', indexRouter);
@@ -71,6 +84,8 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/course', courseRouter);
 app.use('/module', moduleRouter);
+app.use('/lesson', lessonRouter);
+
 
 
 // catch 404 and forward to error handler
@@ -78,6 +93,11 @@ app.use(function (req, res, next) {
     next(createError(404));
 });
 
+
+// Handled unhandled routes
+// app.all('*', (req, res, next)=>{
+//     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
+// });
 
 
 // error handler
