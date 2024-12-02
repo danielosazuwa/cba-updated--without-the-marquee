@@ -15,6 +15,7 @@ const MemoryStore = require('memorystore')(session);
 // const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const courseRouter = require('./routes/course');
+const moduleRouter = require('./routes/module')
 
 // Handling uncaught exceptions
 process.on('uncaughtException',err=>{
@@ -68,7 +69,9 @@ app.use(formatView);
 app.use('/', indexRouter);
 // app.use('/users', authenticate, usersRouter);
 app.use('/admin', adminRouter);
-app.use('/courses', courseRouter);
+app.use('/course', courseRouter);
+app.use('/module', moduleRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -13,6 +13,7 @@ router.get('/',
 
         if (courses) {
             const normalizedSlug = slugify(courses, { lower: true, replacement: '_' });
+            const keywords = courses.toLowerCase().split(/\s+/);
             criteria = {
                 OR: [
                     { slug: { contains: normalizedSlug, mode: 'insensitive' } },
@@ -89,7 +90,7 @@ router.patch('/:courseId/img-upload',
             const updatedCourse = await courseService.uploadImage(courseId, imagePath);
             console.log(updatedCourse);
 
-            res.status(200).json({ message: 'Image uploaded successfully!', updatedCourse });
+            // res.status(200).json({ message: 'Image uploaded successfully!', updatedCourse });
         } catch (err) {
             next(err);
         }
@@ -151,6 +152,7 @@ router.delete('/:courseId/permanent-delete',  authenticateAdmin(['SUPER_ADMIN'])
        // res.send('/admin/cases');
        console.log(course)
    } catch (err) {
+    console.log(err)
        next(err);
    }
 });

@@ -6,7 +6,8 @@ const prisma = new PrismaClient();
 const {LoggerService}  =  require('../customLogger')
 const logger = new LoggerService();
 const slugify = require('slugify')
-const fs = require('fs');
+// const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
 const getAll = async(criteria = {})=>{
@@ -124,7 +125,19 @@ const uploadImage = async(courseId, imagePath) =>{
             console.log(imagePath)
 
     if(!course) throw new ErrorHandler(404, 'Course Not found'); 
-    // const imagePath = `courseAvatar/${imagePath}`;
+
+        if (course.image) {
+        const imagePath =  course.image;
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                logger.log(`Failed to delete image: ${err.message}`);
+                
+            } else {
+                logger.log(`Successfully deleted image: ${deletedCourse.image}`);
+            }
+        });
+    }
+
 
     const updatedCourse = await prisma.course.update({
         where:{
@@ -217,32 +230,100 @@ const restoreCourse = async(courseId)=>{
 }
 
 
-const permanentDeleteCourse = async (courseId) => {
+// const permanentDeleteCourse = async (courseId) => {
 
-    const deletedCourse = await getOne({ id: courseId, isDeleted: true });
-    console.log(deletedCourse)
-    if (!deletedCourse) throw new ErrorHandler(404, 'Course not found');
+//     const deletedCourse = await getOne({ id: courseId, isDeleted: true });
+//     console.log(deletedCourse)
+//     if (!deletedCourse) throw new ErrorHandler(404, 'Course not found');
     
 
-    if (deletedCourse.image) {
-        const imagePath =  deletedCourse.image;
-        fs.unlink(imagePath, (err) => {
-            if (err) {
-                logger.log(`Failed to delete image: ${err.message}`);
+//     if (deletedCourse.image) {
+//         const imagePath =  deletedCourse.image;
+//         fs.unlink(imagePath, (err) => {
+//             if (err) {
+//                 logger.log(`Failed to delete image: ${err.message}`);
                 
-            } else {
-                logger.log(`Successfully deleted image: ${deletedCourse.image}`);
-            }
-        });
-    }
+//             } else {
+//                 logger.log(`Successfully deleted image: ${deletedCourse.image}`);
+//             }
+//         });
+//     }
 
-    const removeCourse = await prisma.course.delete({
-        where: {
-            id: courseId,
-        },
+//     const removeCourse = await prisma.course.delete({
+//         where: {
+//             id: courseId,
+//         },
+//     });
+
+//     console.log(removeCourse);
+//     return removeCourse;
+// };
+
+
+const permanentDeleteCourse = async (courseId) => {
+    
+    const deletedCourse = await prisma.course.findUnique({
+        where: { id: courseId, isDeleted: true },
+        include: {
+            Modules: { 
+                select: {
+                    id: true,
+                    lessons: {
+                        select: {
+                            id: true
+                        }
+                    }
+                }
+            }
+        }
     });
 
-    console.log(removeCourse);
+    if (!deletedCourse) throw new ErrorHandler(404, 'Course not found');
+
+    if (deletedCourse.image) {
+        try {
+            await fs.unlink(deletedCourse.image);
+            logger.log(`Successfully deleted image: ${deletedCourse.image}`);
+        } catch (err) {
+            logger.log(`Failed to delete image: ${err.message}`);
+        }
+    }
+
+   
+    const modules = deletedCourse.Modules || [];
+    if (modules.length === 0) {
+        const removeCourse = await prisma.course.delete({
+            where: { id: courseId },
+        });
+        logger.log(`Deleted course with ID: ${removeCourse.id}`);
+        return removeCourse;
+    }
+
+    const deletePromises = [];
+
+    for (const module of modules) {
+        const lessonIds = module.lessons.map(lesson => lesson.id);
+        
+        if (lessonIds.length > 0) {
+            deletePromises.push(
+                prisma.lesson.deleteMany({ where: { id: { in: lessonIds } } })
+            );
+            logger.log(`Prepared to delete lessons with IDs: ${lessonIds.join(', ')}`);
+        }
+
+        deletePromises.push(
+            prisma.module.delete({ where: { id: module.id } })
+        );
+        logger.log(`Prepared to delete module with ID: ${module.id}`);
+    }
+
+    await Promise.all(deletePromises);
+
+    const removeCourse = await prisma.course.delete({
+        where: { id: courseId },
+    });
+
+    logger.log(`Deleted course with ID: ${removeCourse.id}`);
     return removeCourse;
 };
 
