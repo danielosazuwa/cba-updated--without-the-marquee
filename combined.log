@@ -5937,8 +5937,68 @@
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-02T19:40:46.648Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T19:40:46.661Z"}
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
 >>>>>>> 05c4820 (card details added to schema)
+=======
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
+=======
+{"level":"error","message":"Failed to connect to the database 🔥🔥🔥:","module":"app","timestamp":"2024-11-28T06:54:39.044Z"}
+{"level":"error","message":"Failed to start the server 🔥🔥🔥🔥🔥🔥:","module":"app","timestamp":"2024-11-28T06:54:39.048Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-28T20:56:12.483Z"}
+{"level":"info","message":"listening at port 6000 in development😁😁😁😁","module":"app","timestamp":"2024-11-28T20:56:12.489Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-28T21:02:27.931Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-11-28T21:02:27.942Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-02T20:26:31.057Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T20:26:31.077Z"}
+{"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-02T20:26:43.563Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-02T20:27:48.737Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T20:27:48.749Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-02T21:12:21.648Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T21:12:21.658Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-03T06:34:38.143Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-03T06:34:38.153Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-03T19:07:19.143Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-03T19:07:19.156Z"}
+{"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-03T19:47:17.067Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-03T19:47:25.234Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-03T19:47:25.241Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T19:35:23.378Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T19:35:23.393Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-05T19:05:12.738Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-05T19:05:12.751Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-06T06:25:34.156Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-06T06:25:34.164Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-06T06:39:24.281Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-06T06:39:24.293Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-06T06:39:51.207Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-06T06:39:51.212Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-06T08:04:27.539Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-06T08:04:27.553Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-06T18:52:49.891Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-06T18:52:49.899Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-07T07:34:34.843Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-07T07:34:34.861Z"}
+{"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-07T08:23:39.714Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-07T10:01:41.255Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-07T10:01:41.266Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-07T21:41:06.041Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-07T21:41:06.048Z"}
+{"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-07T21:47:37.514Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-09T19:56:59.225Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-09T19:56:59.232Z"}
+{"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-09T22:12:12.786Z"}
+>>>>>>> 355cf17 (Home page and About us page design implemented)
+=======
+<<<<<<< HEAD
+>>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
+=======
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
+>>>>>>> ed1632b (card details added to schema)
+>>>>>>> f111db6 (card details added to schema)
+>>>>>>> ad58797 (card details added to schema)
