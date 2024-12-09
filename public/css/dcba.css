@@ -1,0 +1,620 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Silkscreen&family=Sixtyfour+Convergence&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Roboto", serif;
+  /* overflow-x: hidden; */
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.phone-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+.phone-nav div:nth-child(1) {
+  width: 50%;
+}
+.phone-nav div:nth-child(2) {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.phone-nav button {
+  background: #fff;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  /* border: 1px solid #ccc; */
+  padding: 0 10px 0 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  /* background-color: #e9e8dc; */
+  position: relative;
+  text-align: justify;
+  /* line-height: 2rem; */
+}
+
+.nav-list {
+  display: none; /* Initially hidden */
+  list-style-type: none;
+  padding: 0px 20px;
+  /* padding: 0; */
+  /* margin: 0; */
+  width: 100%;
+}
+
+.nav-list ul {
+  /* padding: 10px; */
+  margin: 0;
+  list-style-type: none;
+}
+
+.nav-list ul li {
+  margin: 10px 0px;
+  display: block;
+  border: 2px solid silver;
+  padding: 10px;
+}
+
+.nav-list ul li > a {
+  color: #000;
+  text-decoration: none;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0px;
+  flex-wrap: wrap;
+}
+
+#logo img {
+  width: 150px;
+}
+
+.mockup-nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+}
+.mockup-nav ul li {
+  display: inline-block;
+  position: relative;
+}
+.mockup-nav ul li a {
+  display: block;
+  padding: 20px 25px;
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  font-size: 16px;
+  transition: background-color 0.5s ease-in-out;
+  margin-right: 0.2rem;
+}
+.mockup-nav ul li ul.dropdown li {
+  display: block;
+  background: white;
+}
+.mockup-nav ul li ul.dropdown {
+  width: 15rem;
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
+
+.mockup-nav ul li ul.dropdown a {
+  padding: 10px 10px;
+  transition: width 1s;
+}
+
+.mockup-nav ul li ul.dropdown a:hover {
+  border-radius: 10px;
+}
+
+.mockup-nav ul li a:hover {
+  text-decoration: underline;
+  border-radius: 10px;
+}
+
+ul.dropdown li a:hover {
+  background: #1f2537;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.mockup-nav ul li:hover ul.dropdown {
+  display: block;
+}
+
+a.contact-us-nav-btn {
+  background: #1f2537;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  width: 10%;
+  height: 10%;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.contact-us-nav-btn i {
+  color: white;
+}
+
+/*banner area begins*/
+.banner-container {
+  position: relative;
+  overflow: hidden;
+}
+.banner-container img {
+  height: 85vh;
+  width: 100%;
+}
+.overlay {
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90vh;
+  width: 100%;
+  background-color: rgba(43, 39, 39, 0.76);
+  /* filter: brightness(9%); */
+}
+#decision-area h1 {
+  opacity: 1;
+}
+
+.overlay h1 {
+  color: white;
+  margin-bottom: 3rem;
+  font-size: 55px;
+}
+
+.banner-collection {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 0px;
+}
+
+#decision-area > p {
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+}
+
+.banner-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin: 3rem 0px;
+  flex-wrap: wrap;
+}
+
+.banner-btns a {
+  border-radius: 20px;
+  padding: 12px;
+  height: 10%;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.banner-btns a#banner-enroll {
+  background: #1f2537;
+  color: white;
+  border: none;
+  width: 20%;
+}
+
+.banner-btns a#banner-explore {
+  background: none;
+  color: #1f2537;
+  border: 2px solid #1f2537;
+  width: 30%;
+}
+
+.banner-btns a#banner-enroll:hover,
+.banner-btns a#banner-explore:hover {
+  background: white;
+  color: #1f2537;
+}
+/*banner area ends*/
+
+/*who we are area begins*/
+.who-we-are {
+  text-align: center;
+  /* text-wrap: wrap; */
+  padding: 80px 30px;
+}
+
+.who-we-are h4,
+.who-we-are h3 {
+  padding-bottom: 20px;
+}
+
+.who-we-are p {
+  line-height: 40px;
+  padding: 0px 50px;
+}
+
+/*who we are area ends*/
+
+/*who we are offer begins*/
+.who-we-offer {
+  background: #d9d9d9;
+  text-align: center;
+  padding: 80px 30px 80px 30px;
+}
+
+.who-we-offer h4,
+.who-we-offer h3 {
+  padding-bottom: 20px;
+}
+
+.offers-collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 50px 0px;
+}
+
+.offer-area img {
+  width: 250px;
+  height: 380px;
+  filter: brightness(70%);
+}
+
+.offer-area {
+  /* background: green; */
+  position: relative;
+  width: 23%;
+}
+
+.offer-area p {
+  width: 220px;
+  color: white;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  line-height: 25px;
+}
+
+.offer-area p span {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.offer-bottom {
+  padding-top: 60px;
+}
+
+.offer-bottom p {
+  top: 30%;
+}
+
+.offer-area img {
+  transition: width 1s, height 1s;
+}
+
+.offer-area img:hover {
+  /* width: 300px; */
+  height: 420px;
+}
+
+.see-more {
+  text-align: right;
+  padding: 0px 50px;
+  color: black;
+}
+
+/*who we are offer ends*/
+
+/*who choose us begins*/
+.why-choose-us {
+  /* background: red; */
+  text-align: center;
+  padding: 80px 30px 80px 30px;
+}
+
+.why-choose-us h4,
+.why-choose-us h3 {
+  padding-bottom: 20px;
+}
+
+.reasons-for-choice {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.reasons-for-choice img {
+  width: 400px;
+  height: 300px;
+}
+
+.reasons-for-choice ul li {
+  padding: 5px 0;
+}
+
+/*who choose us ends*/
+
+/*testimonial begins*/
+.testimonials {
+  background: #1f2537;
+  padding: 80px 30px 80px 30px;
+  color: white;
+  text-align: center;
+}
+#marquee {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+  color: #000;
+}
+
+/* Make sure the items will start off-screen to the right */
+.marquee-item {
+  display: inline-block;
+  margin-right: 30px; /* Space between items */
+}
+
+.testimony {
+  background: #fff;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-wrap: wrap;
+  border-radius: 10px;
+
+}
+
+.testimony p:nth-child(1) {
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.testimony hr{
+  width: 60%;
+display: block;
+margin: 0px auto 0px auto;
+border: 1.5px solid #000;
+margin-bottom: 20px;
+
+}
+
+.testimony-info{
+  line-height: 25px;
+  /* background-color: aqua; */
+  text-align: left;
+  padding: 0px 20px;
+}
+/* Start marquee animation immediately from right */
+#marquee {
+  /* background: green; */
+  margin-top: 3rem;
+  width: 1500px;
+  animation: slideLeft infinite linear;
+}
+
+#marquee:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+/* Define keyframes for sliding from right to left */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%); /* Start the items off-screen to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* End at the left of the container */
+  }
+}
+
+.even {
+  margin-top: 40px;
+}
+
+/* .odd{
+    background: green;
+  } */
+/*testimonial ends*/
+
+/*success stories begin*/
+.success-stories-area {
+  background: #fff;
+  text-align: center;
+  padding: 80px 30px 80px 30px;
+}
+
+.success-stories-area h4,
+.success-stories-area h3 {
+  padding-bottom: 20px;
+}
+
+.success-stories-area button {
+  background: none;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.success-stories-area button:hover {
+  background: #1f2537;
+  color: #fff;
+}
+/*success stories end*/
+
+/*certificate area begins*/
+.certificate-area {
+  background: #fff;
+  padding: 0px 30px 80px 30px !important;
+}
+
+.certificate-area h3 {
+}
+
+.certificate-area h4 {
+  padding-bottom: 15px;
+}
+
+#marquee-cert {
+padding: 50px 0px 10px 0px;
+  /* background: red; */
+  /* display: flex; */
+  /* overflow: hidden !important;
+  white-space: nowrap;
+  align-items: center;
+  width: 100%;
+  position: relative; */
+}
+
+/* Make sure the items will start off-screen to the right */
+/* .marquee-item-cert {
+  display: inline-block;
+} */
+
+.marquee-item-cert{
+  width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 50px;
+flex-wrap: wrap;
+}
+
+.marquee-item-cert img {
+width: 100px;
+  /* margin-right: 30px; */
+}
+/* Start marquee animation immediately from right */
+/* #marquee-cert {
+  background: green;
+  margin-top: 3rem;
+  width: 1200px;
+  animation: slideLeftCert infinite linear;
+} */
+
+/* #marquee-cert:hover {
+  animation-play-state: paused;
+} */
+/* Define keyframes for sliding from right to left */
+/* @keyframes slideLeftCert {
+  0% {
+    transform: translateX(100%); 
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+} */
+/*certificate area end*/
+
+
+/*footer area begins*/
+footer {
+  overflow-x: hidden;
+  background: #1f2537;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 80px 30px 80px 30px;
+  gap: 15px;
+}
+
+footer img:first-child {
+  width: 200px;
+}
+
+.icons{
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer ul li {
+  list-style-type: none;
+  line-height: 30px;
+}
+
+footer h5 {
+  padding: 30px 0px;
+}
+/*footer area ends*/
+
+.closing-footer {
+  background: #1f2537;
+  text-align: center;
+  padding: 0px 0px 20px 0px;
+  color: #fff;
+}
+
+.closing-footer p a {
+  text-decoration: underline;
+  color: #fff;
+}

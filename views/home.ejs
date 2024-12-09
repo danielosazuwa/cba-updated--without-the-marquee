@@ -1,0 +1,150 @@
+<%- include("partials/header.ejs") %>
+<!--BANNER AREA BEGINS-->
+<div class="banner-container">
+  <img src="/img/new_design/banner_img.png" alt="banner" />
+  <div class="overlay">
+    <div class="banner-collection">
+      <div id="decision-area">
+        <h1>
+          Unlock Your Tech Potential <br />
+          Today With Us!
+        </h1>
+
+        <p>
+          At Decareer Builder’s Academy, we empower tech enthusiasts with
+          cutting-edge skills for today’s dynamic industry.
+        </p>
+
+        <div class="banner-btns">
+          <a href="#" id="banner-enroll">Enroll Today!</a>
+          <a href="#" id="banner-explore" <>Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--BANNER AREA ENDS-->
+
+<!--WHO WE ARE AREA BEGINS-->
+<div class="who-we-are">
+  <h4>Who We Are</h4>
+  <h3>Empowering Futures Through Education and Experience</h3>
+  <p>
+    At DeCareer Builders Academy (DCBA) we are your partners in success, guiding
+    you every step of the way on your journey to excellence. From selecting and
+    studying your preferred course to mastering industry-relevant skills, we
+    provide hands-on teaching, personalized mentoring, and unwavering support.
+    Our goal? To help you land your dream job in your dream sector. With DCBA,
+    you're not just learning — you're building a future you’ve always
+    envisioned, and we’re here to hold your hand through every milestone.
+  </p>
+</div>
+<!--WHO WE ARE AREA BEGINS-->
+
+<!--WHO WE OFFER AREA BEGINS-->
+<div class="who-we-offer">
+  <h4>What We Offer</h4>
+  <h3>What We Offer Are Not Limited to These</h3>
+
+  <div class="offers-collection">
+    <div class="offer-area offer-bottom">
+      <a href="">
+        <img src="/img/new_design/our-academy.png" alt="Our Academy" />
+        <p>
+          <span>Our Academy</span> <br />
+          At Career Builders’ Academy, our mission is to empower individuals and
+          businesses...
+        </p>
+      </a>
+    </div>
+
+    <div class="offer-area offer-top">
+      <a href="">
+        <img src="/img/new_design/consultancy.png" alt="Consultancy" />
+        <p>
+          <span>Consultancy</span> <br />At our core, we specialize in
+          delivering top-tier consultancy services...
+        </p>
+      </a>
+    </div>
+
+    <div class="offer-area offer-top">
+      <a href="">
+        <img src="/img/new_design/partnership.png" alt="Partnership" />
+        <p>
+          <span>Partnership</span> <br />We are committed to advancing the tech
+          industry by forging...
+        </p>
+      </a>
+    </div>
+
+    <div class="offer-area offer-bottom">
+      <a href="">
+        <img src="/img/new_design/work-experience.png" alt="Work Experience" />
+        <p>
+          <span>Work Experience (WX)</span> <br />We extend a warm welcome to
+          our Work Experience platform, marking...
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <a href=""><p class="see-more">see more -></p></a>
+</div>
+<!--WHO WE OFFER AREA ENDS-->
+
+<!--WHY CHOOSE US AREA BEGINS-->
+<div class="why-choose-us">
+  <h4>Why Choose Us</h4>
+  <h3>Exactly Why We Are The Best</h3>
+
+  <div class="reasons-for-choice">
+    <div>
+      <img src="/img/new_design/choose-area-img.png" alt="DCBA" />
+    </div>
+
+    <div>
+      <ul>
+        <li>Expert-led courses taught by experienced professionals</li>
+        <li>Personalized study plans tailored to individual needs</li>
+        <li>Practical, industry-relevant skills for immediate impact</li>
+        <li>Hands-on learning through real-world projects</li>
+        <li>Flexible learning options, including online courses</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--WHY CHOOSE US AREA ENDS-->
+
+<!--TESTIMONIALS AREA BEGINS-->
+<div class="testimonials">
+  <h5>Testimonials</h5>
+
+  <div class="marquee" id="marquee">
+    <% testimonialsContent.forEach((item,index) => {%>
+    <div class="marquee-item">
+      <div class="testimony <%= index % 2 === 0 ? 'even' : 'odd' %>">
+        <div>
+          <p><%= item.name %></p>
+          <hr>
+          <p class="testimony-info">"<%= item.testimony %>"</p>
+        </div>
+      </div>
+    </div>
+    <%}); %>
+  </div>
+</div>
+<!--TESTIMONIALS AREA ENDS-->
+
+<!--SUCCESS STORIES AREA BEGINS-->
+<div class="success-stories-area">
+  <h4>Success Stories From Our Users</h4>
+  <h3>Our Users Have More To Say!</h3>
+
+  <a href=""><button>View Stories</button></a>
+</div>
+
+<!--SUCCESS STORIES AREA ENDS-->
+
+<%- include("partials/footer.ejs") %>
