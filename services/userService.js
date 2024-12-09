@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const { ErrorHandler } = require('../helpers/errorHandler');
 
-const create = async ({ fname, lname, email, phone, country, gender, password }) => {
+const create = async (payload) => {
     if (!fname || !lname) throw new ErrorHandler(400, 'Firstname and lastname are required');
     if (!email) throw new ErrorHandler(400, 'Email is required');
     if (!phone) throw new ErrorHandler(400, 'Phone number is required');

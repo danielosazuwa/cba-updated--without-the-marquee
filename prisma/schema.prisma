@@ -35,39 +35,45 @@ model Admin{
 
 
 model User{
-  id        String    @id @default(uuid())
-  FirstName String
-  lastName  String
-  email     String    @unique
-  password  String?
-  phone     String
-  address   String?
-  city      String?
-  state     String?
-  country   String?
-  isDeleted Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime  @updatedAt
+  id                     String                    @id @default(uuid())
+  FirstName              String
+  lastName               String
+  email                  String                    @unique
+  password               String?
+  phone                  String
+  address                String
+  city                   String?
+  state                  String?
+  country                String
+  isDeleted              Boolean                   @default(false)
+  createdAt              DateTime                  @default(now())
+  updatedAt              DateTime                  @updatedAt
+  deletedAt              DateTime                  @updatedAt
+
+  SingleCourseEnrollment SingleCourseEnrollment[]
+
+  Payments               Payments[]
 }
 
 model Course{
-  id          String    @id @default(uuid())
-  title       String
-  slug        String    @unique
-  description String
-  why_list    String[]
-  who_list    String[]
-  image       String?
-  amount      BigInt?   @default(0)
-  duration    String?
-  adminId     String
-  admin       Admin    @relation(fields: [adminId], references: [id])
-  Modules     Module[]
-  isDeleted   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime  @updatedAt
+  id                     String                    @id @default(uuid())
+  title                  String
+  slug                   String                    @unique
+  description            String
+  why_list               String[]
+  who_list               String[]
+  image                  String?
+  amount                 BigInt?                   @default(0)
+  duration               String?
+  adminId                String
+  admin                  Admin                    @relation(fields: [adminId], references: [id])
+  Modules                Module[]
+  isDeleted              Boolean                   @default(false)
+  createdAt              DateTime                  @default(now())
+  updatedAt              DateTime                  @updatedAt
+  deletedAt              DateTime                  @updatedAt
+
+  SingleCourseEnrollment SingleCourseEnrollment[]
 }
 
 model Module{
@@ -106,7 +112,75 @@ model lesson{
   @@index([moduleId])
 }
 
+model Payments {
+  id                  String                    @id @default(uuid())
+  userId              String
+  description         String?
+  currency            Currency                  @default(USD)
+  amount              Float
+  platformFee         Float
+  amountSettled       Float
+  stampDuty           Float?
+  transactionId       String
+  platform            String
+  metadata            Json
+  user                User                     @relation(fields: [userId], references: [id])
+  singleCoursePayment SingleCourseEnrollment[]
+  courseInstallments  CourseInstallments[]
+  isDeleted           Boolean                   @default(false)
+  createdAt           DateTime                  @default(now())
+  updatedAt           DateTime                  @updatedAt
 
+  @@index([userId,    transactionId])
+}
+
+model SingleCourseEnrollment {
+  id          String        @id @default(uuid())
+  paymentId   String
+  userId      String
+  courseId    String
+  paymentPlan PaymentPlans  @default(ONE_TIME)
+  isDiscount  Boolean       @default(false)
+  user        User         @relation(fields: [userId], references: [id])
+  course      Course       @relation(fields: [courseId], references: [id])
+  payments    Payments     @relation(fields: [paymentId], references: [id])
+  isDeleted   Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([userId, courseId, paymentId])
+}
+
+model CourseInstallments {
+  id            String        @id @default(uuid())
+  transactionId String
+  amount        Float
+  currency      Currency
+  startDate     DateTime
+  endDate       DateTime
+  currentRepeat Int           @default(0)
+  targetRepeat  Int
+  platform      String
+  metadata      Json
+  paymentPlans  PaymentPlans
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([id,  transactionId])
+  Payments      Payments[]
+}
+
+model CardDetails{
+  id String  @id @default(uuid())
+  fullname String
+  firstDigits String
+  lastDigits String
+  cvv String
+  token String
+  card_type String
+  expiry_month String
+  expiry_year String
+}
 model Session{
   id        String    @id @default(uuid())
   sid       String    @unique
@@ -121,4 +195,15 @@ enum Role {
   ADMIN
   EDITOR
   SUPER_ADMIN
+}
+
+enum Currency {
+  NGN
+  USD
+}
+
+enum PaymentPlans{
+  ONE_TIME
+  TWO_TIMES
+  THREE_TIMES
 }

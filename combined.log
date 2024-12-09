@@ -5936,4 +5936,9 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T19:40:41.634Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-02T19:40:46.648Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T19:40:46.661Z"}
+<<<<<<< HEAD
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
+=======
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
+>>>>>>> 05c4820 (card details added to schema)
