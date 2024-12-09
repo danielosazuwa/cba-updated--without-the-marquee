@@ -3,7 +3,9 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const { ErrorHandler } = require('../helpers/errorHandler');
 const prisma = new PrismaClient();
-const {LoggerService}  =  require('../customLogger')
+const {LoggerService}  =  require('../customLogger');
+const emailService = require('../services/emailService')
+
 const logger = new LoggerService()
 
 const getAll = async () => {
@@ -16,7 +18,7 @@ const getAll = async () => {
             select:{
                 id: true,
                 firstName: true,
-                lastName,
+                lastName:true,
                 email: true,
             }
         }),
@@ -57,6 +59,8 @@ const viewOne = async (id)=>{
 const create = async (payload) => {
 
     const isAdmin = await getOne({email: payload.email});
+    if(isAdmin) console.log(isAdmin)
+        
     if(isAdmin) throw new ErrorHandler(409, 'Admin account already exist');
 
     const passwordHash = await bcrypt.hash(payload.password, saltRounds);
@@ -71,8 +75,22 @@ const create = async (payload) => {
         }
     });
 
+    const{email, firstName, role} = newAdmin;
+
+    const subject = `${role} Access Granted`
+    const message = `Hi ${firstName}, 
+    You've been given an ${role} privilege. Kindly find below your login credentials:
+    email: ${email},
+    password: ${payload.password}`
+
     const {password, ...adminWithOutPassword} = newAdmin;
     logger.log(`created admin: ${adminWithOutPassword}`)
+    try{
+        emailService.newAdmin(email, subject, message);
+    }catch(err){
+        logger.warn(err)
+    }
+
 
     return adminWithOutPassword;
 }

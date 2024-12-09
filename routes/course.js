@@ -3,35 +3,67 @@ const router = express.Router();
 const courseService = require('../services/courseService');
 const authenticate = require('../middlewares/authenticate')
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
+const CourseUpload = require('../helpers/fileUpload')
+const { default: slugify } = require('slugify');
+const { xss } = require('express-xss-sanitizer');
 
-router.get('/courses',
+router.get('/',
     async (req, res, next) => {
-   const course = await courseService.getAll();
-   console.log(course)
+        const { courses } = req.query; 
+        let criteria = {};
+
+        if (courses) {
+            const normalizedSlug = slugify(courses, { lower: true, replacement: '_' });
+            const keywords = courses.toLowerCase().split(/\s+/);
+            criteria = {
+                OR: [
+                    { slug: { contains: normalizedSlug, mode: 'insensitive' } },
+                    { slug: { contains: normalizedSlug.replace(/_/g, '-'), mode: 'insensitive' } },
+                ],
+            };
+        }
+
+        try {
+            const courses = await courseService.getAll(criteria);
+            console.log(courses);
+        } catch (err) {
+            next(err);
+        }
    // res.render('admin/users', { users });
 });
 
+router.get('/trash', authenticateAdmin(['SUPER_ADMIN']),
+    async (req, res, next) => {
+        try {
+            const courses = await courseService.trash();
+            console.log(courses);
+        } catch (err) {
+            next(err);
+        }
+   // res.render('admin/users', { users });
+});
 
-router.get('/:id/get-admin', //authenticateAdmin,
+router.get('/:slug',xss(), //authenticateAdmin,
      async (req, res, next) => {
-        const id = req.params.id;
-    const admin = await adminService.viewOne(id);
-    console.log(admin)
-    // res.render('admin/users', { users });
+        const {slug} = req.params;
+        const normalizedSlug = slugify(`${slug}`, {lower: true, replacement:'_'});
+
+        try{
+            const course = await courseService.viewOne(normalizedSlug);
+            console.log(course)
+            // res.render('admin/users', { users });
+        }catch(err){
+            next(err);
+        }
+  
 });
 
-router.get('/:id/trash', authenticateAdmin(['SUPER_ADMIN']),
-    async (req, res, next) => {
-       const id = req.params.id;
-   const deletedAdmin = await adminService.viewTrash(id);
-   console.log(deletedAdmin)
-   // res.render('admin/users', { users });
-});
+
 
 router.post('/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), async (req, res, next) => {
     try {
-        console.log()
         const adminId = req.session.adminId;
+
         const newCourse = await courseService.create(adminId, req.body)
         console.log(newCourse)
 
@@ -43,43 +75,34 @@ router.post('/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), async (req, r
     }
 });
 
-router.post('/login', async (req, res, next) => {
+router.patch('/:courseId/img-upload',xss(),
+    authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']), 
+    CourseUpload.single('image'),
+    async (req, res, next) => {
+        try {
+            if (!req.file) {
+                return res.status(400).json({ error: 'No image file was uploaded.' });
+            }
 
-    try {
-        const admin=  await adminService.login(req.body);
+            const imagePath = `courseBanner/${req.file.filename}`;
 
-        req.session.adminId = admin.id;
-        req.session.firstName = admin.firstName;
-        req.session.lastName = admin.lastName;
-        req.session.email = admin.email;
-        req.session.role = admin.role;
+            const { courseId } = req.params;
 
-        // console.log('Session after login:', req.session);
+            const updatedCourse = await courseService.uploadImage(courseId, imagePath);
+            console.log(updatedCourse);
 
-        // return req.session.id
-        // res.render('dashboard', {admin})
-        // const user = req.session.user = admin;
-        // if(req.session.authorize){
-        //     res.render('admin', {username: user.firstName})
-        // }else{
-        //     res.render('login')
-        // }
-        // res.redirect('/admin/cases');
-
-        res.json({
-            status: 'Logged in successfully',
-            session: req.session // Send back the session data for verification
-        });
-    } catch (err) {
-        next(err);
+            // res.status(200).json({ message: 'Image uploaded successfully!', updatedCourse });
+        } catch (err) {
+            next(err);
+        }
     }
-});
+);
 
-router.put('/:id/update', authenticate,
+router.put('/:courseId/update-course', xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
      async (req, res, next) => {
     try {
-        const id = req.params.id
-        const admin =  await adminService.updateAdmin(id,req.body);
+        const {courseId} = req.params
+        const course =  await courseService.updateCourse(courseId,req.body);
         // res.render('dashboard', {admin})
         // const user = req.session.user = admin;
         // if(req.session.authorize){
@@ -88,59 +111,52 @@ router.put('/:id/update', authenticate,
         //     res.render('login')
         // }
         // res.redirect('/admin/cases');
-        console.log(admin)
+        console.log(course)
     } catch (err) {
         next(err);
     }
 });
 
-router.patch('/:id/soft-delete',  authenticateAdmin(['SUPER_ADMIN']),
+router.patch('/:courseId/soft-delete',  xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
-       const id = req.params.id
-       const admin =  await adminService.softDeleteAdmin(id);
-       // res.render('dashboard', {admin})
-       // const user = req.session.user = admin;
-       // if(req.session.authorize){
-       //     res.render('admin', {username: user.firstName})
-       // }else{
-       //     res.render('login')
-       // }
-       // res.redirect('/admin/cases');
-       console.log(admin)
+       const {courseId} = req.params
+       const course =  await courseService.softDeleteCourse(courseId);
+       
+       // res.send('/admin/cases');
+       console.log(course)
    } catch (err) {
        next(err);
    }
 });
 
-router.patch('/:id/restore-admin',  authenticateAdmin(['SUPER_ADMIN']),
+router.patch('/:courseId/restore-course',  xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN']),
     async (req, res, next) => {
    try {
-       const id = req.params.id
-       const admin =  await adminService.restoreDeleteAdmin(id);
-       // res.render('dashboard', {admin})
-       // const user = req.session.user = admin;
-       // if(req.session.authorize){
-       //     res.render('admin', {username: user.firstName})
-       // }else{
-       //     res.render('login')
-       // }
-       // res.redirect('/admin/cases');
-       console.log(admin)
+       const {courseId} = req.params
+       const course =  await courseService.restoreCourse(courseId);
+       
+       // res.send('/admin/cases');
+       console.log(course)
    } catch (err) {
        next(err);
    }
 });
 
-router.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        console.log('destroyed')
-        if (err) {
-            return res.status(500).send('Could not log out.');
-        }
-        res.clearCookie('connect.sid'); 
-        res.redirect('/admin/login'); 
-    });
+
+router.delete('/:courseId/permanent-delete',  xss(), authenticateAdmin(['SUPER_ADMIN']),
+    async (req, res, next) => {
+   try {
+       const {courseId} = req.params
+       const course =  await courseService.permanentDeleteCourse(courseId);
+       
+       // res.send('/admin/cases');
+       console.log(course)
+   } catch (err) {
+    console.log(err)
+       next(err);
+   }
 });
+
 
 module.exports = router;

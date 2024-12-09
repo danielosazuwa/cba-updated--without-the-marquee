@@ -23,14 +23,14 @@ let transporter = nodemailer.createTransport({
     pool: true,
     rateLimit: 20,
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PSWD
+        user: process.env.ZOHO_EMAIL_USER,
+        pass: process.env.ZOHO_EMAIL_PASS
     }
 });
 transporter.use('compile', hbs(options));
 
 const BASE_URL = process.env.BASE_URL;
-const SENT_FROM = process.env.EMAIL;
+const SENT_FROM = process.env.ZOHO_EMAIL_USER;
 
 const sendMail = (to, subject, template, data) => {
     let mailOptions = {
@@ -79,6 +79,30 @@ module.exports = {
             from: sender_name + '<' + SENT_FROM + '>',
             to: 'connect@decareerbuilders.com',
             replyTo: sender_email,
+            subject: subject,
+            template: template,
+            context: data
+        };
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            // console.log('Message sent: %s', info.messageId);
+        });
+    },
+
+    newAdmin:  (email,subject, message)=>{
+        const template = 'welcome';
+        const data = {
+            message,
+            base_url: BASE_URL
+        };
+
+        const mailOptions = {
+            // from: sender_name + '<' + SENT_FROM + '>',
+            from: '"Career Builders Academy" <' + SENT_FROM + '>',
+            to: email,
             subject: subject,
             template: template,
             context: data
