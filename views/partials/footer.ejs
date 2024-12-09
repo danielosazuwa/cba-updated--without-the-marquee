@@ -1,0 +1,181 @@
+<!--CERTIFICATE AREA BEGINS-->
+<div class="certificate-area">
+    <h4>Certificate</h4>
+    <h3>Let Us Lead You To The Path Of Certification</h3>
+
+    <div class="marquee-cert" id="marquee-cert">
+      <div class="marquee-item-cert">
+            <img src="/img/partners/image5.png" alt="Partner">
+            <img src="/img/partners/image6.png" alt="Partner">
+            <img src="/img/partners/image7.png" alt="Partner">
+            <img src="/img/partners/image8.png" alt="Partner">
+            <img src="/img/partners/image9.png" alt="Partner">
+        </div>
+      </div>
+    </div>
+  
+
+    <!-- <div class="marquee-cert" id="marquee-cert">
+      <div class="marquee-item-cert">
+        <div class="cert">
+          
+            <img src="/img/partners/image5.png" alt="Partner">
+            <img src="/img/partners/image6.png" alt="Partner">
+            <img src="/img/partners/image7.png" alt="Partner">
+            <img src="/img/partners/image8.png" alt="Partner">
+            <img src="/img/partners/image9.png" alt="Partner">
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  <!--CERTIFICATE AREA ENDS-->
+
+    <!--FOOTER AREA BEGINS-->
+    <footer>
+      <div>
+        <img src="/img/new_design/footer_logo.png" alt="DCBA Logo">
+        <div class="icons">
+          <a href=""><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-brands fa-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Decareer Builders</h5>
+        <ul>
+        <a href="">
+          <li>Home</li>
+        </a>  
+        <a href="">
+          <li>About Us</li>
+        </a>  
+        <a href="">
+          <li>Courses</li>
+        </a>  
+        <a href="">
+          <li>Services</li>
+        </a>  
+        <a href="">
+          <li>Resources</li>
+        </a>  
+        <a href="">
+          <li>FAQs</li>
+        </a>  
+        </ul>
+      </div>
+
+      <div>
+        <h5>Useful Links</h5>
+        <ul>
+        <a href="">
+          <li>Privacy</li>
+        </a>  
+        <a href="">
+          <li>Cookies</li>
+        </a>  
+        <a href="">
+          <li>Terms & Conditions</li>
+        </a>  
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contact Us</h5>
+        <ul>
+        <a href="tel:+44-7306-461-984">
+          <li><i class="fa fa-phone" aria-hidden="true"></i> +44 7306 461 984</li>
+        </a>  
+        <a href="tel:+234-7032-375-495">
+          <li><i class="fa fa-phone" aria-hidden="true"></i> +234 7032 375 495</li>
+        </a>  
+        <a href="connect@decareerbuilders.com">
+          <li><i class="fa fa-envelope" aria-hidden="true"></i> connect@decareerbuilders.com</li>
+        </a>  
+        </ul>
+      </div>
+    </footer>
+      <!--FOOTER AREA ENDS-->
+      <div class="closing-footer">
+        <% function getYear(){%>
+          <%const now = new Date();%>
+          <% const year = now.getFullYear(); %>
+          <% return year %>
+        <%}%>        
+        <p> &copy <%= getYear() %> <a href="">DeCareer Builders Academy</a>. All Rights Reserved by DCBA</p>
+      </div>
+</body>
+<script>
+    const marquee = document.getElementById('marquee');
+    const items = document.querySelectorAll('.marquee-item');
+    const totalWidth = Array.from(items).reduce((acc, item) => acc + item.offsetWidth + 20, 0); // total width of all items
+
+    for (let i = 0; i < items.length; i++) {
+    const clone = items[i].cloneNode(true);
+    marquee.appendChild(clone); // Duplicate the items
+    }
+
+    marquee.style.animationDuration = `${(totalWidth / 70)}s`; // 50px per second speed
+</script>
+
+<!-- <script>
+  const marq = document.getElementById('marquee-cert');
+  const itemsCert = document.querySelectorAll('.marquee-item-cert');
+  const totalWidthCert = Array.from(itemsCert).reduce((acc, item) => acc + item.offsetWidth + 20, 0); // total width of all items
+
+  marq.style.animationDuration = `${(totalWidthCert / 70)}s`; // 50px per second speed
+</script> -->
+
+<script>
+function toggleNav() {
+    const navList = document.getElementById('nav-list');
+    const button = document.querySelector('.toggle-button');
+    
+    // Toggle the nav list visibility
+    navList.style.display = (navList.style.display === 'block') ? 'none' : 'block';
+    
+    // Change the button to an "X" or back to the hamburger menu
+    if (button.innerHTML === '☰') {
+      button.innerHTML = '×'; // Change to "X"
+    } else {
+      button.innerHTML = '☰'; // Change back to hamburger
+    }
+  }
+
+</script>
+
+<script>
+    const buttons = document.querySelectorAll(".dropdownButton");
+    const contents = document.querySelectorAll(".dropdownContent");
+
+    buttons.forEach((button, index) => {
+    button.onclick = function() {
+        const content = contents[index];
+        
+        // Check if the clicked dropdown is already open
+        const isOpen = content.style.display === "block";
+
+        // Close all dropdowns
+        contents.forEach(content => {
+            content.style.display = "none";
+        });
+
+        // If the clicked dropdown was not open, open it
+        if (!isOpen) {
+            content.style.display = "block";
+        }
+    };
+
+    window.onclick = function(event) {
+    if (!event.target.matches('.dropdownButton')) {
+        contents.forEach(content => {
+            content.style.display = "none";
+        });
+    }
+    }
+    });
+</script>
+</html>

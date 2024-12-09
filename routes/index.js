@@ -9,10 +9,9 @@ const successStories = require("../public/array/success-stories");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.render("index", {
+    res.render("home.ejs", {
       title: "Home",
-      testimonialsContent: testimonials,
-      stories: successStories,
+      testimonialsContent: testimonials
     });
   } catch (err) {
     next(err);
@@ -20,7 +19,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/about", (req, res) => {
-  res.render("about", { title: "About Us" });
+  res.render("about-us.ejs", { title: "About Us" });
 });
 
 router.get("/our-academy", (req, res) => {

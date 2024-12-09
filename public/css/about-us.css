@@ -1,0 +1,486 @@
+p#about-banner {
+  background: #1f2537;
+  padding: 10px 0px;
+  border-radius: 10px;
+  width: 150px !important;
+}
+
+#about-banner a {
+  text-decoration: none;
+  color: white;
+}
+
+#about-banner a:hover {
+  text-decoration: underline;
+}
+
+/*about main section area begins*/
+.about-main {
+  display: flex;
+  gap: 20px;
+  padding: 80px 30px 80px 30px;
+  justify-content: center;
+  width: 100%;
+  text-wrap: wrap;
+}
+
+#opening-statement {
+  line-height: 40px;
+  padding-top: 20px;
+}
+
+#opening-statement p {
+  font-size: 1.2rem;
+}
+
+.ms-vs h4 {
+  padding: 10px 0px 20px 0px;
+}
+
+.ms-vs p {
+  color: #222222;
+}
+#ms,
+#vs {
+  background: #d9d9d9;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 30px;
+}
+
+#ms {
+  margin-bottom: 20px;
+}
+/*about main section area begins*/
+
+/*core values section area begins*/
+.core-values {
+  background: #1f2537;
+  color: #fff;
+  padding: 80px 30px 80px 30px;
+  height: fit-content;
+}
+
+.core-values h4 {
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.values-grid {
+  /* background: red; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  /* height: 100vh; */
+}
+
+.values-grid img {
+  filter: brightness(45%);
+  width: 100%;
+  /* height: fit-content; */
+}
+.values-placement {
+  position: relative;
+  background: gray;
+  border-radius: 10px;
+}
+
+.values-placement p {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  line-height: 30px;
+  /* background: orange; */
+  width: 95%;
+  font-size: 18px;
+}
+
+.values-placement span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.values-grid div {
+  width: 100%;
+  height: 100%;
+}
+
+.values-grid div:first-child {
+  /* background: green; */
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.values-grid div:nth-child(2) {
+  /* background: gold; */
+  grid-row: span 1;
+}
+
+.values-grid div:nth-child(3) {
+  /* background: purple; */
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.values-grid div:nth-child(4) {
+  /* background: yellowgreen; */
+  grid-row: span 1;
+  grid-column: span 1;
+  text-wrap: wrap;
+}
+
+.values-grid div:nth-child(5) {
+  /* background: orange; */
+  text-wrap: wrap;
+}
+
+.values-grid div:last-child {
+  /* background: grey; */
+  grid-row: span 1;
+}
+/*core values section area ends*/
+
+/*meet the team section area begins*/
+.meet-the-team {
+  padding: 80px 30px 80px 30px;
+}
+
+.meet-the-team h4 {
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.team-collection {
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.team-collection > div {
+  position: relative;
+  width: 25%;
+}
+
+.team-member-pic {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* box-shadow: 2px 2px 2px 2px #000; */
+}
+
+.team-member-info {
+  background: #d9d9d9;
+  border-radius: 10px;
+  padding: 80px 20px;
+  text-wrap: wrap;
+  height: fit-content;
+  margin-top: 150px;
+}
+
+.team-member-info hr {
+  border: 1px solid #000;
+  margin: 10px 0px;
+}
+
+.team-member-info p span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1f2537;
+}
+
+p#details {
+  line-height: 25px;
+}
+
+.member-drop {
+  /* background: red; */
+  margin-top: 50px;
+}
+/*meet the team section area ends*/
+
+@media (max-width: 1000px) {
+  /*core values section area begins*/
+  .core-values {
+    /* background: red; */
+  }
+
+  .core-values h4 {
+    text-align: center;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .values-placement {
+    position: relative;
+    background: gray;
+    border-radius: 10px;
+  }
+
+  .values-placement p {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 30px;
+    font-size: 16px;
+  }
+
+  .values-placement span {
+    font-size: 20px;
+  }
+
+  .values-grid div:first-child {
+    /* background: green; */
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .values-grid div:nth-child(2) {
+    /* background: gold; */
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+
+  .values-grid div:nth-child(3) {
+    /* background: purple; */
+    grid-row: span 1;
+    grid-column: span 3;
+  }
+
+  .values-grid div:nth-child(4) {
+    /* background: yellowgreen; */
+    grid-row: span 1;
+    grid-column: span 1;
+    text-wrap: wrap;
+  }
+
+  .values-grid div:nth-child(5) {
+    /* background: orange; */
+    text-wrap: wrap;
+  }
+
+  .values-grid div:last-child {
+    /* background: grey; */
+    grid-row: span 1;
+  }
+  /*core values section area ends*/
+
+  /*meet the team section area begins*/
+  .meet-the-team {
+    padding: 80px 30px 80px 30px;
+    /* background: lemonchiffon; */
+  }
+
+  .meet-the-team h4 {
+    padding-bottom: 20px;
+  }
+
+  .team-collection {
+    /* background: pink; */
+    flex-direction: column;
+  }
+
+  .team-collection > div {
+    width: 100%;
+  }
+
+  .team-member-pic {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* box-shadow: 2px 2px 2px 2px #000; */
+  }
+
+  .team-member-info {
+    background: #d9d9d9;
+    border-radius: 10px;
+    padding: 80px 20px;
+    text-wrap: wrap;
+    height: fit-content;
+    margin-top: 150px;
+  }
+
+  .team-member-info hr {
+    border: 1px solid #000;
+    margin: 10px 0px;
+  }
+
+  .team-member-info p span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1f2537;
+  }
+
+  p#details {
+    line-height: 25px;
+  }
+
+  .member-drop {
+    /* background: red; */
+    margin-top: 0px;
+  }
+  /*meet the team section area ends*/
+}
+
+@media (max-width: 768px) {
+  .about-main {
+    padding: 50px 30px 60px 30px;
+  }
+
+  /*about main section area begins*/
+  .about-main {
+    flex-direction: column;
+  }
+
+  #opening-statement {
+    text-align: justify;
+  }
+
+  /*about main section area begins*/
+
+  /*core values section area begins*/
+  .core-values {
+    /* background: purple; */
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .values-placement {
+    position: relative;
+    background: gray;
+    border-radius: 10px;
+  }
+
+  .values-placement p {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 30px;
+    font-size: 15px;
+  }
+
+  .values-placement span {
+    font-size: 16px;
+  }
+
+  .values-grid div:first-child {
+    /* background: green; */
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .values-grid div:nth-child(2) {
+    /* background: gold; */
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+
+  .values-grid div:nth-child(3) {
+    /* background: purple; */
+    grid-row: span 1;
+    grid-column: span 3;
+  }
+
+  .values-grid div:nth-child(4) {
+    /* background: yellowgreen; */
+    grid-row: span 2;
+    grid-column: span 3;
+    text-wrap: wrap;
+    height: fit-content;
+  }
+
+  .values-grid div:nth-child(5) {
+    /* background: orange; */
+    text-wrap: wrap;
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .values-grid div:nth-child(5) img {
+    height: 100%;
+  }
+
+  .values-grid div:last-child {
+    /* background: grey; */
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+
+  .values-grid div:last-child img {
+    height: 100%;
+  }
+  /*core values section area ends*/
+}
+
+@media (max-width: 600px) {
+  /*core values section area begins*/
+  .core-values {
+    /* background: yellow; */
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .values-placement p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 30px;
+    font-size: 15px;
+  }
+
+  .values-placement span {
+    font-size: 16px;
+  }
+
+  .values-grid div:first-child {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .values-grid div:nth-child(2) {
+    grid-row: span 1;
+    grid-column: span 3;
+  }
+
+  .values-grid div:nth-child(3) {
+    grid-column: span 3;
+  }
+
+  .values-grid div:nth-child(4) {
+    grid-row: span 1;
+    grid-column: span 3;
+  }
+
+  .values-grid div:nth-child(5) {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .values-grid div:last-child {
+    /* background: grey; */
+    grid-row: span 1;
+    grid-column: span 3;
+  }
+
+  /*core values section area ends*/
+}
+
+@media (max-width: 480px) {
+}

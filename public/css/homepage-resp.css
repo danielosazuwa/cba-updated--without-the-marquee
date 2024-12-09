@@ -1,0 +1,375 @@
+@media (max-width: 5000px) {
+  .phone-nav {
+    display: none;
+  }
+}
+@media (max-width: 1140px) {
+  a.contact-us-nav-btn {
+    padding: 12px;
+    width: 12%;
+  }
+
+  /*who we are offer begins*/
+  .who-we-offer {
+  }
+
+  .offer-area img {
+    width: 200px;
+    height: 300px;
+  }
+
+  .offer-area p {
+    width: 190px;
+    position: absolute;
+    top: 20%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+  }
+
+  .offer-area p span {
+    font-size: 18px;
+  }
+
+  .offer-bottom p {
+    top: 35%;
+  }
+
+  .offer-area img:hover {
+    height: 300px;
+  }
+
+  /*who we are offer ends*/
+}
+
+@media (max-width: 950px) {
+  a.contact-us-nav-btn {
+    width: 15%;
+  }
+
+  /*who we are offer begins*/
+  .who-we-offer {
+    /* background: #d9d9d9; */
+  }
+
+  .offers-collection {
+    gap: 20px;
+    padding: 50px 0px;
+  }
+
+  .offer-area img {
+    width: 300px;
+    height: 380px;
+  }
+
+  .offer-area {
+    width: 45%;
+  }
+
+  .offer-area p {
+    width: 220px;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+  }
+
+  .offer-area p span {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+
+  .offer-bottom {
+    padding-top: 0px;
+  }
+
+  .offer-bottom p {
+    top: 18%;
+  }
+
+  .offer-area img {
+    transition: height 1s;
+  }
+
+  .offer-area img:hover {
+    height: 400px;
+  }
+
+  /*who we are offer ends*/
+}
+
+@media (max-width: 905px) {
+  .mockup-nav ul li a {
+    padding: 20px 8px;
+    margin-right: 0.1rem;
+  }
+
+  a.contact-us-nav-btn {
+    width: 18%;
+  }
+
+  /*footer area begins*/
+
+  footer img:first-child {
+    width: 100px;
+  }
+
+  footer h5 {
+    padding: 20px 0px;
+  }
+  /*footer area ends*/
+}
+
+@media (max-width: 768px) {
+  * {
+    font-size: 15px;
+  }
+
+  header {
+    background: orange;
+    display: none;
+  }
+
+  .phone-nav {
+    display: flex;
+    overflow: auto;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .who-we-are p {
+    line-height: 35px;
+    padding: 0px 0px;
+    text-align: justify;
+  }
+
+  /*who we are offer begins*/
+  .who-we-offer {
+    /* background: #d9d9d9; */
+  }
+
+  .offer-area img {
+    width: 240px;
+    height: 270px;
+  }
+
+  .offer-area {
+    width: 45%;
+  }
+
+  .offer-area p {
+    width: 220px;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+  }
+
+  .offer-area p span {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+
+  .offer-bottom {
+    padding-top: 0px;
+  }
+
+  .offer-bottom p {
+    top: 18%;
+  }
+
+  .offer-area img {
+    transition: height 1s;
+  }
+
+  .offer-area img:hover {
+    height: 300px;
+  }
+
+  /*who we are offer ends*/
+
+  /*footer area begins*/
+  footer {
+    flex-direction: column;
+    text-align: center;
+  padding: 0px 30px 0px 30px;
+
+  }
+
+  footer
+  footer div {
+    width: 100%;
+  }
+
+  footer div:first-child {
+    /* background: red; */
+    width: 100%;
+    display: block;
+    margin: 0px auto 0px auto;
+    /* background: red; */
+  }
+
+  footer img:first-child {
+    width: 200px;
+    height: 180px;
+  }
+
+  footer h5 {
+    padding: 20px 0px;
+  }
+
+
+  /*footer area ends*/
+}
+
+@media (max-width: 600px) {
+  /*who we are offer begins*/
+  .who-we-offer {
+    /* background: #d9d9d9; */
+  }
+
+  .who-we-offer h4 {
+    padding-bottom: 20px;
+  }
+
+  .who-we-offer h3 {
+    padding-bottom: 0px;
+  }
+  .offers-collection {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .offer-area img {
+    width: 300px;
+    height: 380px;
+  }
+
+  .offer-area {
+    width: 100%;
+  }
+
+  .offer-area p {
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 25px;
+  }
+
+  .offer-area p span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .offer-area img:hover {
+    height: 400px;
+  }
+
+  /*who we are offer ends*/
+
+
+}
+
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  h4 {
+    font-size: 1rem;
+  }
+  /*banner area begins*/
+
+  .banner-container img {
+    height: 80vh;
+  }
+  .overlay {
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80vh;
+    width: 100%;
+    background-color: rgba(43, 39, 39, 0.76);
+    /* filter: brightness(9%); */
+  }
+
+  .overlay h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .banner-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 3rem 0px;
+    flex-wrap: wrap;
+  }
+
+  .banner-btns a {
+    border-radius: 20px;
+    padding: 11px;
+    height: 10%;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .banner-btns a#banner-enroll {
+    background: #1f2537;
+    color: white;
+    border: none;
+    width: 30%;
+  }
+
+  .banner-btns a#banner-explore {
+    background: none;
+    color: #1f2537;
+    border: 2px solid #1f2537;
+    width: 40%;
+  }
+
+  .banner-btns a#banner-enroll:hover,
+  .banner-btns a#banner-explore:hover {
+    background: white;
+    color: #1f2537;
+  }
+  /*banner area ends*/
+
+  /*why choose us area begins*/
+
+  .reasons-for-choice img{
+    width: 300px;
+    height: 200px;
+  }
+  /*why choose us area ends*/
+}
