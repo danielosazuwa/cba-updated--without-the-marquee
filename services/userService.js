@@ -1,8 +1,11 @@
-const User = require('../models').User;
-const emailService = require('../services/emailService');
-const bcrypt = require('bcryptjs');
-const saltRounds = 10;
+const { PrismaClient } = require("@prisma/client");
 const { ErrorHandler } = require('../helpers/errorHandler');
+const prisma = new PrismaClient();
+const {LoggerService}  =  require('../customLogger')
+const logger = new LoggerService();
+const slugify = require('slugify')
+const courseService = require('./courseService');
+
 
 const create = async (payload) => {
     if (!fname || !lname) throw new ErrorHandler(400, 'Firstname and lastname are required');
