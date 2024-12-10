@@ -5938,6 +5938,7 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-02T19:40:46.661Z"}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
@@ -5995,10 +5996,17 @@
 >>>>>>> 355cf17 (Home page and About us page design implemented)
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 2e3aeea (payment structure)
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
 >>>>>>> ed1632b (card details added to schema)
+<<<<<<< HEAD
 >>>>>>> f111db6 (card details added to schema)
 >>>>>>> ad58797 (card details added to schema)
+=======
+>>>>>>> 2e3aeea (payment structure)
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T21:51:45.903Z"}
+{"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-14T21:51:45.914Z"}

@@ -41,6 +41,7 @@ model User{
   email                  String                    @unique
   password               String?
   phone                  String
+  ipAddress              String
   address                String
   city                   String?
   state                  String?
@@ -49,10 +50,9 @@ model User{
   createdAt              DateTime                  @default(now())
   updatedAt              DateTime                  @updatedAt
   deletedAt              DateTime                  @updatedAt
-
   SingleCourseEnrollment SingleCourseEnrollment[]
-
   Payments               Payments[]
+  CourseInstallments     CourseInstallments[]
 }
 
 model Course{
@@ -63,7 +63,9 @@ model Course{
   why_list               String[]
   who_list               String[]
   image                  String?
-  amount                 BigInt?                   @default(0)
+  amount_in_NGN          BigInt?                   @default(0)
+  amount_in_USD          BigInt?                   @default(0)
+  amount_in_GBP          BigInt?                   @default(0)
   duration               String?
   adminId                String
   admin                  Admin                    @relation(fields: [adminId], references: [id])
@@ -112,6 +114,44 @@ model lesson{
   @@index([moduleId])
 }
 
+model SingleCourseEnrollment {
+  id          String        @id @default(uuid())
+  paymentId   String
+  userId      String
+  courseId    String
+  paymentPlan PaymentPlans  @default(ONE_TIME)
+  isDiscount  Boolean       @default(false)
+  user        User         @relation(fields: [userId], references: [id])
+  course      Course       @relation(fields: [courseId], references: [id])
+  payments    Payments     @relation(fields: [paymentId], references: [id])
+  isDeleted   Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([userId, courseId, paymentId])
+}
+
+model CourseInstallments {
+  id            String        @id @default(uuid())
+  transactionId String
+  userId        String
+  amount        Float
+  currency      Currency
+  startDate     DateTime
+  endDate       DateTime
+  currentRepeat Int           @default(0)
+  targetRepeat  Int
+  platform      String
+  metadata      Json
+  user          User         @relation(fields: [userId], references: [id])
+  paymentPlans  PaymentPlans
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([id,  transactionId])
+  Payments      Payments[]
+}
+
 model Payments {
   id                  String                    @id @default(uuid())
   userId              String
@@ -134,52 +174,16 @@ model Payments {
   @@index([userId,    transactionId])
 }
 
-model SingleCourseEnrollment {
-  id          String        @id @default(uuid())
-  paymentId   String
-  userId      String
-  courseId    String
-  paymentPlan PaymentPlans  @default(ONE_TIME)
-  isDiscount  Boolean       @default(false)
-  user        User         @relation(fields: [userId], references: [id])
-  course      Course       @relation(fields: [courseId], references: [id])
-  payments    Payments     @relation(fields: [paymentId], references: [id])
-  isDeleted   Boolean       @default(false)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-
-  @@index([userId, courseId, paymentId])
-}
-
-model CourseInstallments {
-  id            String        @id @default(uuid())
-  transactionId String
-  amount        Float
-  currency      Currency
-  startDate     DateTime
-  endDate       DateTime
-  currentRepeat Int           @default(0)
-  targetRepeat  Int
-  platform      String
-  metadata      Json
-  paymentPlans  PaymentPlans
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  @@index([id,  transactionId])
-  Payments      Payments[]
-}
-
 model CardDetails{
-  id String  @id @default(uuid())
-  fullname String
-  firstDigits String
-  lastDigits String
-  cvv String
-  token String
-  card_type String
+  id           String  @id @default(uuid())
+  fullname     String
+  firstDigits  String
+  lastDigits   String
+  cvv          String
+  token        String
+  card_type    String
   expiry_month String
-  expiry_year String
+  expiry_year  String
 }
 model Session{
   id        String    @id @default(uuid())
@@ -200,6 +204,7 @@ enum Role {
 enum Currency {
   NGN
   USD
+  GBP
 }
 
 enum PaymentPlans{
