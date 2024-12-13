@@ -63,9 +63,9 @@ model Course{
   why_list               String[]
   who_list               String[]
   image                  String?
-  amount_in_NGN          BigInt?                   @default(0)
-  amount_in_USD          BigInt?                   @default(0)
-  amount_in_GBP          BigInt?                   @default(0)
+  amount_in_NGN          Int?                   @default(0)
+  amount_in_USD          Int?                   @default(0)
+  amount_in_GBP          Int?                   @default(0)
   duration               String?
   adminId                String
   admin                  Admin                    @relation(fields: [adminId], references: [id])
