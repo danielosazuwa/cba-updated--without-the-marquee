@@ -76,7 +76,6 @@ app.use(session({
   })
 );
 
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(formatView);
 app.use("/", indexRouter);
