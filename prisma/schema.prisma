@@ -12,66 +12,75 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model Admin{
-  id        String     @id @default(uuid())
+
+model Admin {
+  id        String   @id @default(uuid())
   firstName String
   lastName  String
-  email     String     @unique
+  email     String   @unique
   password  String
-  role      Role?      @default(ADMIN)
+  role      Role?    @default(ADMIN)
   image     String?
-  isActive  Boolean    @default(true)
+  isActive  Boolean  @default(true)
   Course    Course[]
   Module    Module[]
   lesson    lesson[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  deletedAt DateTime   @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime @updatedAt
 
-
-
-  Session   Session[]
+  Session Session[]
 }
 
-
-model User{
-  id        String    @id @default(uuid())
-  FirstName String
-  lastName  String
-  email     String    @unique
-  password  String?
-  phone     String
-  address   String?
-  city      String?
-  state     String?
-  country   String?
-  isDeleted Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime  @updatedAt
+model User {
+  id                     String                   @id @default(uuid())
+  firstName              String
+  lastName               String
+  email                  String                   @unique
+  password               String?
+  phone                  String
+  ipAddress              String?
+  address                String?
+  city                   String?
+  region                 String?
+  countryCode            String?
+  country                String?
+  isDeleted              Boolean                  @default(false)
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  deletedAt              DateTime                 @updatedAt
+  SingleCourseEnrollment SingleCourseEnrollment[]
+  Payments               Payments[]
+  CourseInstallments     CourseInstallments[]
 }
 
-model Course{
-  id          String    @id @default(uuid())
-  title       String
-  slug        String    @unique
-  description String
-  why_list    String[]
-  who_list    String[]
-  image       String?
-  amount      BigInt?   @default(0)
-  duration    String?
-  adminId     String
-  admin       Admin    @relation(fields: [adminId], references: [id])
-  Modules     Module[]
-  isDeleted   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime  @updatedAt
+model Course {
+  id            String   @id @default(uuid())
+  title         String
+  slug          String   @unique
+  description   String
+  why_list      String[]
+  who_list      String[]
+  image         String?
+  amount_in_NGN BigInt?
+  amount_in_USD BigInt?
+  amount_in_GBP BigInt?
+  duration      String?
+  adminId       String
+  admin         Admin    @relation(fields: [adminId], references: [id])
+  Modules       Module[]
+  isDeleted     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime @updatedAt
+
+  SingleCourseEnrollment SingleCourseEnrollment[]
+
+  CourseInstallments CourseInstallments[]
 }
 
-model Module{
-  id          String    @id @default(uuid())
+model Module {
+  id          String   @id @default(uuid())
   title       String
   slug        String?
   description String
@@ -80,17 +89,16 @@ model Module{
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
   lessons     lesson[]
-  isDeleted   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime  @updatedAt
+  isDeleted   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime @updatedAt
 
   @@index([courseId])
-
 }
 
-model lesson{
-  id          String    @id @default(uuid())
+model lesson {
+  id          String   @id @default(uuid())
   title       String
   slug        String
   description String
@@ -98,27 +106,111 @@ model lesson{
   module      Module   @relation(fields: [moduleId], references: [id])
   adminId     String
   admin       Admin    @relation(fields: [adminId], references: [id])
-  isDeleted   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime  @updatedAt
+  isDeleted   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime @updatedAt
 
   @@index([moduleId])
 }
 
+model SingleCourseEnrollment {
+  id          String       @id @default(uuid())
+  paymentId   String
+  userId      String
+  courseId    String
+  paymentPlan PaymentPlans @default(ONE_TIME)
+  isDiscount  Boolean      @default(false)
+  user        User         @relation(fields: [userId], references: [id])
+  course      Course       @relation(fields: [courseId], references: [id])
+  payment     Payments     @relation(fields: [paymentId], references: [id])
+  isDeleted   Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
-model Session{
-  id        String    @id @default(uuid())
-  sid       String    @unique
-  data      String    @db.Text
+  @@index([userId, courseId, paymentId])
+}
+
+model CourseInstallments {
+  id            String       @id @default(uuid())
+  transactionId String
+  userId        String
+  courseId      String?
+  amount        Float
+  currency      Currency
+  startDate     DateTime
+  endDate       DateTime
+  currentRepeat Int          @default(0)
+  targetRepeat  Int
+  platform      String
+  metadata      Json
+  course        Course?      @relation(fields: [courseId], references: [id])
+  user          User         @relation(fields: [userId], references: [id])
+  paymentPlans  PaymentPlans
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  Payments      Payments[]
+
+  @@index([id, transactionId])
+}
+
+model Payments {
+  id                  String                   @id @default(uuid())
+  userId              String
+  description         String?
+  currency            Currency                 @default(USD)
+  amount              Float
+  platformFee         Float
+  amountSettled       Float
+  stampDuty           Float?
+  transactionId       String
+  platform            String
+  metadata            Json
+  user                User                     @relation(fields: [userId], references: [id])
+  singleCoursePayment SingleCourseEnrollment[]
+  courseInstallments  CourseInstallments[]
+  isDeleted           Boolean                  @default(false)
+  createdAt           DateTime                 @default(now())
+  updatedAt           DateTime                 @updatedAt
+
+  @@index([userId, transactionId])
+}
+
+model CardDetails {
+  id           String @id @default(uuid())
+  fullname     String
+  firstDigits  String
+  lastDigits   String
+  cvv          String
+  token        String
+  card_type    String
+  expiry_month String
+  expiry_year  String
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  sid       String   @unique
+  data      String   @db.Text
   adminId   String?
   admin     Admin?   @relation(fields: [adminId], references: [id])
   expiresAt DateTime
-
 }
 
 enum Role {
   ADMIN
   EDITOR
   SUPER_ADMIN
+}
+
+enum Currency {
+  NGN
+  USD
+  GBP
+}
+
+enum PaymentPlans {
+  ONE_TIME
+  TWO_TIMES
+  THREE_TIMES
 }

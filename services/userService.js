@@ -1,49 +1,192 @@
-const User = require('../models').User;
-const emailService = require('../services/emailService');
-const bcrypt = require('bcryptjs');
-const saltRounds = 10;
-const { ErrorHandler } = require('../helpers/errorHandler');
+const { PrismaClient } = require("@prisma/client");
+const { ErrorHandler } = require("../helpers/errorHandler");
+const prisma = new PrismaClient();
+const { LoggerService } = require("../customLogger");
+const logger = new LoggerService();
+const slugify = require("slugify");
+const courseService = require("./courseService");
+const emailService = require("./emailService");
 
-const create = async ({ fname, lname, email, phone, country, gender, password }) => {
-    if (!fname || !lname) throw new ErrorHandler(400, 'Firstname and lastname are required');
-    if (!email) throw new ErrorHandler(400, 'Email is required');
-    if (!phone) throw new ErrorHandler(400, 'Phone number is required');
-    if (!country) throw new ErrorHandler(400, 'Country is required');
-    if (!password) throw new ErrorHandler(400, 'Password is required');
+const getAll = async () => {
+  const users = await prisma.user.findMany({
+    where: {
+      isDeleted: false,
+    },
+    orderBy: {
+      firstName: 'asc',
+    },
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      email: true,
+      phone: true,
+      ipAddress: true,
+      city: true,
+      region: true,
+      countryCode: true,
+      country: true,
+      createdAt: true,
+      updatedAt: true,
+      SingleCourseEnrollment: {
+        select: {
+          course: {
+            select: {
+              id: true,
+              title: true,
+            },
+          },
+        },
+      },
+      CourseInstallments: {
+        select: {
+          id: true,
+          targetRepeat: true,
+          currentRepeat: true,
+          course: {
+            select: {
+              id: true,
+              title: true,
+              amount_in_GBP: true,
+              amount_in_NGN: true,
+              amount_in_USD: true,
+            },
+          },
+        },
+      },
+    },
+  });
 
-    const passwordHash = await bcrypt.hash(password, saltRounds);
-    const data = {
-        fullname: `${lname} ${fname}`,
-        email,
-        gender,
-        phone,
-        country,
-        password: passwordHash
-    };
-    const newUser = await User.create(data);
-    emailService.sendConfirmationEmail(newUser);
-    return newUser;
-}
+  return users;
+};
 
-const login = async ({ email, password }) => {
-    const foundUser = await User.findOne({
-        where: { email },
-        //attributes: ['id', 'fullname', 'email', 'country', 'phone', 'password', 'active']
-        attributes: ['id', 'fullname', 'email', 'phone', 'password', 'active']
+const getOne = async (criteria) => {
+  return await prisma.user.findFirst({
+    where: { ...criteria },
+  });
+};
+
+const viewOne = async (id) => {
+  const user = await getOne({ id: id });
+  if (!user) console.log("User Not Found!");
+  if (!user) throw new ErrorHandler(404, "User Not Found!");
+
+  const { password, ...withOutPassword } = user;
+  return withOutPassword;
+};
+
+const create = async (payload) => {
+  const user = await getOne({ email: payload.email });
+
+  if (!user) {
+    const newUser = await prisma.user.create({
+      data: {
+        ...payload,
+      },
     });
-    if (!foundUser) throw new ErrorHandler(404, 'Email or password is incorrect');
 
-    const user = foundUser.toJSON();
+    const subject = `Welcome To DCBA`;
+    const message = `Hi ${newUser.firstName},
+    You are welcome to DeCareer Builder's Academy. 
+    Feel free to enroll for any course of choice.`;
 
-    const match = await bcrypt.compare(password, foundUser.password);
-    if (!match) throw new ErrorHandler(400, 'Email and password doesn\'t match');
+    try {
+      emailService.newUSer(newUser.email, subject, message);
+    } catch (error) {
+      logger.warn(error);
+    }
 
-    delete user.password;
-    delete user.active;
-    return user;
-}
+    const { password, ...withOutPassword } = newUser;
+    console.log(withOutPassword);
+
+    return withOutPassword;
+  }
+  {
+    const { password, ...withOutPassword } = user;
+    return withOutPassword;
+  }
+};
+
+const updateUser = async (id, payload) => {
+  const user = await getOne({ id: id, isDeleted:false });
+  if (!user) throw new ErrorHandler(404, "User Not Found!");
+
+  const updateUser = await prisma.user.update({
+    where: { id: id },
+    data: {
+      ...payload, 
+    },
+  });
+
+  const { password, ...withOutPassword } = updateUser;
+  return withOutPassword;
+};
+
+const softDeleteUser = async (id) => {
+  const user = await getOne({ id: id });
+  if (!user) throw new ErrorHandler(404, "User Not Found!");
+
+  const deleteUser = await prisma.user.update({
+    where: {
+      id: id,
+    },
+    data: {
+      isDeleted: true,
+    },
+  });
+  return deleteUser;
+};
+
+const Trash = async () => {
+  const users = await prisma.user.findMany({
+    where: {
+      isDeleted: true,
+    },
+  });
+
+  console.log(users);
+  return users;
+};
+
+const restoreUser = async (id) => {
+  const user = await getOne({ id: id, isDeleted: true });
+  if (!user) throw new ErrorHandler(404, "User Not Found!");
+
+  const restoredUser = await prisma.user.update({
+    where: {
+      id: id,
+      isDeleted: true,
+    },
+  });
+
+  const { password, ...withOutPassword } = restoredUser;
+
+  return withOutPassword;
+};
+
+const permanentDelete = async (id) => {
+  const user = await getOne({ id: id });
+  if (!user) throw new ErrorHandler(404, "User Not Found!");
+
+  const deleteUser = await prisma.user.delete({
+    where: {
+      id: id,
+      isDeleted: true,
+    },
+  });
+
+  return deleteUser;
+};
+const login = async () => {};
 
 module.exports = {
-    create,
-    login
-}
+  getAll,
+  getOne,
+  viewOne,
+  create,
+  updateUser,
+  softDeleteUser,
+  Trash,
+  restoreUser,
+  permanentDelete,
+};
