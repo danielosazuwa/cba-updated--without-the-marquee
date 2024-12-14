@@ -15,18 +15,18 @@ const { xss } = require('express-xss-sanitizer');
 const hpp = require('hpp');
 const helmet = require('helmet');
 const {prisma} = require('./prismaService');
+const ipinfo = require('ipinfo-express')
+const expressip = require('express-ip');
 
-
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const courseRouter = require('./routes/course');
 const moduleRouter = require('./routes/module');
 const lessonRouter = require('./routes/lesson');
 
-
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
-  logger.log(`Error: ${err.message}`);
+  logger.log(`Error: ${err.message, err.stack}`);
   logger.log(`shutting down due to uncaught exception`);
   process.exit(1);
 });
@@ -37,9 +37,12 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
-var app = express();
+const app = express();
+
 const logger = new LoggerService("app");
 const port = process.env.PORT || 8000;
+app.use(expressip().getIpInfoMiddleware);
+
 app.use(helmet())
 
 // view engine setup
@@ -49,16 +52,19 @@ app.set("view engine", "ejs");
 
 // Middleware setup
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(
-  fileUpload({
-    limits: { fileSize: 10 * 1024 * 1024 },
-  })
-);
+// app.use(express.urlencoded({ extended: false }));
+// app.use(fileUpload({
+//     limits: { fileSize: 10 * 1024 * 1024 },
+// }));
+app.use(xss());
+// Prevent parameter pollution
+app.use(hpp({
+    whitelist: ['position']
+}));
 
-app.use(
-  session({
-    secret: config.session_secret,
+
+app.use(session({
+    secret: config.session_secret, 
     resave: false,
     saveUninitialized: true,
     store: new MemoryStore({
@@ -80,7 +86,7 @@ app.use(xss());
 app.use(hpp()); 
 app.use(formatView);
 app.use("/", indexRouter);
-// app.use('/users', authenticate, usersRouter);
+app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/course', courseRouter);
 app.use('/module', moduleRouter);
@@ -93,13 +99,27 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+
+
+// Handled unhandled routes
+// app.all('*', (req, res, next)=>{
+//     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
+// });
+
+
 app.use(function (err, req, res, next) {
+  console.error("Error details:", {
+    message: err.message,
+    stack: err.stack,
+    headers: req.headers,
+    body: req.body,
+  });
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);
   res.render("error");
 });
+
 
 // Start server and connect to Prisma
 const startServer = async () => {

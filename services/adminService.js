@@ -57,6 +57,7 @@ const viewOne = async (id)=>{
 }
 
 const create = async (payload) => {
+    console.log(payload)
 
     const isAdmin = await getOne({email: payload.email});
     if(isAdmin) console.log(isAdmin)
@@ -107,7 +108,7 @@ const login = async (payload, isActive = true) => {
     if (!match) throw new ErrorHandler(400, 'Email and password doesn\'t match');
 
     const {password, ...adminWithOutPassword} = foundAdmin;
-
+    
 
     return adminWithOutPassword;
 

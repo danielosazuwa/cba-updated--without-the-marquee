@@ -4,6 +4,7 @@ const adminService = require('../services/adminService');
 const authenticate = require('../middlewares/authenticate')
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const { xss } = require('express-xss-sanitizer');
+const {authAdmin, createAdminVal} = require('../validation/adminValidtion')
 
 router.get('/all-admins', authenticateAdmin(['SUPER_ADMIN']),
     async (req, res, next) => {
@@ -31,12 +32,14 @@ router.get('/:id/trash', xss(), authenticateAdmin(['SUPER_ADMIN']),
 
 router.post('/create', 
     authenticateAdmin(['SUPER_ADMIN']), 
+    createAdminVal,
     async (req, res, next) => {
         // console.log(req.body)
 
     try {
 
-        const newAdmin = await adminService.create(req.body)
+        const newAdmin = await adminService.create(req.body);
+        console.log(newAdmin)
         // return res.render('create', newAdmin)
         // res.redirect('/admin/login');
 
@@ -45,11 +48,10 @@ router.post('/create',
     }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', authAdmin, async (req, res, next) => {
 
     try {
         const admin=  await adminService.login(req.body);
-
         req.session.adminId = admin.id;
         req.session.firstName = admin.firstName;
         req.session.lastName = admin.lastName;

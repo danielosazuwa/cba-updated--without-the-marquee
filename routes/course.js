@@ -6,7 +6,8 @@ const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const CourseUpload = require('../helpers/fileUpload')
 const { default: slugify } = require('slugify');
 const { xss } = require('express-xss-sanitizer');
-const courseValidation = require('../validation/courseValidation')
+const {courseVal} = require('../validation/courseValidation');
+
 router.get('/',
     async (req, res, next) => {
         const { courses } = req.query; 
@@ -60,7 +61,7 @@ router.get('/:slug',xss(), //authenticateAdmin,
 
 
 
-router.post('/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), courseValidation.courseVal, async (req, res, next) => {
+router.post('/create', authenticateAdmin(['SUPER_ADMIN','ADMIN']), courseVal, async (req, res, next) => {
     try {
         const adminId = req.session.adminId;
 
@@ -100,7 +101,7 @@ router.patch('/:courseId/img-upload',xss(),
     }
 );
 
-router.put('/:courseId/update-course', xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']),
+router.put('/:courseId/update-course', xss(), authenticateAdmin(['SUPER_ADMIN', 'ADMIN', 'EDITOR']), courseVal,
      async (req, res, next) => {
     try {
         const {courseId} = req.params
