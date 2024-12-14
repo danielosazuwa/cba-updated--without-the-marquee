@@ -3306,6 +3306,7 @@
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-27T19:57:37.473Z"}
 {"level":"info","message":"listening at port 6000 in development😁😁😁😁","module":"app","timestamp":"2024-11-27T19:57:37.486Z"}
 <<<<<<< HEAD
+<<<<<<< HEAD
 {"level":"error","message":"Failed to connect to the database 🔥🔥🔥:","module":"app","timestamp":"2024-11-28T06:54:39.044Z"}
 {"level":"error","message":"Failed to start the server 🔥🔥🔥🔥🔥🔥:","module":"app","timestamp":"2024-11-28T06:54:39.048Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-28T20:56:12.483Z"}
@@ -3352,6 +3353,8 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-09T19:56:59.232Z"}
 {"level":"warn","message":"Shutting down gracefully...","module":"app","timestamp":"2024-12-09T22:12:12.786Z"}
 =======
+=======
+>>>>>>> 5dc1a60f9e791488405e41477ef8fe65cc103d27
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-28T09:18:30.465Z"}
 {"level":"info","message":"listening at port 6000 in development😁😁😁😁","module":"app","timestamp":"2024-11-28T09:18:30.482Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-11-28T09:18:36.184Z"}
@@ -5939,6 +5942,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
@@ -5998,12 +6002,15 @@
 <<<<<<< HEAD
 =======
 >>>>>>> 2e3aeea (payment structure)
+=======
+>>>>>>> 5dc1a60f9e791488405e41477ef8fe65cc103d27
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
 <<<<<<< HEAD
 >>>>>>> ed1632b (card details added to schema)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> f111db6 (card details added to schema)
@@ -6013,6 +6020,8 @@
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T21:51:45.903Z"}
 {"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-14T21:51:45.914Z"}
 =======
+=======
+>>>>>>> 5dc1a60f9e791488405e41477ef8fe65cc103d27
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-09T11:13:05.541Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-09T11:13:23.235Z"}
@@ -6184,6 +6193,7 @@
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-12T02:23:31.690Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-12T02:23:31.706Z"}
 >>>>>>> 65533fc (changes)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 5dc1a60 (changes)
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T21:52:01.542Z"}
@@ -7417,3 +7427,9 @@
 >>>>>>> 9708ec7 (User Crud Completed)
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T21:53:12.923Z"}
 {"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-14T21:53:12.956Z"}
+=======
+>>>>>>> 5dc1a60f9e791488405e41477ef8fe65cc103d27
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T22:01:52.275Z"}
+{"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-14T22:01:52.289Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-14T22:02:11.767Z"}
+{"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-14T22:02:11.782Z"}

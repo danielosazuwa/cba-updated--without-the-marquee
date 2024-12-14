@@ -26,7 +26,7 @@ const lessonRouter = require('./routes/lesson');
 
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
-  logger.log(`Error: ${err.message, err.stack}`);
+  logger.log(`Error: ${err.message}`);
   logger.log(`shutting down due to uncaught exception`);
   process.exit(1);
 });
@@ -108,12 +108,6 @@ app.use(function (req, res, next) {
 
 
 app.use(function (err, req, res, next) {
-  console.error("Error details:", {
-    message: err.message,
-    stack: err.stack,
-    headers: req.headers,
-    body: req.body,
-  });
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);
