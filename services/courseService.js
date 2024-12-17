@@ -93,7 +93,6 @@ const viewOne = async (criteria) => {
 };
 
 const create = async (adminId, payload) => {
-  console.log(payload);
   const slug = slugify(`${payload.title}`, { lower: true, replacement: "_" });
 
   const newCourse = await prisma.course.create({

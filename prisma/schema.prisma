@@ -37,7 +37,7 @@ model User {
   firstName              String
   lastName               String
   email                  String                   @unique
-  password               String?
+  password               String?                  @default("password")
   phone                  String
   ipAddress              String?
   address                String?
@@ -116,14 +116,14 @@ model lesson {
 
 model SingleCourseEnrollment {
   id          String       @id @default(uuid())
-  paymentId   String
+  paymentId   String?
   userId      String
   courseId    String
   paymentPlan PaymentPlans @default(ONE_TIME)
   isDiscount  Boolean      @default(false)
   user        User         @relation(fields: [userId], references: [id])
   course      Course       @relation(fields: [courseId], references: [id])
-  payment     Payments     @relation(fields: [paymentId], references: [id])
+  payment     Payments?    @relation(fields: [paymentId], references: [id])
   isDeleted   Boolean      @default(false)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt

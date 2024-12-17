@@ -17,12 +17,14 @@ const helmet = require('helmet');
 const {prisma} = require('./prismaService');
 const ipinfo = require('ipinfo-express')
 const expressip = require('express-ip');
+const errorMiddleware = require('./helpers/errors');
 
 const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const courseRouter = require('./routes/course');
 const moduleRouter = require('./routes/module');
 const lessonRouter = require('./routes/lesson');
+const enrollmentRouter = require('./routes/enrollment');
 
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
@@ -91,12 +93,13 @@ app.use('/admin', adminRouter);
 app.use('/course', courseRouter);
 app.use('/module', moduleRouter);
 app.use('/lesson', lessonRouter);
+app.use('/enrollment', enrollmentRouter);
 
 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+  next(createError(`${req.originalUrl} route not found`, 404));
 });
 
 
@@ -107,13 +110,14 @@ app.use(function (req, res, next) {
 // });
 
 
-app.use(function (err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-  res.status(err.status || 500);
-  res.render("error");
-});
+// app.use(function (err, req, res, next) {
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("env") === "development" ? err : {};
+//   res.status(err.status || 500);
+//   res.render("error");
+// });
 
+app.use(errorMiddleware);
 
 // Start server and connect to Prisma
 const startServer = async () => {

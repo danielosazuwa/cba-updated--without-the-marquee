@@ -53,7 +53,6 @@ const courseVal = (req, res, next) => {
   });
 
   const { error } = schema.validate(req.body);
-  console.log(error);
   createResponse(error, res, next);
 };
 
