@@ -61,9 +61,11 @@ const getAll = async () => {
 };
 
 const getOne = async (criteria) => {
-  return await prisma.user.findFirst({
+  return  await prisma.user.findFirst({
     where: { ...criteria },
   });
+
+  
 };
 
 const viewOne = async (id) => {
