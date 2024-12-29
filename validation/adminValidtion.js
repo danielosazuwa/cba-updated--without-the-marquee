@@ -12,7 +12,7 @@ const createResponse = (error, res, next) => {
     next();
 };
 
-const authAdmin = (req, res, next) => {
+const authAdminVal = (req, res, next) => {
     const schema = Joi.object({
       email: Joi.string() .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
       password: Joi.string().required(),
@@ -24,8 +24,8 @@ const authAdmin = (req, res, next) => {
 
 const createAdminVal = (req, res, next) => {
     const schema = Joi.object({
-      firstNam: Joi.string().required(),
-      lastNamme: Joi.string().required(),
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
       role: Joi.string().required(),
       email: Joi.string() .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
       password: Joi.string().required(),
@@ -36,6 +36,6 @@ const createAdminVal = (req, res, next) => {
 };
 
 module.exports = {
-    authAdmin,
+    authAdminVal,
     createAdminVal
 }

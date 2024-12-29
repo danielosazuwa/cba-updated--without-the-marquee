@@ -40,60 +40,47 @@ const getOne = async (criteria) => {
           role: true,
         },
       },
+      Modules: {
+        where: { isDeleted: false },
+        include:{
+          lessons: {
+            where: { isDeleted: false },
+          },
+        }
+      },
     },
   });
 };
 
-const viewOne = async (criteria) => {
-  const course = await prisma.course.findUnique({
-    where: { slug: criteria },
-    include: {
-      admin: {
-        select: {
-          id: true,
-          firstName: true,
-          lastName: true,
-          email: true,
-        },
-      },
-      Modules: {
-        where: { isDeleted: false },
-        include: {
-          lessons: true,
-        },
-      },
-    },
-    //    include:{
-    //     admin:{
-    //         select:{
-    //             id: true,
-    //             firstName:true,
-    //             lastName:true,
-    //             email:true
-    //         },
-    //         modules:{
-    //             orderBy:{order:'asc'},
-    //             where:{isDeleted: false},
-    //             // include:{
-    //             //     lessons:{
-    //             //         orderBy:{order: 'asc'},
-    //             //         where:{
-    //             //             isDeleted:false
-    //             //         }
-    //             //     }
-    //             // }
-    //         }
-    //     }
-    //    }
-  });
+const viewOne = async (id) => {
 
+  // const course = await prisma.course.findUnique({
+  //   where: { id: criteria },
+  //   include: {
+  //     admin: {
+  //       select: {
+  //         id: true,
+  //         firstName: true,
+  //         lastName: true,
+  //         email: true,
+  //       },
+  //     },
+  //     Modules: {
+  //       where: { isDeleted: false },
+  //       include: {
+  //         lessons: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  const course  = await getOne({id: id});
   if (!course) console.log("Course Not found!");
   if (!course) throw new ErrorHandler(404, "Course Not found");
   return course;
 };
 
 const create = async (adminId, payload) => {
-  console.log(payload);
   const slug = slugify(`${payload.title}`, { lower: true, replacement: "_" });
 
   const newCourse = await prisma.course.create({
@@ -163,7 +150,9 @@ const updateCourse = async (courseId, payload) => {
       description: payload.description,
       why_list: payload.why_list,
       who_list: payload.who_list,
-      amount: payload.amount,
+      amount_in_NGN: payload.amount_in_NGN,
+      amount_in_GBP: payload.amount_in_GBP,
+      amount_in_USD: payload.amount_in_USD,
       duration: payload.duration,
     },
   });

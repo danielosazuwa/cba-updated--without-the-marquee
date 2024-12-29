@@ -103,7 +103,7 @@ CREATE TABLE "lesson" (
 -- CreateTable
 CREATE TABLE "SingleCourseEnrollment" (
     "id" TEXT NOT NULL,
-    "paymentId" TEXT NOT NULL,
+    "paymentId" TEXT,
     "userId" TEXT NOT NULL,
     "courseId" TEXT NOT NULL,
     "paymentPlan" "PaymentPlans" NOT NULL DEFAULT 'ONE_TIME',
@@ -243,7 +243,7 @@ ALTER TABLE "SingleCourseEnrollment" ADD CONSTRAINT "SingleCourseEnrollment_user
 ALTER TABLE "SingleCourseEnrollment" ADD CONSTRAINT "SingleCourseEnrollment_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SingleCourseEnrollment" ADD CONSTRAINT "SingleCourseEnrollment_paymentId_fkey" FOREIGN KEY ("paymentId") REFERENCES "Payments"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "SingleCourseEnrollment" ADD CONSTRAINT "SingleCourseEnrollment_paymentId_fkey" FOREIGN KEY ("paymentId") REFERENCES "Payments"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "CourseInstallments" ADD CONSTRAINT "CourseInstallments_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course"("id") ON DELETE SET NULL ON UPDATE CASCADE;
