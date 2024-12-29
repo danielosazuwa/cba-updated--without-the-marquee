@@ -4,6 +4,7 @@ const userService = require("../services/userService");
 const userValidation = require("../validation/userValidation");
 const authenticateAdmin = require("../middlewares/authenticateAdmin");
 
+// ==> GET ALL USERS {{domain}}/users/
 router.get(
   "/",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -14,6 +15,7 @@ router.get(
   }
 );
 
+// ==> VIEW TRASH {{domain}}/users/trash
 router.get(
   "/trash",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -24,6 +26,7 @@ router.get(
   }
 );
 
+// ==> VIEW USER {{domain}}/users/:userId
 router.get(
   "/:id",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -40,6 +43,7 @@ router.get(
   }
 );
 
+// ==> CREATE NEW USER {{domain}}/users/create
 router.post("/create", userValidation.userVal, async (req, res, next) => {
   try {
     const user = await userService.create(req.body);
@@ -50,6 +54,7 @@ router.post("/create", userValidation.userVal, async (req, res, next) => {
   }
 });
 
+// ==> UPDATE USER {{domain}}/users/:userId/update
 router.put(
   "/:id/update",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -67,10 +72,13 @@ router.put(
   }
 );
 
-router.patch("/:id/soft-delete", async (req, res, next) => {
+// ==> SOFT DELETE A USER {{domain}}/users/:userId/soft-delete
+router.patch("/:id/soft-delete",
+  authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
+   async (req, res, next) => {
   const { id } = req.params;
   try {
-    const user = await userService.updateUser(id, req.body);
+    const user = await userService.softDeleteUser(id);
     console.log(user);
 
     // res.render('user/dashboard', {});
@@ -79,10 +87,13 @@ router.patch("/:id/soft-delete", async (req, res, next) => {
   }
 });
 
-router.delete("/:id/soft-delete", async (req, res, next) => {
+// ==> DELETE A USER {{domain}}/users/:userId/delete
+router.delete("/:id/delete", 
+  authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
+  async (req, res, next) => {
   const { id } = req.params;
   try {
-    const user = await userService.updateUser(id, req.body);
+    const user = await userService.permanentDelete(id);
     console.log(user);
 
     // res.render('user/dashboard', {});

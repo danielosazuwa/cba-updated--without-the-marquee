@@ -4,6 +4,7 @@ module.exports = (allowedRoles) => {
   const logger = new LoggerService();
   return (req, res, next) => {
     if (req.session && req.session.adminId) {
+      console.log(res.session)
       res.locals.user = req.session;
 
       if (allowedRoles.includes(res.locals.user.role)) {
@@ -19,7 +20,7 @@ module.exports = (allowedRoles) => {
       }
     }
 
-    logger.log(
+    logger.warn(
       "No adminId found in session:",
       req.session.adminId ? req.session.adminId : "undefined"
     );

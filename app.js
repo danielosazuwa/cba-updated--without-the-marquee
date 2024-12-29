@@ -105,7 +105,7 @@ app.use(function (req, res, next) {
 
 
 // Handled unhandled routes
-// app.all('*', (req, res, next)=>{
+// app.use('*', (req, res, next)=>{
 //     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
 // });
 

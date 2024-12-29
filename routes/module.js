@@ -4,6 +4,7 @@ const moduleService = require("../services/moduleService");
 const authenticateAdmin = require("../middlewares/authenticateAdmin");
 const { xss } = require("express-xss-sanitizer");
 
+// ==> GET A COURSE MODULE {{domain}}/module/course/:courseId}
 router.get("/course/:courseId", xss(), async (req, res, next) => {
   const { courseId } = req.params;
   try {
@@ -15,6 +16,7 @@ router.get("/course/:courseId", xss(), async (req, res, next) => {
   // res.render('admin/users', { users });
 });
 
+// ==> VIEW TRASH {{domain}}/module/trash
 router.get(
   "/trash",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -29,6 +31,7 @@ router.get(
   }
 );
 
+// ==> GET A SINGLE MODULE {{domain}}/module/:moduleId
 router.get(
   "/:moduleId",
   xss(), //authenticateAdmin,
@@ -46,6 +49,7 @@ router.get(
   }
 );
 
+// ==> CREATE A MODULE {{domain}}/module/course/courseId/create
 router.post(
   "/course/:courseId/create",
   xss(),
@@ -70,6 +74,7 @@ router.post(
   }
 );
 
+// ==> UPDATE A MODULE {{domain}}/module/:moduleId/update
 router.put(
   "/:moduleId/update",
   xss(),
@@ -94,6 +99,7 @@ router.put(
   }
 );
 
+// ==> SOFT DELETE A MODULE {{domain}}/module/c68dcd53-f854-4b4b-8141-3e249b84cf53/soft-delete
 router.patch(
   "/:moduleId/soft-delete",
   xss(),
@@ -112,6 +118,7 @@ router.patch(
   }
 );
 
+// ==> RESTORE A SOFT DELETED MODULE {{domain}}/module/:moduleId/restore-module
 router.patch(
   "/:moduleId/restore-module",
   xss(),
@@ -130,6 +137,7 @@ router.patch(
   }
 );
 
+// ==> DELETE A SOFT DELETED MODULE {{domain}}/module/:moduleId/permanent-delete-module
 router.delete(
   "/:moduleId/permanent-delete-module",
   xss(),

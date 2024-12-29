@@ -8,6 +8,8 @@ const { default: slugify } = require("slugify");
 const { xss } = require("express-xss-sanitizer");
 const { courseVal } = require("../validation/courseValidation");
 
+
+// ==> GET COURSEES {{domain}}/course/
 router.get("/", async (req, res, next) => {
   const { courses } = req.query;
   let criteria = {};
@@ -37,6 +39,8 @@ router.get("/", async (req, res, next) => {
   // res.render('admin/users', { users });
 });
 
+
+//==> VIEW TRASH {{domain}}/course/trash
 router.get(
   "/trash",
   authenticateAdmin(["SUPER_ADMIN"]),
@@ -51,19 +55,22 @@ router.get(
   }
 );
 
+//==> Get Specific course by ID {{domain}}/course/:courseId
 router.get(
-  "/:slug",
-  xss(), //authenticateAdmin,
+  "/:id",
   async (req, res, next) => {
-    const { slug } = req.params;
-    const normalizedSlug = slugify(`${slug}`, {
-      lower: true,
-      replacement: "_",
-    });
 
     try {
-      const course = await courseService.viewOne(normalizedSlug);
-      console.log(course);
+    const { id } = req.params;
+      const course = await courseService.viewOne(id);
+      
+      const courseWithBigIntAsString = JSON.parse(
+        JSON.stringify(course, (key, value) =>
+          typeof value === 'bigint' ? value.toString() : value
+        )
+      );
+
+      res.json(courseWithBigIntAsString);
       // res.render('admin/users', { users });
     } catch (err) {
       next(err);
@@ -71,6 +78,7 @@ router.get(
   }
 );
 
+// ==> CREATE NEW COURSE  {{domain}}/course/create
 router.post(
   "/create",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
@@ -92,6 +100,7 @@ router.post(
   }
 );
 
+// ==> UPLAOD COURSE IMAGE {{domain}}/course/:courseId/img-upload
 router.patch(
   "/:courseId/img-upload",
   // xss(),
@@ -120,10 +129,11 @@ router.patch(
   }
 );
 
+// ==> UPDATE COURSE {{domain}}/course/:courseId/update_course
 router.put(
-  "/:courseId/update-course",
-  xss(),
-  authenticateAdmin(["SUPER_ADMIN", "ADMIN", "EDITOR"]),
+  "/:courseId/update_course",
+  authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
+  // xss(),
   courseVal,
   async (req, res, next) => {
     try {
@@ -144,6 +154,7 @@ router.put(
   }
 );
 
+// ==> SOFT DELETE ADMIN {{domain}}/course/:courseId/soft-delete
 router.patch(
   "/:courseId/soft-delete",
   xss(),
@@ -161,6 +172,7 @@ router.patch(
   }
 );
 
+// ==> RESTORE COURSE {{domain}}/course/:courseId/restore-course
 router.patch(
   "/:courseId/restore-course",
   xss(),
@@ -178,6 +190,7 @@ router.patch(
   }
 );
 
+// ==> PERMANATELY DELETE COURSE  {{domain}}/course/:courseId/permanent-delete
 router.delete(
   "/:courseId/permanent-delete",
   xss(),

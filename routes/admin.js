@@ -6,6 +6,7 @@ const authenticateAdmin = require("../middlewares/authenticateAdmin");
 const { xss } = require("express-xss-sanitizer");
 const { authAdminVal, createAdminVal } = require("../validation/adminValidtion");
 
+// ==> VIEW ALL ADMIN {{domain}}/admin/all-admins
 router.get(
   "/all-admins",
   authenticateAdmin(["SUPER_ADMIN"]),
@@ -16,6 +17,7 @@ router.get(
   }
 );
 
+// ==> VIEW ADMIN {{domain}}/admin/:adminId/get-admin
 router.get(
   "/:id/get-admin",
   xss(), //authenticateAdmin,
@@ -27,6 +29,7 @@ router.get(
   }
 );
 
+// ==> RESTORE DELETED ADMIN {{domain}}/admin/:adminId/trash
 router.get(
   "/:id/trash",
   xss(),
@@ -39,6 +42,8 @@ router.get(
   }
 );
 
+
+// ==> NEW ADMIN {{domain}}/admin/create
 router.post(
   "/create",
   authenticateAdmin(["SUPER_ADMIN"]),
@@ -57,6 +62,7 @@ router.post(
   }
 );
 
+//==> LOGIN {{domain}}/admin/login
 router.post("/login", authAdminVal, async (req, res, next) => {
   try {
     const admin = await adminService.login(req.body);
@@ -76,6 +82,7 @@ router.post("/login", authAdminVal, async (req, res, next) => {
   }
 });
 
+// ==> UPDATE ADMIN {{domain}}/admin/:adminId/update
 router.put("/:id/update", xss(), authenticate, async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -94,6 +101,7 @@ router.put("/:id/update", xss(), authenticate, async (req, res, next) => {
   }
 });
 
+// ==>SOFT DELETE {{domain}}/admin/:adminId/soft-delete
 router.patch(
   "/:id/soft-delete",
   xss(),
@@ -117,6 +125,7 @@ router.patch(
   }
 );
 
+// ==> RESTORE DELETED ADMIN {{domain}}/admin/:adminId/restore-admin
 router.patch(
   "/:id/restore-admin",
   xss(),
@@ -140,14 +149,15 @@ router.patch(
   }
 );
 
-router.post("/logout", (req, res) => {
+// ==> RESTORE DELETED ADMIN {{domain}}/admin/logout
+router.delete("/logout", (req, res) => {
   req.session.destroy((err) => {
     console.log("destroyed");
     if (err) {
       return res.status(500).send("Could not log out.");
     }
     res.clearCookie("connect.sid");
-    res.redirect("/admin/login");
+    // res.redirect("{{domain}}/admin/login");
   });
 });
 

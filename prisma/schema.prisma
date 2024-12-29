@@ -195,6 +195,7 @@ model Session {
   adminId   String?
   admin     Admin?   @relation(fields: [adminId], references: [id])
   expiresAt DateTime
+   @@map("sessions")
 }
 
 enum Role {
