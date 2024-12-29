@@ -8984,6 +8984,7 @@
 {"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-16T20:03:01.813Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-16T20:03:33.872Z"}
 {"level":"info","message":"listening at port 8000 in development😁😁😁😁","module":"app","timestamp":"2024-12-16T20:03:33.877Z"}
+<<<<<<< HEAD
 {"level":"error","message":"Failed to connect to the database 🔥🔥🔥:","module":"app","timestamp":"2024-12-27T12:57:38.391Z"}
 {"level":"error","message":"Failed to start the server 🔥🔥🔥🔥🔥🔥:","module":"app","timestamp":"2024-12-27T12:57:38.400Z"}
 {"level":"error","message":"Failed to connect to the database 🔥🔥🔥:","module":"app","timestamp":"2024-12-27T12:58:13.468Z"}
@@ -9781,3 +9782,9 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T07:47:37.946Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-29T07:51:24.857Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T07:51:24.874Z"}
+=======
+>>>>>>> a0ac9b683fa31d6c00ad6ef3067a5e054b106634
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-29T08:08:35.306Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T08:08:35.312Z"}
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-29T08:09:17.438Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T08:09:17.445Z"}
