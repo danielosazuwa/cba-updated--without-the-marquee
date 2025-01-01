@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
   try {
     res.render("home.ejs", {
       title: "Home",
-      testimonialsContent: testimonials
+      testimonialsContent: testimonials,
     });
   } catch (err) {
     next(err);
@@ -22,14 +22,13 @@ router.get("/about", (req, res) => {
   res.render("about-us.ejs", { title: "About Us" });
 });
 
-router.get("/our-academy", (req, res) => {
-  res.render("our-academy", { title: "Our Academy" });
+router.get("/courses", (req, res) => {
+  res.render("courses.ejs", { title: "Our Courses" });
 });
 
 router.get("/business-analysis", (req, res) => {
-  res.render("business-analysis", {
+  res.render("course-page.ejs", {
     title: "Business Analysis",
-    url: "/business-analysis",
   });
 });
 
