@@ -1,6 +1,6 @@
 <!--CERTIFICATE AREA BEGINS-->
 <div class="certificate-area">
-    <h4>Certificate</h4>
+    <h4>Certifications</h4>
     <h3>Let Us Lead You To The Path Of Certification</h3>
 
     <div class="marquee-cert" id="marquee-cert">
@@ -45,15 +45,15 @@
       </div>
 
       <div>
-        <h5>Decareer Builders</h5>
+        <h5>DeCareer Builders</h5>
         <ul>
-        <a href="">
+        <a href="/">
           <li>Home</li>
         </a>  
-        <a href="">
+        <a href="/about">
           <li>About Us</li>
         </a>  
-        <a href="">
+        <a href="/courses">
           <li>Courses</li>
         </a>  
         <a href="">
@@ -108,18 +108,16 @@
         <p> &copy <%= getYear() %> <a href="">DeCareer Builders Academy</a>. All Rights Reserved by DCBA</p>
       </div>
 </body>
-<script>
-    const marquee = document.getElementById('marquee');
-    const items = document.querySelectorAll('.marquee-item');
-    const totalWidth = Array.from(items).reduce((acc, item) => acc + item.offsetWidth + 20, 0); // total width of all items
+<script>    const marquee = document.getElementById('marquee');
+  const items = document.querySelectorAll('.marquee-item');
+  const totalWidth = Array.from(items).reduce((acc, item) => acc + item.offsetWidth + 20, 0); // total width of all items
 
-    for (let i = 0; i < items.length; i++) {
-    const clone = items[i].cloneNode(true);
-    marquee.appendChild(clone); // Duplicate the items
-    }
+  for (let i = 0; i < items.length; i++) {
+  const clone = items[i].cloneNode(true);
+  marquee.appendChild(clone); // Duplicate the items
+  }
 
-    marquee.style.animationDuration = `${(totalWidth / 70)}s`; // 50px per second speed
-</script>
+  marquee.style.animationDuration = `${(totalWidth / 70)}s`; // 50px per second speed</script>
 
 <!-- <script>
   const marq = document.getElementById('marquee-cert');

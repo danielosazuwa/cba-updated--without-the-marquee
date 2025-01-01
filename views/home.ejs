@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") %>
 <!--BANNER AREA BEGINS-->
 <div class="banner-container">
-  <img src="/img/new_design/banner_img.png" alt="banner" />
+  <img src="/img/new_design/banner_img.png" alt="banner" loading="lazy" />
   <div class="overlay">
     <div class="banner-collection">
       <div id="decision-area">
@@ -28,16 +28,24 @@
 <!--WHO WE ARE AREA BEGINS-->
 <div class="who-we-are">
   <h4>Who We Are</h4>
-  <h3>Empowering Futures Through Education and Experience</h3>
-  <p>
-    At DeCareer Builders Academy (DCBA) we are your partners in success, guiding
-    you every step of the way on your journey to excellence. From selecting and
-    studying your preferred course to mastering industry-relevant skills, we
-    provide hands-on teaching, personalized mentoring, and unwavering support.
-    Our goal? To help you land your dream job in your dream sector. With DCBA,
-    you're not just learning — you're building a future you’ve always
-    envisioned, and we’re here to hold your hand through every milestone.
-  </p>
+
+  <div class="who-we-are-collection">
+    <div>
+      <h3>Empowering Tech Enthusiasts</h3>
+      <p>
+        At DeCareer Builders Academy (DCBA) we are your partners in success,
+        guiding you every step of the way on your journey to excellence. From
+        selecting and studying your preferred course to mastering
+        industry-relevant skills, we provide hands-on teaching, personalized
+        mentoring, and unwavering support. Our goal? To help you land your dream
+        job in your dream sector. With DCBA, you're not just learning — you're
+        building a future you’ve always envisioned, and we’re here to hold your
+        hand through every milestone.
+      </p>
+    </div>
+
+    <div><img src="/img/new_design/who-we-are.png" alt="Who We Are" /></div>
+  </div>
 </div>
 <!--WHO WE ARE AREA BEGINS-->
 
@@ -49,18 +57,26 @@
   <div class="offers-collection">
     <div class="offer-area offer-bottom">
       <a href="">
-        <img src="/img/new_design/our-academy.png" alt="Our Academy" />
+        <img
+          src="/img/new_design/our-academy.png"
+          alt="Our Academy"
+          loading="lazy"
+        />
         <p>
-          <span>Our Academy</span> <br />
-          At Career Builders’ Academy, our mission is to empower individuals and
-          businesses...
+          <span>Our Courses</span> <br />
+          At DeCareer Builders Academy, our mission is to empower individuals
+          and businesses...
         </p>
       </a>
     </div>
 
     <div class="offer-area offer-top">
       <a href="">
-        <img src="/img/new_design/consultancy.png" alt="Consultancy" />
+        <img
+          src="/img/new_design/consultancy.png"
+          alt="Consultancy"
+          loading="lazy"
+        />
         <p>
           <span>Consultancy</span> <br />At our core, we specialize in
           delivering top-tier consultancy services...
@@ -70,7 +86,11 @@
 
     <div class="offer-area offer-top">
       <a href="">
-        <img src="/img/new_design/partnership.png" alt="Partnership" />
+        <img
+          src="/img/new_design/partnership.png"
+          alt="Partnership"
+          loading="lazy"
+        />
         <p>
           <span>Partnership</span> <br />We are committed to advancing the tech
           industry by forging...
@@ -80,10 +100,14 @@
 
     <div class="offer-area offer-bottom">
       <a href="">
-        <img src="/img/new_design/work-experience.png" alt="Work Experience" />
+        <img
+          src="/img/new_design/work-experience.png"
+          alt="Work Experience"
+          loading="lazy"
+        />
         <p>
-          <span>Work Experience (WX)</span> <br />We extend a warm welcome to
-          our Work Experience platform, marking...
+          <span>Work Xperience (WX)</span> <br />We extend a warm welcome to our
+          Work Experience platform, marking...
         </p>
       </a>
     </div>
@@ -100,7 +124,11 @@
 
   <div class="reasons-for-choice">
     <div>
-      <img src="/img/new_design/choose-area-img.png" alt="DCBA" />
+      <img
+        src="/img/new_design/choose-area-img.png"
+        alt="DCBA"
+        loading="lazy"
+      />
     </div>
 
     <div>
@@ -127,7 +155,7 @@
       <div class="testimony <%= index % 2 === 0 ? 'even' : 'odd' %>">
         <div>
           <p><%= item.name %></p>
-          <hr>
+          <hr />
           <p class="testimony-info">"<%= item.testimony %>"</p>
         </div>
       </div>
