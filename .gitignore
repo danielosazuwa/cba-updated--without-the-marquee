@@ -1,6 +1,7 @@
 node_modules
 package-lock.json
 .env
+.combined.log
 public/case_files/*
 sshh
 sshh.pub
