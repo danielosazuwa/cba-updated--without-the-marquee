@@ -15,14 +15,16 @@ const { xss } = require('express-xss-sanitizer');
 const hpp = require('hpp');
 const helmet = require('helmet');
 const {prisma} = require('./prismaService');
+const ipinfo = require('ipinfo-express')
+const expressip = require('express-ip');
+const errorMiddleware = require('./helpers/errors');
 
-
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const courseRouter = require('./routes/course');
 const moduleRouter = require('./routes/module');
 const lessonRouter = require('./routes/lesson');
-
+const enrollmentRouter = require('./routes/enrollment');
 
 // Handling uncaught exceptions
 process.on('uncaughtException',err=>{
@@ -38,9 +40,12 @@ process.on('SIGINT', async () => {
     process.exit(0);
 });
 
-var app = express();
-const logger = new LoggerService('app');
+const app = express();
+
+const logger = new LoggerService("app");
 const port = process.env.PORT || 8000;
+app.use(expressip().getIpInfoMiddleware);
+
 app.use(helmet())
 
 // view engine setup
@@ -49,7 +54,7 @@ app.set('view engine', 'pug');
 
 // Middleware setup
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 // app.use(fileUpload({
 //     limits: { fileSize: 10 * 1024 * 1024 },
 // }));
@@ -58,6 +63,7 @@ app.use(xss());
 app.use(hpp({
     whitelist: ['position']
 }));
+
 
 app.use(session({
     secret: config.session_secret, 
@@ -73,40 +79,42 @@ app.use(session({
         // maxAge: 1000 * 60 * 60 * 24 // 1 day,
         checkPeriod: 86400000 // prune expired entries every 24h
 
-    }
-}));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(xss());
 app.use(hpp()); 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(formatView);
-app.use('/', indexRouter);
-// app.use('/users', authenticate, usersRouter);
+app.use("/", indexRouter);
+app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/course', courseRouter);
 app.use('/module', moduleRouter);
 app.use('/lesson', lessonRouter);
+app.use('/enrollment', enrollmentRouter);
 
 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    next(createError(404));
+  next(createError(`${req.originalUrl} route not found`, 404));
 });
 
 
+
 // Handled unhandled routes
-// app.all('*', (req, res, next)=>{
+// app.use('*', (req, res, next)=>{
 //     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
 // });
 
 
-// error handler
-app.use(function (err, req, res, next) {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
-});
+// app.use(function (err, req, res, next) {
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("env") === "development" ? err : {};
+//   res.status(err.status || 500);
+//   res.render("error");
+// });
+
+app.use(errorMiddleware);
 
 // Start server and connect to Prisma
 const startServer = async () => {
