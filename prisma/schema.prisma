@@ -55,24 +55,22 @@ model User {
 }
 
 model Course {
-  id            String   @id @default(uuid())
-  title         String
-  slug          String   @unique
-  description   String
-  why_list      String[]
-  who_list      String[]
-  image         String?
-  amount_in_NGN BigInt?
-  amount_in_USD BigInt?
-  amount_in_GBP BigInt?
-  duration      String?
-  adminId       String
-  admin         Admin    @relation(fields: [adminId], references: [id])
-  Modules       Module[]
-  isDeleted     Boolean  @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  deletedAt     DateTime @updatedAt
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String
+  why_list    String[]
+  who_list    String[]
+  image       String?
+  price       Json?
+  duration    String?
+  adminId     String
+  admin       Admin    @relation(fields: [adminId], references: [id])
+  Modules     Module[]
+  isDeleted   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime @updatedAt
 
   SingleCourseEnrollment SingleCourseEnrollment[]
 
@@ -195,7 +193,8 @@ model Session {
   adminId   String?
   admin     Admin?   @relation(fields: [adminId], references: [id])
   expiresAt DateTime
-   @@map("sessions")
+
+  @@map("sessions")
 }
 
 enum Role {

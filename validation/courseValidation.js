@@ -22,33 +22,34 @@ const courseVal = (req, res, next) => {
     description: Joi.string().required(),
     who_list: Joi.array().required(),
     why_list: Joi.array().required(),
-    amount_in_NGN: Joi.string()
-      .custom((value, helpers) => {
-        if (!isBigIntString(value)) {
-          return helpers.error("any.invalid");
-        }
-        return BigInt(value);
-      })
-      .optional()
-      .allow(null),
-    amount_in_GBP: Joi.string()
-      .custom((value, helpers) => {
-        if (!isBigIntString(value)) {
-          return helpers.error("any.invalid");
-        }
-        return BigInt(value);
-      })
-      .optional()
-      .allow(null),
-    amount_in_USD: Joi.string()
-      .custom((value, helpers) => {
-        if (!isBigIntString(value)) {
-          return helpers.error("any.invalid");
-        }
-        return BigInt(value);
-      })
-      .optional()
-      .allow(null),
+    price: Joi.object().required(),
+    // amount_in_NGN: Joi.string()
+    //   .custom((value, helpers) => {
+    //     if (!isBigIntString(value)) {
+    //       return helpers.error("any.invalid");
+    //     }
+    //     return BigInt(value);
+    //   })
+    //   .optional()
+    //   .allow(null),
+    // amount_in_GBP: Joi.string()
+    //   .custom((value, helpers) => {
+    //     if (!isBigIntString(value)) {
+    //       return helpers.error("any.invalid");
+    //     }
+    //     return BigInt(value);
+    //   })
+    //   .optional()
+    //   .allow(null),
+    // amount_in_USD: Joi.string()
+    //   .custom((value, helpers) => {
+    //     if (!isBigIntString(value)) {
+    //       return helpers.error("any.invalid");
+    //     }
+    //     return BigInt(value);
+    //   })
+    //   .optional()
+    //   .allow(null),
     duration: Joi.string().required(),
   });
 
