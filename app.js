@@ -23,7 +23,7 @@ const adminRouter = require("./routes/admin");
 const courseRouter = require("./routes/course");
 const moduleRouter = require("./routes/module");
 const lessonRouter = require("./routes/lesson");
-
+const enrollmentRouter = require("./routes/enrollment")
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
   logger.log(`Error: ${err.message}`);
@@ -109,8 +109,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-app.use(errorMiddleware);
 
 // Start server and connect to Prisma
 const startServer = async () => {

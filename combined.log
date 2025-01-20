@@ -10398,3 +10398,5 @@
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2025-01-20T01:42:00.819Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2025-01-20T01:42:00.827Z"}
 >>>>>>> 558ceb0 (images deleted)
+{"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2025-01-20T01:59:37.766Z"}
+{"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2025-01-20T01:59:37.775Z"}
