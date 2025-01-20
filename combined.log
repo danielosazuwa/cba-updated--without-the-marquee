@@ -5945,6 +5945,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 807bae7eb00b7ffb33ead0f5f8f138e76694860e
+<<<<<<< HEAD
 =======
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-04T10:34:25.832Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-04T10:34:25.844Z"}
@@ -9788,6 +9789,7 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T08:08:35.312Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2024-12-29T08:09:17.438Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2024-12-29T08:09:17.445Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2025-01-11T11:28:53.967Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2025-01-11T11:28:53.986Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2025-01-11T20:07:15.571Z"}
@@ -9799,3 +9801,5 @@
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2025-01-14T19:34:04.657Z"}
 {"level":"info","message":"Connected to the database successfully 😁😁!","module":"app","timestamp":"2025-01-17T17:28:04.329Z"}
 {"level":"info","message":"listening at port 7000 in development😁😁😁😁","module":"app","timestamp":"2025-01-17T17:28:04.338Z"}
+=======
+>>>>>>> 70645bf9218968a2d76937627e07431910d50dc5

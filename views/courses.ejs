@@ -27,113 +27,22 @@
   </p>
 
   <div class="courses-collection">
-    <div id="course-item">
-      <a href="/business-analysis">
-        <img
-          src="/img/courses/business-analysis.png"
-          alt="Business Analysis"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Business Analysis</p>
-        </div>
-      </a>
-    </div>
+    <% data.forEach(course => { %>
+      <div id="course-item" class="<%= course.id %>">
+        <a href="/course/<%= course.id %>">
+          <img src="/img/cover/<%=course.image %>" alt="<%= course.title %>" loading="lazy" />
+          <!-- <img src="/img/cover/1737329146460-23919842.JPG" alt="<%= course.title %>" loading="lazy" /> -->
 
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/product-owner.png"
-          alt="Professional Product Owner"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Professional Product Owner</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/scrum.png"
-          alt="Professional Scrum Master"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Professional Scrum Master</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img src="/img/courses/ui.png" alt="UI/UX Design" loading="lazy" />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>UI/UX Design</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/business-process.png"
-          alt="Business Process Modeling"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Business Process Modeling</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/product-dev.png"
-          alt="Product Development"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Product Development</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/data-analysis.png"
-          alt="Data Analysis"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Data Analysis</p>
-        </div>
-      </a>
-    </div>
-
-    <div id="course-item">
-      <a href="#">
-        <img
-          src="/img/courses/digital-marketing.png"
-          alt="Digital Marketing"
-          loading="lazy"
-        />
-        <div id="course-desc">
-          <button>Online</button>
-          <p>Digital Marketing</p>
-        </div>
-      </a>
-    </div>
+          <script>
+            console.log("/<%= course.image %>");
+          </script>
+          <div id="course-desc">
+            <button>Online</button>
+            <p><%= course.title %></p>
+          </div>
+        </a>
+      </div>
+    <% }) %>
   </div>
 </div>
 <!--COURSES SECTION ENDS-->

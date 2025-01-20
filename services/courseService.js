@@ -1,16 +1,13 @@
 const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
 const { ErrorHandler } = require("../helpers/errorHandler");
 const prisma = new PrismaClient();
 const { LoggerService } = require("../customLogger");
 const logger = new LoggerService();
 const slugify = require("slugify");
-// const fs = require('fs');
 const fs = require("fs").promises;
 const path = require("path");
 
-const getAll = async (criteria = {}) => {
+const getAll = async (criteria) => {
   const courses = await prisma.course.findMany({
     where: {
       ...criteria,
@@ -21,7 +18,6 @@ const getAll = async (criteria = {}) => {
     },
   });
 
-  console.log(`list if courses: courses`);
   return courses;
 };
 
@@ -82,6 +78,12 @@ const viewOne = async (id) => {
 
 const create = async (adminId, payload) => {
   const slug = slugify(`${payload.title}`, { lower: true, replacement: "_" });
+  
+  const isExist = await getOne({ slug: slug });
+
+  if (isExist) {
+    throw new ErrorHandler(409, "Course Already Exist");
+  }
 
   const newCourse = await prisma.course.create({
     data: {
@@ -90,9 +92,7 @@ const create = async (adminId, payload) => {
       description: payload.description,
       why_list: payload.why_list,
       who_list: payload.who_list,
-      amount_in_NGN: payload.amount_in_NGN,
-      amount_in_GBP: payload.amount_in_GBP,
-      amount_in_USD: payload.amount_in_USD,
+      price: payload.price,
       duration: payload.duration,
       adminId: adminId,
     },
@@ -102,19 +102,20 @@ const create = async (adminId, payload) => {
   return newCourse;
 };
 
-const uploadImage = async (courseId, imagePath) => {
+const uploadImage = async (courseId, imageName) => {
   const course = await getOne({ id: courseId });
-  console.log(imagePath);
+  console.log(imageName);
 
   if (!course) throw new ErrorHandler(404, "Course Not found");
 
   if (course.image) {
-    const imagePath = course.image;
-    fs.unlink(imagePath, (err) => {
+    const oldImagePath = path.join('public/img/cover', course.image); // Construct the full path to the old image
+    fs.unlink(oldImagePath, (err) => {
       if (err) {
+        console.log(err);
         logger.log(`Failed to delete image: ${err.message}`);
       } else {
-        logger.log(`Successfully deleted image: ${deletedCourse.image}`);
+        logger.log(`Successfully deleted image: ${course.image}`);
       }
     });
   }
@@ -124,7 +125,7 @@ const uploadImage = async (courseId, imagePath) => {
       id: courseId,
     },
     data: {
-      image: imagePath,
+      image: imageName, // Store only the image name
     },
   });
 

@@ -23,7 +23,7 @@ const adminRouter = require("./routes/admin");
 const courseRouter = require("./routes/course");
 const moduleRouter = require("./routes/module");
 const lessonRouter = require("./routes/lesson");
-
+const enrollmentRouter = require("./routes/enrollment")
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
   logger.log(`Error: ${err.message}`);
@@ -46,16 +46,10 @@ app.use(expressip().getIpInfoMiddleware);
 app.use(helmet());
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
 app.set("view engine", "ejs");
 
 // Middleware setup
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(fileUpload({
-//     limits: { fileSize: 10 * 1024 * 1024 },
-// }));
 app.use(xss());
 // Prevent parameter pollution
 app.use(
@@ -74,40 +68,48 @@ app.use(
     }),
     cookie: {
       httpOnly: true,
-      // sameSite: 'strict',
       secure: false,
-      // maxAge: 1000 * 60 * 60 * 24 // 1 day,
       checkPeriod: 86400000, // prune expired entries every 24h
     },
   })
 );
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static('public'))
 
 app.use(xss());
-app.use(hpp());
+app.use(hpp()); 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(formatView);
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/admin", adminRouter);
-app.use("/course", courseRouter);
-app.use("/module", moduleRouter);
-app.use("/lesson", lessonRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
+app.use('/course', courseRouter);
+app.use('/module', moduleRouter);
+app.use('/lesson', lessonRouter);
+app.use('/enrollment', enrollmentRouter);
+
+
+
+// catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
-
 // Handled unhandled routes
 // app.all('*', (req, res, next)=>{
 //     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
 // });
 
+
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
-  res.status(err.status || 500);
+  console.log(err)
   res.render("error");
 });
 
