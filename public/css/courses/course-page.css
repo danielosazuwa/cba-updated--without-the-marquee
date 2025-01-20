@@ -35,7 +35,7 @@ img#course-main-banner {
   justify-content: flex-end;
 }
 .course-banner-col h3 {
-  color: #1f2537;
+  color: white;
 }
 
 .course-banner-col p {
@@ -97,6 +97,11 @@ img#course-main-banner {
 
 .about-course-area h4 {
   padding-bottom: 20px;
+}
+
+.about-course-area p {
+  line-height: 30px;
+  text-align: justify;
 }
 /*ABOUT COURSE AREA ENDS*/
 
@@ -166,6 +171,7 @@ img#course-main-banner {
 .course-module-collection {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 .course-module-collection > ul {
   padding-left: 20px;
@@ -195,6 +201,22 @@ img#course-main-banner {
   width: 10%;
   margin-bottom: 20px;
   border: none;
+}
+
+#module-enroll-btn {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#module-enroll-btn a button {
+  cursor: pointer;
+  background: #1f2537;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  color: white;
 }
 /*COURSE MODULE ENDS*/
 
@@ -298,7 +320,11 @@ img#course-main-banner {
 
   /*COURSE MODULE BEGINS*/
   .course-module-collection > ul {
-    width: 100%;
+    width: 70%;
+  }
+
+  #module-enroll-btn {
+    width: 30%;
   }
   /*COURSE MODULE ENDS*/
 
@@ -344,8 +370,38 @@ img#course-main-banner {
 
 @media (max-width: 480px) {
   /*COURSE PAGE BANNER BEGINS*/
+
+  .course-banner-container {
+    position: relative;
+    padding-bottom: 20px;
+  }
+  img#course-main-banner {
+    height: 210px;
+  }
+
+  .course-banner-col {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .course-banner-col img {
+    width: 150px;
+    height: 180px;
+  }
+
+  .course-banner-col > div:nth-child(1) {
+    width: 70%;
+    /* background: red; */
+  }
+  .course-banner-col > div:nth-child(2) {
+    /* background: green; */
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+  }
   .course-banner-col h3 {
-    color: #1f2537;
+    /* color: #1f2537; */
     font-size: 1.5rem;
   }
 
@@ -355,6 +411,9 @@ img#course-main-banner {
 
   .course-details {
     width: 100%;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .course-details > div {
@@ -373,6 +432,13 @@ img#course-main-banner {
   /*COURSE MODULE BEGINS*/
   .course-module-collection > ul {
     padding: 15px;
+    width: 100%;
+  }
+
+  /*COURSE MODULE BEGINS*/
+
+  #module-enroll-btn {
+    padding-top: 50px;
     width: 100%;
   }
 

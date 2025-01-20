@@ -15,12 +15,19 @@ p#about-banner {
 }
 
 /*about main section area begins*/
-.about-main {
-  display: flex;
-  gap: 20px;
+#about-collection {
   padding: 80px 30px 80px 30px;
   justify-content: center;
   width: 100%;
+  text-wrap: wrap;
+}
+
+.about-main {
+  display: flex;
+  gap: 20px;
+  /* padding: 80px 30px 80px 30px; */
+  justify-content: center;
+  /* width: 100%; */
   text-wrap: wrap;
 }
 
@@ -29,11 +36,8 @@ p#about-banner {
   padding-top: 20px;
 }
 
-#opening-statement p {
-  font-size: 1.2rem;
-}
-
-.ms-vs h4 {
+.ms-vs h4,
+#vs h4 {
   padding: 10px 0px 20px 0px;
 }
 
@@ -49,8 +53,9 @@ p#about-banner {
 }
 
 #ms {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
+
 /*about main section area begins*/
 
 /*core values section area begins*/
@@ -206,10 +211,6 @@ p#details {
 
 @media (max-width: 1000px) {
   /*core values section area begins*/
-  .core-values {
-    /* background: red; */
-  }
-
   .core-values h4 {
     text-align: center;
   }
@@ -239,37 +240,31 @@ p#details {
   }
 
   .values-grid div:first-child {
-    /* background: green; */
     grid-column: span 1;
     grid-row: span 2;
   }
 
   .values-grid div:nth-child(2) {
-    /* background: gold; */
     grid-row: span 2;
     grid-column: span 2;
   }
 
   .values-grid div:nth-child(3) {
-    /* background: purple; */
     grid-row: span 1;
     grid-column: span 3;
   }
 
   .values-grid div:nth-child(4) {
-    /* background: yellowgreen; */
     grid-row: span 1;
     grid-column: span 1;
     text-wrap: wrap;
   }
 
   .values-grid div:nth-child(5) {
-    /* background: orange; */
     text-wrap: wrap;
   }
 
   .values-grid div:last-child {
-    /* background: grey; */
     grid-row: span 1;
   }
   /*core values section area ends*/
@@ -277,7 +272,6 @@ p#details {
   /*meet the team section area begins*/
   .meet-the-team {
     padding: 80px 30px 80px 30px;
-    /* background: lemonchiffon; */
   }
 
   .meet-the-team h4 {
@@ -285,7 +279,6 @@ p#details {
   }
 
   .team-collection {
-    /* background: pink; */
     flex-direction: column;
   }
 
@@ -298,7 +291,6 @@ p#details {
     top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* box-shadow: 2px 2px 2px 2px #000; */
   }
 
   .team-member-info {
@@ -326,18 +318,17 @@ p#details {
   }
 
   .member-drop {
-    /* background: red; */
     margin-top: 0px;
   }
   /*meet the team section area ends*/
 }
 
 @media (max-width: 768px) {
-  .about-main {
-    padding: 50px 30px 60px 30px;
-  }
-
   /*about main section area begins*/
+  /* .about-main {
+    padding: 50px 30px 60px 30px;
+  } */
+
   .about-main {
     flex-direction: column;
   }
@@ -345,14 +336,9 @@ p#details {
   #opening-statement {
     text-align: justify;
   }
-
   /*about main section area begins*/
 
   /*core values section area begins*/
-  .core-values {
-    /* background: purple; */
-  }
-
   .values-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -378,25 +364,21 @@ p#details {
   }
 
   .values-grid div:first-child {
-    /* background: green; */
     grid-column: span 2;
     grid-row: span 2;
   }
 
   .values-grid div:nth-child(2) {
-    /* background: gold; */
     grid-row: span 2;
     grid-column: span 1;
   }
 
   .values-grid div:nth-child(3) {
-    /* background: purple; */
     grid-row: span 1;
     grid-column: span 3;
   }
 
   .values-grid div:nth-child(4) {
-    /* background: yellowgreen; */
     grid-row: span 2;
     grid-column: span 3;
     text-wrap: wrap;
@@ -404,7 +386,6 @@ p#details {
   }
 
   .values-grid div:nth-child(5) {
-    /* background: orange; */
     text-wrap: wrap;
     grid-column: span 2;
     grid-row: span 1;
@@ -415,7 +396,6 @@ p#details {
   }
 
   .values-grid div:last-child {
-    /* background: grey; */
     grid-row: span 1;
     grid-column: span 1;
   }
@@ -428,10 +408,6 @@ p#details {
 
 @media (max-width: 600px) {
   /*core values section area begins*/
-  .core-values {
-    /* background: yellow; */
-  }
-
   .values-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -474,7 +450,6 @@ p#details {
   }
 
   .values-grid div:last-child {
-    /* background: grey; */
     grid-row: span 1;
     grid-column: span 3;
   }

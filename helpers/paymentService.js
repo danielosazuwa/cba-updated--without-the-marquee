@@ -8,11 +8,11 @@ const flw = new Flutterwave(
 
 const chargeCard = async (payload) => {
   const response = await flw.Charge.card(payload);
-  if(response.meta.authorization.mode === 'pin'){
+  if (response.meta.authorization.mode === "pin") {
     const recallCharge = await flw.Charge.card(payload.pin);
 
     // console.log(recallCharge)
-}
+  }
   return response;
 };
 
