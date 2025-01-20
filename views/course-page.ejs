@@ -10,13 +10,10 @@
 
   <div class="course-banner-col">
     <div>
-      <h3>BUSINESS ANALYSIS</h3>
+      <h3><%=course.title %></h3>
       <p>
-        The Business Analyst functions as a link between the Product Owner and
-        Developers in Agile teams, ensuring that products are in line with the
-        stakeholders’ needs. This course will equip you with in-depth insights
-        and practical techniques that will make you an excellent Business
-        Analyst.
+        <%= course.description %>
+
       </p>
     </div>
 
@@ -31,15 +28,15 @@
     <div class="course-details">
       <div>
         <p>Total Modules</p>
-        <p>6 Modules</p>
+        <p><%= course.Modules.length %> Modules</p>
       </div>
       <div>
         <p>Duration</p>
-        <p>6 Weeks</p>
+        <p><%= course.duration %></p>
       </div>
       <div>
         <p>Course Fee</p>
-        <p>$300, N450,000</p>
+        <p>$<%= course.price.USD %> , ₦<%= course.price.NGN %>, £<%= course.price.GBP %></p>
       </div>
       <div>
         <p>Levels</p>
@@ -61,15 +58,9 @@
 
 <!--ABOUT COURSE AREA BEGINS-->
 <div class="about-course-area">
-  <h4>About course</h4>
+  <h4><%= course.title %></h4>
   <p>
-    Business Analysts are in high demand by top organizations because they
-    enable change by articulating and analysing an enterprise’s requirements and
-    helping to deliver data-backed solutions. Business Analysts play a crucial
-    role in Agile methodology, which supports frequent and efficient
-    collaboration.Our comprehensive Business Analysis course is designed to
-    equip you with the skills and knowledge required to excel in this dynamic
-    role.
+    <%= course.description %>
   </p>
 </div>
 <!--ABOUT COURSE AREA ENDS-->
@@ -81,19 +72,14 @@
       <h4>Who Is This Course For?</h4>
 
       <ul>
-        <li>Experienced Individuals who manage tech or software projects.</li>
-        <li>
-          Working professionals who want to transition into a Business Analyst
-          role.
-        </li>
-        <li>
-          Individuals who want to transition into a ‘no-coding’ tech role.
-        </li>
+        <% course.why_list.forEach(item => { %>
+          <li><%= item %></li>
+        <% }) %>
       </ul>
     </div>
 
-    <div>
-      <img src="/img/courses/ba.png" alt="Course Image" />
+    <div class="side-image">
+      <img src="/img/cover/<%=course.image %>"  alt="Course Image" />
     </div>
   </div>
 </div>
@@ -128,49 +114,20 @@
   <h4>Course Modules</h4>
 
   <div class="course-module-collection">
-    <ul>
-      <div id="course-module-item">
-        <div>
-          <li>Module 1: Introduction to Business Analysis</li>
-        </div>
-        <button>+</button>
-      </div>
-
-      <div id="course-module-item">
-        <div>
-          <li>Module 2: Requirements Elicitation and Gathering</li>
-        </div>
-        <button>+</button>
-      </div>
-
-      <div id="course-module-item">
-        <div>
-          <li>Module 3: Requirements Modeling and Documentation</li>
-        </div>
-        <button>+</button>
-      </div>
-
-      <div id="course-module-item">
-        <div>
-          <li>Module 4: Analysis Techniques</li>
-        </div>
-        <button>+</button>
-      </div>
-
-      <div id="course-module-item">
-        <div>
-          <li>Module 5: Business Process Improvement</li>
-        </div>
-        <button>+</button>
-      </div>
-
-      <div id="course-module-item">
-        <div>
-          <li>Module 6: Tools and Software for Business Analysts</li>
-        </div>
-        <button>+</button>
-      </div>
-    </ul>
+    <% if (course.Modules.length > 0) { %>
+      <ul>
+        <% course.Modules.forEach((module, index) => { %>
+          <div id="course-module-item">
+            <div>
+              <li>Module <%= index + 1 %>: <%= module.title %></li>
+            </div>
+            <button>+</button>
+          </div>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No modules available for this course.</p>
+    <% } %>
   </div>
 </div>
 <!--COURSE MODULE ENDS-->

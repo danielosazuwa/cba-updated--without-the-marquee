@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const courseService = require("../services/courseService");
-const authenticate = require("../middlewares/authenticate");
 const authenticateAdmin = require("../middlewares/authenticateAdmin");
 const CourseUpload = require("../helpers/fileUpload");
 const { default: slugify } = require("slugify");
@@ -11,32 +10,12 @@ const { courseVal } = require("../validation/courseValidation");
 
 // ==> GET COURSEES {{domain}}/course/
 router.get("/", async (req, res, next) => {
-  const { courses } = req.query;
-  let criteria = {};
-
-  if (courses) {
-    const normalizedSlug = slugify(courses, { lower: true, replacement: "_" });
-    const keywords = courses.toLowerCase().split(/\s+/);
-    criteria = {
-      OR: [
-        { slug: { contains: normalizedSlug, mode: "insensitive" } },
-        {
-          slug: {
-            contains: normalizedSlug.replace(/_/g, "-"),
-            mode: "insensitive",
-          },
-        },
-      ],
-    };
-  }
-
   try {
-    const courses = await courseService.getAll(criteria);
-    console.log(courses);
+    const courses = await courseService.getAll();
+    res.render("courses", {data:courses});
   } catch (err) {
     next(err);
   }
-  // res.render('admin/users', { users });
 });
 
 
@@ -63,15 +42,7 @@ router.get(
     try {
     const { id } = req.params;
       const course = await courseService.viewOne(id);
-      
-      const courseWithBigIntAsString = JSON.parse(
-        JSON.stringify(course, (key, value) =>
-          typeof value === 'bigint' ? value.toString() : value
-        )
-      );
-
-      res.json(courseWithBigIntAsString);
-      // res.render('admin/users', { users });
+      res.render('course-page', { course, title:course.title });
     } catch (err) {
       next(err);
     }
@@ -103,7 +74,6 @@ router.post(
 // ==> UPLAOD COURSE IMAGE {{domain}}/course/:courseId/img-upload
 router.patch(
   "/:courseId/img-upload",
-  // xss(),
   authenticateAdmin(["SUPER_ADMIN", "ADMIN", "EDITOR"]),
   CourseUpload.single("image"),
   async (req, res, next) => {
@@ -112,17 +82,13 @@ router.patch(
         return res.status(400).json({ error: "No image file was uploaded." });
       }
 
-      const imagePath = `courseBanner/${req.file.filename}`;
+      const imageName = req.file.filename; 
 
       const { courseId } = req.params;
 
-      const updatedCourse = await courseService.uploadImage(
-        courseId,
-        imagePath
-      );
-      console.log(updatedCourse);
+      const updatedCourse = await courseService.uploadImage(courseId, imageName);
 
-      // res.status(200).json({ message: 'Image uploaded successfully!', updatedCourse });
+      res.status(200).json({ message: 'Image uploaded successfully!', updatedCourse });
     } catch (err) {
       next(err);
     }
@@ -133,19 +99,12 @@ router.patch(
 router.put(
   "/:courseId/update_course",
   authenticateAdmin(["SUPER_ADMIN", "ADMIN"]),
-  // xss(),
   courseVal,
   async (req, res, next) => {
     try {
       const { courseId } = req.params;
       const course = await courseService.updateCourse(courseId, req.body);
-      // res.render('dashboard', {admin})
-      // const user = req.session.user = admin;
-      // if(req.session.authorize){
-      //     res.render('admin', {username: user.firstName})
-      // }else{
-      //     res.render('login')
-      // }
+  
       // res.redirect('/admin/cases');
       console.log(course);
     } catch (err) {

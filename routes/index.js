@@ -22,15 +22,15 @@ router.get("/about", (req, res) => {
   res.render("about-us.ejs", { title: "About Us" });
 });
 
-router.get("/courses", (req, res) => {
-  res.render("courses.ejs", { title: "Our Courses" });
-});
+// router.get("/courses", (req, res) => {
+//   res.render("courses.ejs", { title: "Our Courses" });
+// });
 
-router.get("/business-analysis", (req, res) => {
-  res.render("course-page.ejs", {
-    title: "Business Analysis",
-  });
-});
+// router.get("/business-analysis", (req, res) => {
+//   res.render("course-page.ejs", {
+//     title: "Business Analysis",
+//   });
+// });
 
 router.get("/data-analysis", (req, res) => {
   res.render("data-analysis", {
